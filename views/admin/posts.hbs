@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Published date</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+
+	{{#each posts}}
+		<tr>
+		<td>{{title}}</td>
+		<td>{{publish_date}}</td>
+		<td><a href="/remove-event/{{_id}}">Delete</a></td>
+		</tr>
+	{{/each}}
+  </tbody>
+</table>
+

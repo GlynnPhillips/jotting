@@ -2,21 +2,19 @@
 	<p class="success">{{success.msg}}</p>
 {{/if}}
 
-<a href="/admin/new-post">Create new post</a>
+<a href="/admin/new-post" class="button mb20">Create new post</a>
 
-<table>
+<table class="grid-12">
 	<thead>
 		<tr>
 			<th>Title</th>
-			<th>Published date</th>
-			<th>Delete</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
 		{{#each posts}}
 			<tr>
 			<td><a href="/admin/new-post/{{_id}}">{{title}}</a></td>
-			<td>{{publish_date}}</td>
 			<td><a href="/admin/delete-post/{{_id}}">Delete</a></td>
 			</tr>
 		{{/each}}

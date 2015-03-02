@@ -1,22 +1,26 @@
 
 <form action="/admin/add-post/{{post._id}}" method="post" accept-charset="utf-8">
 	
-	<label for="title">Post Title</label>
-	<input type="text" name="title" value="{{post.title}}" placeholder="title" id="title"/>
+	<label for="title" class="grid-12">Post Title</label>
+	<input type="text" name="title" value="{{post.title}}" id="title" class="grid-12 mb20"/>
 
-	<label for="content">Post Content</label>
-	<textarea id="content" name="content">{{post.content}}</textarea>
+	<label for="content" class="grid-12">Post Content</label>
+	<textarea id="content" name="content" class="grid-12 mb20">{{post.content}}</textarea>
 
-	<label for="content">Latitude</label>
-	<input type="text" name="lat" value="{{post.latitude}}" placeholder="Latitude" id="lat"/>
+	<button class="button mb20" type="button" id="find-pos">Find my location</button>
 
-	<label for="content">Longitude</label>
-	<input type="text" name="long" value="{{post.longitude}}" placeholder="Longitude" id="long"/>
+	<label for="content" class="grid-12">Latitude</label>
+	<input type="hidden" value="{{post.latitude}}" id="lat" name="lat" class="grid-12 mb20" />
+	<span id="fake-lat" class="grid-12 fake-input mb20">{{post.latitude}}</span>
+
+	<label for="content" class="grid-12">Longitude</label>
+	<input type="hidden" value="{{post.longitude}}" id="long" name="long" class="grid-12 mb20" />
+	<span id="fake-long" class="grid-12 fake-input mb20">{{post.longitude}}</span>
 
 	{{#if post._id}}
-		<input type="submit" value="Update post">
+		<input type="submit" value="Update post" class="button">
 	{{else}}
-		<input type="submit" value="Publish post">
+		<input type="submit" value="Publish post" class="button">
 	{{/if}}
 	
 </form>

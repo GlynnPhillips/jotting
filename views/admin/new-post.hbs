@@ -1,0 +1,22 @@
+
+<form action="/admin/add-post/{{post._id}}" method="post" accept-charset="utf-8">
+	
+	<label for="title">Post Title</label>
+	<input type="text" name="title" value="{{post.title}}" placeholder="title" id="title"/>
+
+	<label for="content">Post Content</label>
+	<textarea id="content" name="content">{{post.content}}</textarea>
+
+	<label for="content">Latitude</label>
+	<input type="text" name="lat" value="{{post.latitude}}" placeholder="Latitude" id="lat"/>
+
+	<label for="content">Longitude</label>
+	<input type="text" name="long" value="{{post.longitude}}" placeholder="Longitude" id="long"/>
+
+	{{#if post._id}}
+		<input type="submit" value="Update post">
+	{{else}}
+		<input type="submit" value="Publish post">
+	{{/if}}
+	
+</form>

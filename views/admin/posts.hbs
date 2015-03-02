@@ -1,20 +1,25 @@
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Published date</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
+{{#if success}}
+	<p class="success">{{success.msg}}</p>
+{{/if}}
 
-	{{#each posts}}
+<a href="/admin/new-post">Create new post</a>
+
+<table>
+	<thead>
 		<tr>
-		<td>{{title}}</td>
-		<td>{{publish_date}}</td>
-		<td><a href="/remove-event/{{_id}}">Delete</a></td>
+			<th>Title</th>
+			<th>Published date</th>
+			<th>Delete</th>
 		</tr>
-	{{/each}}
-  </tbody>
+	</thead>
+	<tbody>
+		{{#each posts}}
+			<tr>
+			<td><a href="/admin/new-post/{{_id}}">{{title}}</a></td>
+			<td>{{publish_date}}</td>
+			<td><a href="/admin/delete-post/{{_id}}">Delete</a></td>
+			</tr>
+		{{/each}}
+	</tbody>
 </table>
 

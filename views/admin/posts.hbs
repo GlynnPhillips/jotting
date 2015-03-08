@@ -4,20 +4,15 @@
 
 <a href="/admin/new-post" class="button mb20">Create new post</a>
 
-<table class="grid-12">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		{{#each posts}}
-			<tr>
-			<td><a href="/admin/new-post/{{_id}}">{{title}}</a></td>
-			<td><a href="/admin/delete-post/{{_id}}">Delete</a></td>
-			</tr>
-		{{/each}}
-	</tbody>
-</table>
-
+<div class="grid-12">
+	{{#each posts}}
+	<article>
+		<div class="mb20">
+			<h1><a href="/admin/new-post/{{_id}}">{{{title}}}</a>{{#unless published}} - DRAFT{{/unless}}</h1>
+			<p>This post has created in {{country}} and contains {{images.length}} images</p>
+			<a href="/admin/new-post/{{_id}}">Edit</a>
+			<a href="/admin/delete-post/{{_id}}">Delete</a>
+		</div>
+	</article>
+	{{/each}}
+</div>

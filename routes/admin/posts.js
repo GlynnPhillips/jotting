@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var connection_url = 'mongodb://localhost:27017';
+var which_country = require('which-country');
 
 mongoose.createConnection(connection_url);
 
@@ -18,29 +19,48 @@ exports.new = function (req, res){
 
 	if(id) {
 		posts.byId({_id: id}, function(post) {
+			console.log(post)
 			res.render('admin/new-post', {post: post});
 		});
 	} else {
 		res.render('admin/new-post');
 	}
-
 };
 
 exports.add = function (req, res){
-	var id = req.params.id;
-	var postTitle = req.body.title;
-	var postContent = req.body.content;
-	var postLat = req.body.lat;
-	var postLong = req.body.long;
-	var postDate = new Date();
+	var id = req.params.id,
+		pubStatus = false,
+		postTitle = req.body.title || '',
+		postContent = req.body.content || '',
+		postLat = req.body.lat || '',
+		postLong = req.body.long || '',
+		postDate = new Date(),
+		postCountry = which_country([postLong, postLat]) || '',
+		uploadedImages = req.files.image,
+		postImages = [];
+
+
+	if(uploadedImages) {
+		for(var i = 0; i < uploadedImages.length; i++) {
+			postImages.push({name:uploadedImages[i].name});
+		}
+	}
+
+	if(req.body.pub_status === 'on') {
+		pubStatus = true;
+	}
+
 
 	var postEntry = {
+		published: pubStatus,
 		publish_date: postDate,
 		title: postTitle,
 		content: postContent,
 		latitude: postLat,
-		longitude: postLong
-	};
+		longitude: postLong,
+		country: postCountry,
+		images: postImages
+	}
 
 	if(!id) {
 		posts.addPost(postEntry, function () {
@@ -51,7 +71,6 @@ exports.add = function (req, res){
 			res.redirect('/admin/posts');
 		});
 	}
-
 };
 
 exports.remove = function (req, res){
@@ -60,5 +79,4 @@ exports.remove = function (req, res){
 	posts.removePost({_id: id}, function () {
 		res.redirect('/admin/posts');
 	});
-
 };

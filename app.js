@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 
 
 initApp();
@@ -21,21 +22,32 @@ function configureApp (app) {
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
+	app.use(multer({
+        dest: './uploads/',
+        rename: function (fieldname, filename) {
+			return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
+		}
+	}));
 
 	app.use('/resources', express.static(__dirname+'/resources'));
+	app.use('/uploads', express.static(__dirname+'/uploads'));
 }
 
 function loadModels () {
 	require('./models/posts');
+	require('./models/users');
 }
 
 function loadRoutes (app) {
 	var posts = require('./routes/admin/posts');
+	var login = require('./routes/admin/login');
+
 	app.get('/admin/posts', posts.index);
 	app.get('/admin/new-post/:id?', posts.new);
 	app.post('/admin/add-post/:id?', posts.add);
 	app.get('/admin/delete-post/:id', posts.remove);
-
+	app.get('/admin/', login.index);
+	app.post('/admin/', login.authenticate);
 
 	/*
 	require('./routes/admin/login')(app);

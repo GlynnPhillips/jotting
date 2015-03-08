@@ -5,11 +5,14 @@ mongoose.connect(connection_url);
 var schema = mongoose.Schema;
 
 var postSchema = new schema({
+	published: Boolean,
+	publish_date: Date,
 	title: String,
 	content: String,
 	latitude: String,
 	longitude: String,
-	published_date: Number
+	country: String,
+	images: Array
 });
 
 postSchema.statics = {
@@ -26,12 +29,10 @@ postSchema.statics.addPost = function (postEntry, callback) {
 	newPost.save(function(err, newPost) {
 		if (err) return console.error(err);
 		callback();
-
 	});
 }
 
 postSchema.statics.updatePost = function (conditions, postEntry, callback) {
-
 	this.update(conditions, postEntry, function(err, newPost) {
 		if (err) return console.error(err);
 		callback();

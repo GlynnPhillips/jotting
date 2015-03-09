@@ -1,11 +1,6 @@
 var mongoose = require('mongoose');
-var connection_url = 'mongodb://localhost:27017';
 var which_country = require('which-country');
-
-mongoose.createConnection(connection_url);
-
 var posts = mongoose.model('posts');
-
 
 exports.index = function (req, res){
 	

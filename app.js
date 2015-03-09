@@ -3,14 +3,17 @@ var app = express();
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var mongoose = require('mongoose');
 
 
 initApp();
 
 function initApp() {
 	var app = express();
-	configureApp(app);
 	loadModels(app);
+	configureApp(app);
 	loadRoutes(app);
 	startApp(app);
 }
@@ -31,11 +34,40 @@ function configureApp (app) {
 
 	app.use('/resources', express.static(__dirname+'/resources'));
 	app.use('/uploads', express.static(__dirname+'/uploads'));
+
+	/*
+	app.use(passport.initialize());
+	app.use(passport.session());
+
+
+	passport.serializeUser(function(user, done) {
+		done(null, user);
+	});
+
+	passport.deserializeUser(function(user, done) {
+		done(null, user);
+	});
+
+	var users = mongoose.model('users');
+
+	passport.use(new LocalStrategy(
+		function(username, password, done) {
+			process.nextTick(function () {
+				users.getUser({username: username},
+				function(user) {
+					console.log(user);
+					if (user.password != password) { return done(null, false); }
+					return done(null, user);
+				});
+			});
+		}
+	));
+	*/
 }
 
 function loadModels () {
 	require('./models/posts');
-	require('./models/users');
+	//require('./models/users');
 }
 
 function loadRoutes (app) {
@@ -44,10 +76,18 @@ function loadRoutes (app) {
 
 	app.get('/admin/posts', posts.index);
 	app.get('/admin/new-post/:id?', posts.new);
-	app.post('/admin/add-post/:id?', posts.add);
 	app.get('/admin/delete-post/:id', posts.remove);
+	app.post('/admin/add-post/:id?', posts.add);
+
+	/*
 	app.get('/admin/', login.index);
-	app.post('/admin/', login.authenticate);
+	app.get('/admin/login_failure', login.index);
+	app.post('/admin/authenticate', passport.authenticate('local', {
+			successRedirect: '/admin/posts',
+			failureRedirect: '/admin/login_failure/'
+		})
+	);
+	*/
 
 	/*
 	require('./routes/admin/login')(app);

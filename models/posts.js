@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var connection_url = 'mongodb://localhost:27017';
 
-mongoose.createConnection(connection_url);
+mongoose.connect(connection_url);
 var schema = mongoose.Schema;
 
 var postSchema = new schema({

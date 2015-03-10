@@ -35,7 +35,6 @@ function configureApp (app) {
 	app.use('/resources', express.static(__dirname+'/resources'));
 	app.use('/uploads', express.static(__dirname+'/uploads'));
 
-	/*
 	app.use(passport.initialize());
 	app.use(passport.session());
 
@@ -54,20 +53,29 @@ function configureApp (app) {
 		function(username, password, done) {
 			process.nextTick(function () {
 				users.getUser({username: username},
-				function(user) {
-					console.log(user);
-					if (user.password != password) { return done(null, false); }
+				function(err, user) {
+					if (err) {
+						return done(err);
+      				}
+ 
+					if (!user) {
+						return done(null, false);
+					}
+
+					if (user.password != password) {
+						return done(null, false);
+					}
+
 					return done(null, user);
 				});
 			});
 		}
 	));
-	*/
 }
 
 function loadModels () {
 	require('./models/posts');
-	//require('./models/users');
+	require('./models/users');
 }
 
 function loadRoutes (app) {
@@ -79,7 +87,7 @@ function loadRoutes (app) {
 	app.get('/admin/delete-post/:id', posts.remove);
 	app.post('/admin/add-post/:id?', posts.add);
 
-	/*
+	
 	app.get('/admin/', login.index);
 	app.get('/admin/login_failure', login.index);
 	app.post('/admin/authenticate', passport.authenticate('local', {
@@ -87,7 +95,7 @@ function loadRoutes (app) {
 			failureRedirect: '/admin/login_failure/'
 		})
 	);
-	*/
+	
 
 	/*
 	require('./routes/admin/login')(app);

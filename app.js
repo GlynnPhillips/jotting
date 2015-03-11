@@ -90,12 +90,7 @@ function loadRoutes (app) {
 	
 	app.get('/admin/', login.index);
 	app.get('/admin/login_failure', login.index);
-	app.post('/admin/authenticate', passport.authenticate('local', {
-			successRedirect: '/admin/posts',
-			failureRedirect: '/admin/login_failure/'
-		})
-	);
-	
+	app.post('/admin/login', login.authenticate);
 
 	/*
 	require('./routes/admin/login')(app);

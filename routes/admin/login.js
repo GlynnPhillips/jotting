@@ -3,7 +3,6 @@ exports.index = function (req, res){
 };
 
 exports.authenticate = function (req, res){
-	var passport = require('passport');
-	var LocalStrategy = require('passport-local').Strategy;
-
+	console.log(app.opts.credentials)
 };
+

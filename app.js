@@ -1,9 +1,9 @@
 var express = require('express');
-var app = express();
 var hbs = require('hbs');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var mongoose = require('mongoose');
+var session = require('express-session');
 
 var opts = {
 	credentials: process.env.CREDENTIALS,
@@ -23,7 +23,6 @@ function initApp() {
 	loadRoutes(app);
 	startApp(app);
 
-	console.log(opts.credentials)
 }
 
 function configureApp (app) {
@@ -50,10 +49,12 @@ function loadModels () {
 }
 
 function loadRoutes (app) {
-	var posts = require('./routes/admin/posts');
-	var login = require('./routes/admin/login')(app);
 
-	app.express.get('/admin/posts', posts.index);
+	var posts = require('./routes/admin/posts');
+	var login = require('./routes/admin/login');
+	var requireAuth = require('./middleware/require-auth.js');
+
+	app.express.get('/admin/posts', requireAuth, posts.index);
 	app.express.get('/admin/new-post/:id?', posts.new);
 	app.express.get('/admin/delete-post/:id', posts.remove);
 	app.express.post('/admin/add-post/:id?', posts.add);
@@ -61,7 +62,7 @@ function loadRoutes (app) {
 	
 	app.express.get('/admin/', login.index);
 	app.express.get('/admin/login_failure', login.index);
-	app.express.post('/admin/login', login.authenticate);
+	app.express.post('/admin/login', login.authenticate(app));
 
 	/*
 	require('./routes/admin/login')(app);

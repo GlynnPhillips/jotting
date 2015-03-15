@@ -41,6 +41,14 @@ function configureApp (app) {
 
 	app.express.use('/resources', express.static(__dirname+'/resources'));
 	app.express.use('/uploads', express.static(__dirname+'/uploads'));
+
+	app.express.set('trust proxy', 1) // trust first proxy
+	app.express.use(session({
+		  secret: 'keyboard cat',
+		    resave: false,
+			  saveUninitialized: true,
+			    cookie: { secure: true }
+	}));
 }
 
 function loadModels () {
@@ -52,9 +60,9 @@ function loadRoutes (app) {
 
 	var posts = require('./routes/admin/posts');
 	var login = require('./routes/admin/login');
-	var requireAuth = require('./middleware/require-auth.js');
+	var auth = require('./middleware/auth.js');
 
-	app.express.get('/admin/posts', requireAuth, posts.index);
+	app.express.get('/admin/posts', auth, posts.index);
 	app.express.get('/admin/new-post/:id?', posts.new);
 	app.express.get('/admin/delete-post/:id', posts.remove);
 	app.express.post('/admin/add-post/:id?', posts.add);

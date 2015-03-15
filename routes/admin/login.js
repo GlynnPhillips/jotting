@@ -7,8 +7,8 @@ exports.authenticate = function (app) {
 		var attemptedLogin = req.body.username + ':' + req.body.password;
 		
 		if(app.opts.credentials.indexOf(attemptedLogin) > -1) {
-			req.session.authorized = true;
-			res.render('admin/posts');
+			req.session.access = true;
+			res.redirect('/admin/posts');
 		} else {
 			res.render('admin/login');
 		}

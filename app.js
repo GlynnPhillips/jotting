@@ -26,7 +26,17 @@ function initApp() {
 }
 
 function configureApp (app) {
-	app.express.set('view engine', 'hbs');
+	app.express.use(session({
+		cookie: {
+			maxAge: 604800000 // 1 week
+		},
+		name: 'sess',
+		resave: false,
+		saveUninitialized: false,
+		secret: 'hello'
+	}));						
+
+	app.express.set('view engine', 'hbs');	
 	app.express.engine('html', hbs.__express);
 	app.express.use( bodyParser.json() );
 	app.express.use(bodyParser.urlencoded({
@@ -41,14 +51,6 @@ function configureApp (app) {
 
 	app.express.use('/resources', express.static(__dirname+'/resources'));
 	app.express.use('/uploads', express.static(__dirname+'/uploads'));
-
-	app.express.set('trust proxy', 1) // trust first proxy
-	app.express.use(session({
-		  secret: 'keyboard cat',
-		    resave: false,
-			  saveUninitialized: true,
-			    cookie: { secure: true }
-	}));
 }
 
 function loadModels () {

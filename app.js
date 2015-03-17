@@ -84,14 +84,13 @@ function loadRoutes (app) {
 }
 
 function startApp (app) {
-	var ip = 'localhost';
-	var port = 3000
-	app.express.listen(port, ip, function (err) {
+	var port = process.env.PORT || 3000;
+	app.express.listen(port, function (err) {
 		if(err) {
 			console.error('App failed to start');
 			console.error(err.stack);
 			process.exit(1);
 		}
-		console.log( "App started on " + ip + ", port " + port );
+		console.log( "App started on port " + port );
 	});
 }

@@ -65,9 +65,9 @@ function loadRoutes (app) {
 	var auth = require('./middleware/auth.js');
 
 	app.express.get('/admin/posts', auth, posts.index);
-	app.express.get('/admin/new-post/:id?', posts.new);
-	app.express.get('/admin/delete-post/:id', posts.remove);
-	app.express.post('/admin/add-post/:id?', posts.add);
+	app.express.get('/admin/new-post/:id?',  auth, posts.new);
+	app.express.get('/admin/delete-post/:id',  auth, posts.remove);
+	app.express.post('/admin/add-post/:id?',  auth, posts.add);
 
 	
 	app.express.get('/admin/', login.index);

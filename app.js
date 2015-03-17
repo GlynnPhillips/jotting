@@ -8,7 +8,7 @@ var session = require('express-session');
 var opts = {
 	credentials: process.env.CREDENTIALS,
 	db: process.env.DATABASE,
-	secret: process.env.SESSION_SECRET
+	secret: process.env.SECRET
 };
 
 initApp(opts);
@@ -33,8 +33,8 @@ function configureApp (app) {
 		name: 'sess',
 		resave: false,
 		saveUninitialized: false,
-		secret: 'hello'
-	}));						
+		secret: app.opts.secret
+	}));
 
 	app.express.set('view engine', 'hbs');	
 	app.express.engine('html', hbs.__express);
@@ -53,7 +53,7 @@ function configureApp (app) {
 	app.express.use('/uploads', express.static(__dirname+'/uploads'));
 }
 
-function loadModels () {
+function loadModels (app) {
 	require('./models/posts');
 
 }

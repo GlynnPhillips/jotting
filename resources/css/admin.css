@@ -10,9 +10,17 @@ body {
 input,
 textarea,
 .fake-input {
-	border: 1px solid #333;
+	background: #eee;
+	border: 1px solid #ccc;
 	padding: 5px 0;
-	font-size: 13px;
+	font-size:13px;
+	min-height: 20px;
+	margin-top: 10px;
+}
+
+input[type=file] {
+	border: 0;
+	background: transparent;
 }
 
 table {
@@ -29,6 +37,10 @@ td {
 
 textarea {
 	height: 100px;
+}
+
+li {
+	margin-bottom: 10px;
 }
 
 .button {
@@ -48,4 +60,24 @@ textarea {
 
 .mb20 {
 	margin-bottom: 20px;
+}
+.mb10 {
+	margin-bottom:10px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+
+.js-hide {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+.pin-right {
+	float: right;
+}
+
+.pin-left {
+	float: left;
 }

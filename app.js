@@ -7,7 +7,7 @@ var session = require('express-session');
 
 var opts = {
 	credentials: process.env.CREDENTIALS,
-	db: process.env.DATABASE,
+	db: process.env.MONGO_URL,
 	secret: process.env.SECRET
 };
 
@@ -54,7 +54,7 @@ function configureApp (app) {
 }
 
 function loadModels (app) {
-	require('./models/posts');
+	require('./models/posts')(app);
 
 }
 

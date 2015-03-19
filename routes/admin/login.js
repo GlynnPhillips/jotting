@@ -1,5 +1,5 @@
 exports.index = function (req, res){
-	res.render('admin/login');
+	res.render('admin/login', {dest: req.query.dest});
 };
 
 exports.authenticate = function (app) {
@@ -8,7 +8,7 @@ exports.authenticate = function (app) {
 		
 		if(app.opts.credentials.indexOf(attemptedLogin) > -1) {
 			req.session.access = true;
-			res.redirect('/admin/posts');
+			res.redirect(req.query.dest || '/admin/posts');
 		} else {
 			res.render('admin/login');
 		}

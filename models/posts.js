@@ -19,7 +19,6 @@ module.exports = function(app) {
 	postSchema.statics = {
 		listPosts: function (callback) {
 			this.find({}, function(err, posts) {
-				console.log(posts);
 				callback(err, posts)
 			});
 		},

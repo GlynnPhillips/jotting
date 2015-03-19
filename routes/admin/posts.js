@@ -3,6 +3,7 @@ var which_country = require('which-country');
 var posts = mongoose.model('posts');
 var marked = require('marked');
 var exif = require('exif').ExifImage;
+var async = require('async');
 
 exports.index = function (req, res){
 	
@@ -37,26 +38,35 @@ exports.add = function (req, res){
 
 
 	if(uploadedImages) {
-		for(var i = 0; i < uploadedImages.length; i++) {
-			try {
-				new exif({ image : 'uploads/'+uploadedImages[i].name }, function (error, exifData) {
-					if (error) {
-						console.log('Error: '+error.message);
-					} else {
-						if(exifData.gps.GPSLatitude && exifData.gps.GPSLongitude) {
-							console.log('has lat ad long exif');	
-						}
-					}
-				});
-			} catch (error) {
-				    console.log('Error: ' + error.message);
+
+		
+	function getExifData(image, callback) {
+		new exif({ image : 'uploads/' + image.name}, function (error, exifData) {
+			if (error) {
+				console.log('Error: '+error.message);
+				console.log('HERE FFS');
+			} else {
+				var imageLat = exifData.gps.GPSLatitude || '',
+					imageLong = exifData.gps.GPSLongitude || '';
+				
+				image.latitude = imageLat;
+				image.longitude = imageLong;
+
+				callback(image, null);
 			}
-			
-			postImages.push({name:uploadedImages[i].name});
-		}
+		});
 	}
 	
-
+	async.map(uploadedImages, getExifData, function(images, error) {
+		if(error) {
+			console.log('Error ' + error);
+		} 
+		postImages = images;
+	});
+	
+	}
+	
+console.log('HERERERERE' + postImages);
 	if(req.body.pub_status === 'on') {
 		pubStatus = true;
 	}

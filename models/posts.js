@@ -9,17 +9,17 @@ module.exports = function(app) {
 		published: Boolean,
 		publish_date: Date,
 		title: String,
-		markdown: String,
-		html: String,
+		content: String,
 		latitude: String,
 		longitude: String,
 		country: String,
-		images: Array
+		images: []
 	});
 
 	postSchema.statics = {
 		listPosts: function (callback) {
 			this.find({}, function(err, posts) {
+				console.log(posts);
 				callback(err, posts)
 			});
 		},

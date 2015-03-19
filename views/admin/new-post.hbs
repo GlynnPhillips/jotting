@@ -31,9 +31,14 @@
 
 	</fieldset>
 
-	<label for="image" class="grid-12">Image</label>
+	<label for="image" class="grid-12">Images</label>
 	<input type="file"  id="image" name="image" class="grid-12 mb20" multiple="multiple"/>
 
+	<ul> 	
+		{{#post.images}}
+			<li>{{name}}</li>
+		{{/post.images}}
+	</ul>
 	<fieldset class="mb20 grid-12">
 		<label for="pub_status">Publish post</label>
 		<input type="checkbox"  id="pub_status" name="pub_status" {{#if post.published}}checked="checked"{{/if}}/>	

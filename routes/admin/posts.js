@@ -15,7 +15,6 @@ exports.new = function (req, res){
 
 	if(id) {
 		posts.byId({_id: id}, function(post) {
-			console.log(post)
 			res.render('admin/new-post', {post: post});
 		});
 	} else {
@@ -27,8 +26,7 @@ exports.add = function (req, res){
 	var id = req.params.id,
 		pubStatus = false,
 		postTitle = req.body.title || '',
-		postMarkdown = req.body.content || '',
-		postHtml = marked(postMarkdown);
+		postContent = req.body.content || '',
 		postLat = req.body.lat || '',
 		postLong = req.body.long || '',
 		postDate = new Date(),
@@ -42,6 +40,9 @@ exports.add = function (req, res){
 			postImages.push({name:uploadedImages[i].name});
 		}
 	}
+	
+	console.log('UPLOADED ' + uploadedImages);
+	console.log('POST ' + postImages);
 
 	if(req.body.pub_status === 'on') {
 		pubStatus = true;
@@ -52,8 +53,7 @@ exports.add = function (req, res){
 		published: pubStatus,
 		publish_date: postDate,
 		title: postTitle,
-		markdown: postMarkdown,
-		html: postHtml,
+		content: postContent,
 		latitude: postLat,
 		longitude: postLong,
 		country: postCountry,

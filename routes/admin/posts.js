@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var which_country = require('which-country');
 var posts = mongoose.model('posts');
 var marked = require('marked');
+var exif = require('exif').ExifImage;
 
 exports.index = function (req, res){
 	
@@ -37,12 +38,24 @@ exports.add = function (req, res){
 
 	if(uploadedImages) {
 		for(var i = 0; i < uploadedImages.length; i++) {
+			try {
+				new exif({ image : 'uploads/'+uploadedImages[i].name }, function (error, exifData) {
+					if (error) {
+						console.log('Error: '+error.message);
+					} else {
+						if(exifData.gps.GPSLatitude && exifData.gps.GPSLongitude) {
+							console.log('has lat ad long exif');	
+						}
+					}
+				});
+			} catch (error) {
+				    console.log('Error: ' + error.message);
+			}
+			
 			postImages.push({name:uploadedImages[i].name});
 		}
 	}
 	
-	console.log('UPLOADED ' + uploadedImages);
-	console.log('POST ' + postImages);
 
 	if(req.body.pub_status === 'on') {
 		pubStatus = true;

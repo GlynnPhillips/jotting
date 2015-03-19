@@ -9,6 +9,7 @@
 	<article>
 		<div class="mb20">
 			<h1><a href="/admin/new-post/{{_id}}">{{{title}}}</a>{{#unless published}} - DRAFT{{/unless}}</h1>
+			{{{html}}}
 			<p>This post has created in {{country}} and contains {{images.length}} images</p>
 			<a href="/admin/new-post/{{_id}}">Edit</a>
 			<a href="/admin/delete-post/{{_id}}">Delete</a>

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var which_country = require('which-country');
 var posts = mongoose.model('posts');
+var marked = require('marked');
 
 exports.index = function (req, res){
 	
@@ -26,7 +27,8 @@ exports.add = function (req, res){
 	var id = req.params.id,
 		pubStatus = false,
 		postTitle = req.body.title || '',
-		postContent = req.body.content || '',
+		postMarkdown = req.body.content || '',
+		postHtml = marked(postMarkdown);
 		postLat = req.body.lat || '',
 		postLong = req.body.long || '',
 		postDate = new Date(),
@@ -50,7 +52,8 @@ exports.add = function (req, res){
 		published: pubStatus,
 		publish_date: postDate,
 		title: postTitle,
-		content: postContent,
+		markdown: postMarkdown,
+		html: postHtml,
 		latitude: postLat,
 		longitude: postLong,
 		country: postCountry,

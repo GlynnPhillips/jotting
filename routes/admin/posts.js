@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var which_country = require('which-country');
 var posts = mongoose.model('posts');
 var marked = require('marked');
-var exif = require('exif').ExifImage;
+var im = require('imagemagick');
 var async = require('async');
 
 exports.index = function (req, res){
@@ -33,64 +33,64 @@ exports.add = function (req, res){
 		postLong = req.body.long || '',
 		postDate = new Date(),
 		postCountry = which_country([postLong, postLat]) || '',
-		uploadedImages = req.files.image,
-		postImages = [];
-
-
-	if(uploadedImages) {
-
-		
-	function getExifData(image, callback) {
-		new exif({ image : 'uploads/' + image.name}, function (error, exifData) {
-			if (error) {
-				console.log('Error: '+error.message);
-				console.log('HERE FFS');
-			} else {
-				var imageLat = exifData.gps.GPSLatitude || '',
-					imageLong = exifData.gps.GPSLongitude || '';
-				
-				image.latitude = imageLat;
-				image.longitude = imageLong;
-
-				callback(image, null);
-			}
-		});
-	}
+		uploadedImages = req.files.image;
 	
-	async.map(uploadedImages, getExifData, function(images, error) {
-		if(error) {
-			console.log('Error ' + error);
-		} 
-		postImages = images;
-	});
-	
-	}
-	
-console.log('HERERERERE' + postImages);
 	if(req.body.pub_status === 'on') {
 		pubStatus = true;
 	}
+	
+	function getExifData (images, callback) {
+		var postImages = [];
+		
+		async.each(images, function(image, callback) {
+			im.readMetadata('uploads/'+image.name, function(err, metadata) {
+				if(metadata.exif) {
+					image.latitude = metadata.exif.gpsLatitude || '';
+					image.longitude = metadata.exif.gpsLongitude || '';
+				} else {
+					image.latitude = '';
+					image.longitude = '';
+				}
+				postImages.push(image);
+				callback();
+			});
+		}, function(err) {
+			console.log(postImages);
+			createRecord(postImages);
+		});
 
-
-	var postEntry = {
-		published: pubStatus,
-		publish_date: postDate,
-		title: postTitle,
-		content: postContent,
-		latitude: postLat,
-		longitude: postLong,
-		country: postCountry,
-		images: postImages
+		//console.log(postImages);
+		//callback(postImages)
+	
 	}
+	
+	function createRecord (postImages) {
+		var postEntry = {
+			published: pubStatus,
+			publish_date: postDate,
+			title: postTitle,
+			content: postContent,
+			latitude: postLat,
+			longitude: postLong,
+			country: postCountry,
+			images: postImages
+		}
 
-	if(!id) {
-		posts.addPost(postEntry, function () {
-			res.redirect('/admin/posts');
-		});
+		if(!id) {
+			posts.addPost(postEntry, function () {
+				res.redirect('/admin/posts');
+			});
+		} else {
+			posts.updatePost({_id: id}, postEntry, function () {
+				res.redirect('/admin/posts');
+			});
+		}
+	}
+	
+	if(uploadedImages) {
+		getExifData(uploadedImages);
 	} else {
-		posts.updatePost({_id: id}, postEntry, function () {
-			res.redirect('/admin/posts');
-		});
+		createRecord([]);	
 	}
 };
 

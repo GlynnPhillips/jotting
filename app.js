@@ -60,20 +60,24 @@ function loadModels (app) {
 
 function loadRoutes (app) {
 
-	var posts = require('./routes/admin/posts');
+	var admin_posts = require('./routes/admin/posts');
 	var login = require('./routes/admin/login');
 	var auth = require('./middleware/auth.js');
 
-	app.express.get('/admin/posts', auth, posts.index);
-	app.express.get('/admin/new-post/:id?',  auth, posts.new);
-	app.express.get('/admin/delete-post/:id',  auth, posts.remove);
-	app.express.post('/admin/add-post/:id?',  auth, posts.add);
+	var posts = require('./routes/posts');
+
+
+	app.express.get('/admin/posts', auth, admin_posts.index);
+	app.express.get('/admin/new-post/:id?',  auth, admin_posts.new);
+	app.express.get('/admin/delete-post/:id',  auth, admin_posts.remove);
+	app.express.post('/admin/add-post/:id?',  auth, admin_posts.add);
 
 	
 	app.express.get('/admin/', login.index);
 	app.express.get('/admin/login_failure', login.index);
 	app.express.post('/admin/login', login.authenticate(app));
-
+	
+	app.express.get('/post/:id', posts.page);
 	/*
 	require('./routes/admin/login')(app);
 	require('./routes/admin/auth')(app);

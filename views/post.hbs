@@ -1,0 +1,7 @@
+<h1>{{post.title}}</h1>
+
+{{{post.html}}}
+
+{{#each post.images}}
+	<img style="max-width: 400px; width: 100%;" src="/uploads/{{name}}" />
+{{/each}}

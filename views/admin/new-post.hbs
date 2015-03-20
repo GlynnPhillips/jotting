@@ -44,6 +44,7 @@
 		<input type="checkbox"  id="pub_status" name="pub_status" {{#if post.published}}checked="checked"{{/if}}/>	
 	</fieldset>
 
+	<input type="hidden" value="{{post.user}}" name="user" id="user" />
 	<input type="submit" value="Save" class="button">
 	
 </form>

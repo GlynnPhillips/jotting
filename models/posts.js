@@ -7,6 +7,7 @@ module.exports = function(app) {
 
 	var postSchema = new schema({
 		published: Boolean,
+		user: String,
 		publish_date: Date,
 		title: String,
 		content: String,

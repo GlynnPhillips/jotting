@@ -27,6 +27,7 @@ exports.new = function (req, res){
 exports.add = function (req, res){
 	var id = req.params.id,
 		pubStatus = false,
+		postUser = req.body.user || req.session.user,
 		postTitle = req.body.title || '',
 		postContent = req.body.content || '',
 		postLat = req.body.lat || '',
@@ -67,6 +68,7 @@ exports.add = function (req, res){
 	function createRecord (postImages) {
 		var postEntry = {
 			published: pubStatus,
+			user: postUser,
 			publish_date: postDate,
 			title: postTitle,
 			content: postContent,

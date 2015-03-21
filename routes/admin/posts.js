@@ -34,7 +34,12 @@ exports.add = function (req, res){
 		postLong = req.body.long || '',
 		postDate = new Date(),
 		postCountry = which_country([postLong, postLat]) || '',
-		uploadedImages = req.files.image;
+		uploadedImages = [].concat(req.files.image);
+
+
+		if (uploadedImages.constructor !== Array) {
+			uploadedImages = JSON.parse("[" + uploadedImages + "]");
+		}
 	
 	if(req.body.pub_status === 'on') {
 		pubStatus = true;
@@ -56,13 +61,8 @@ exports.add = function (req, res){
 				callback();
 			});
 		}, function(err) {
-			console.log(postImages);
 			createRecord(postImages);
 		});
-
-		//console.log(postImages);
-		//callback(postImages)
-	
 	}
 	
 	function createRecord (postImages) {
@@ -88,7 +88,7 @@ exports.add = function (req, res){
 			});
 		}
 	}
-	
+
 	if(uploadedImages) {
 		getExifData(uploadedImages);
 	} else {

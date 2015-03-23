@@ -89,7 +89,7 @@ exports.add = function (req, res){
 		}
 	}
 
-	if(uploadedImages) {
+	if(uploadedImages.length > 0) {
 		getExifData(uploadedImages);
 	} else {
 		createRecord([]);	

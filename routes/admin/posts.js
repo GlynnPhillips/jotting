@@ -34,20 +34,18 @@ exports.add = function (req, res){
 		postLong = req.body.long || '',
 		postDate = new Date(),
 		postCountry = which_country([postLong, postLat]) || '',
+		uploadedImages = req.files.image;
+
+	if(typeof uploadedImages !== 'undefined') {
 		uploadedImages = [].concat(req.files.image);
+	}
 
-
-		if (uploadedImages.constructor !== Array) {
-			uploadedImages = JSON.parse("[" + uploadedImages + "]");
-		}
-	
 	if(req.body.pub_status === 'on') {
 		pubStatus = true;
 	}
 	
 	function getExifData (images, callback) {
 		var postImages = [];
-		
 		async.each(images, function(image, callback) {
 			im.readMetadata('uploads/'+image.name, function(err, metadata) {
 				if(metadata.exif) {
@@ -74,22 +72,25 @@ exports.add = function (req, res){
 			content: postContent,
 			latitude: postLat,
 			longitude: postLong,
-			country: postCountry,
-			images: postImages
+			country: postCountry
 		}
 
 		if(!id) {
+			postEntry.images = postImages;
 			posts.addPost(postEntry, function () {
 				res.redirect('/admin/posts');
 			});
 		} else {
+	
+			if(typeof uploadedImages !== 'undefined' && postImages.length > 0) {
+				postEntry.images = postImages;
+			}
 			posts.updatePost({_id: id}, postEntry, function () {
 				res.redirect('/admin/posts');
 			});
 		}
 	}
-
-	if(uploadedImages.length > 0) {
+	if(typeof uploadedImages !== 'undefined' && uploadedImages.length > 0) {
 		getExifData(uploadedImages);
 	} else {
 		createRecord([]);	

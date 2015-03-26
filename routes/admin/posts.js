@@ -47,8 +47,11 @@ exports.add = function (req, res){
 	function getExifData (images, callback) {
 		var postImages = [];
 		async.each(images, function(image, callback) {
-			im.readMetadata('uploads/'+image.name, function(err, metadata) {
-				if(metadata.exif) {
+			im.readMetadata('uploads/'+image.name, function(error, metadata) {
+			if(error) {
+				throw error;
+			}
+			if(metadata.exif) {
 					image.latitude = metadata.exif.gpsLatitude || '';
 					image.longitude = metadata.exif.gpsLongitude || '';
 				} else {
@@ -58,7 +61,10 @@ exports.add = function (req, res){
 				postImages.push(image);
 				callback();
 			});
-		}, function(err) {
+		}, function(error) {
+			if(error) {
+				throw error;
+			}
 			createRecord(postImages);
 		});
 	}

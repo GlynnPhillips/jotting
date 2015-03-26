@@ -1,4 +1,11 @@
-<h1>{{post.title}}</h1>
+<header>
+	<div class="hero">
+			
+		<h1 class="vertical-center text-center heading-text">{{post.title}}</h1>
+		<div class="hero-bg" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/uploads/{{post.images.0.name}}); background-size: cover;"></div>
+	</div>
+</header>
+
 
 {{{post.html}}}
 

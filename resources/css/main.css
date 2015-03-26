@@ -1,0 +1,41 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+.hero {
+	height: 40%;
+	color: #fff;
+	overflow: hidden;
+	margin-bottom: 80px;
+}
+
+.hero-bg {
+	top: 0;
+	height: 100%;
+	transform: scale(1.1);
+	-webkit-filter: blur(10px);
+	-moz-filter: blur(10px);
+    -o-filter: blur(10px);
+	-ms-filter: blur(10px);
+	filter: blur(10px);
+}
+
+.vertical-center {
+	position: relative;
+    top: 50%;
+	transform: translateY(-50%);
+}
+
+.text-center {
+	text-align: center;
+}
+
+.heading-text {
+	line-height: 0;
+	font-size: 2.4em;
+	z-index: 10;
+}

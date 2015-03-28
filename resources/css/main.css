@@ -1,9 +1,24 @@
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family:HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	font-size: 1.4em;
+	line-height: 1.75;
+	color: #333;
+	background: #f2f2f2;
+}
 html,
 body {
 	padding: 0;
 	margin: 0;
 	height: 100%;
 	overflow-x: hidden;
+}
+
+p {
+	margin-bottom: 24px;
+	font-size: 1.6rem;
 }
 
 .hero {
@@ -14,8 +29,8 @@ body {
 }
 
 .hero-bg {
-	top: 0;
-	height: 100%;
+	margin-top: -100px;
+	height: 150%;
 	transform: scale(1.1);
 	-webkit-filter: blur(10px);
 	-moz-filter: blur(10px);
@@ -35,7 +50,32 @@ body {
 }
 
 .heading-text {
-	line-height: 0;
-	font-size: 2.4em;
+	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+	letter-spacing: 3px;
+	line-height: 1;
+	font-size: 5rem;
 	z-index: 10;
+	margin-left: 40px;
+	text-transform: uppercase;
+}
+
+.content {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 40px;
+}
+
+.content::first-letter {
+	float: left;
+	font-weight: bold;
+	font-size: 7.8rem;
+	line-height: 1;
+	margin-bottom: -40px;
+	margin-right: 6px;
+	color: #3e85a2;
+}
+
+.content p:first-of-type {
+	font-size: 2.4rem;
+	line-height: 1.5;
 }

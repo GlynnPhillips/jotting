@@ -31,12 +31,6 @@ p {
 .hero-bg {
 	margin-top: -100px;
 	height: 150%;
-	transform: scale(1.1);
-	-webkit-filter: blur(10px);
-	-moz-filter: blur(10px);
-    -o-filter: blur(10px);
-	-ms-filter: blur(10px);
-	filter: blur(10px);
 }
 
 .vertical-center {

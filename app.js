@@ -1,5 +1,5 @@
 var express = require('express');
-var hbs = require('hbs');
+var dustjs = require('adaro');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var mongoose = require('mongoose');
@@ -10,7 +10,7 @@ var opts = {
 	credentials: process.env.CREDENTIALS,
 	db: process.env.MONGO_URL,
 	secret: process.env.SECRET,
-	store: process.env.CLOUD_DIR || '/uploads'
+	store: process.env.CLOUD_DIR || __dirname + '/uploads'
 };
 
 initApp(opts);
@@ -38,21 +38,22 @@ function configureApp (app) {
 		secret: app.opts.secret
 	}));
 
-	app.express.set('view engine', 'hbs');	
-	app.express.engine('html', hbs.__express);
+	app.express.set('view engine', 'dust');	
+	app.express.engine('dust', dustjs.dust({layout: 'layout'}));
+	app.express.set('views', __dirname + '/views/');
 	app.express.use( bodyParser.json() );
 	app.express.use(bodyParser.urlencoded({
 		extended: true
 	}));
 	app.express.use(multer({
-        dest: __dirname + app.opts.store,
+        dest: app.opts.store,
         rename: function (fieldname, filename) {
 			return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
 		}
 	}));
 
 	app.express.use('/resources', express.static(__dirname+'/resources'));
-	app.express.use(app.opts.store, express.static(__dirname+app.opts.store));
+	app.express.use(app.opts.store, express.static(app.opts.store));
 }
 function loadModels (app) {
 	require('./models/posts')(app);

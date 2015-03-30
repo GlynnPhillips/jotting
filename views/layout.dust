@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{{title}}</title>
+		<title>{title}</title>
 		<link rel="stylesheet" type="text/css" href="/resources/css/admin.css" />
 		<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
 	</head>
 	 
 	<body>
-		{{{body}}}
+		{>"{_main}"/}
 		<script type="text/javascript" src="/resources/js/main.js"></script>
 	</body>
 </html>

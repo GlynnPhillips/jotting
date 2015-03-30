@@ -10,7 +10,7 @@ var opts = {
 	credentials: process.env.CREDENTIALS,
 	db: process.env.MONGO_URL,
 	secret: process.env.SECRET,
-	store: process.env.CLOUD_DIR
+	store: process.env.CLOUD_DIR || '/uploads'
 };
 
 initApp(opts);
@@ -45,7 +45,7 @@ function configureApp (app) {
 		extended: true
 	}));
 	app.express.use(multer({
-        dest: app.opts.store,
+        dest: __dirname + app.opts.store,
         rename: function (fieldname, filename) {
 			return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
 		}
@@ -53,13 +53,7 @@ function configureApp (app) {
 
 	app.express.use('/resources', express.static(__dirname+'/resources'));
 	app.express.use(app.opts.store, express.static(__dirname+app.opts.store));
-
-fs.writeFile(app.opts.store+'/example.txt', 'Hello Node', function (err) {
-	  if (err) throw err;
-	    console.log('It\'s saved!');
-});
 }
-
 function loadModels (app) {
 	require('./models/posts')(app);
 

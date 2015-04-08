@@ -14,13 +14,14 @@ module.exports = function(app) {
 		latitude: String,
 		longitude: String,
 		country: String,
+		strava_id: String,
 		images: []
 	});
 
 	postSchema.statics = {
-		listPosts: function (callback) {
-			this.find({}, function(err, posts) {
-				callback(err, posts)
+		list: function (query, callback) {
+			this.find(query, function(err, posts) {
+				callback(posts)
 			});
 		},
 		addPost: function (postEntry, callback) {

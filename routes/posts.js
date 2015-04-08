@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 var marked = require('marked');
+var strava = require('strava-v3');
 
 exports.page = function (app) {
 	return function (req, res) {
@@ -11,7 +12,17 @@ exports.page = function (app) {
 				var html = marked(post.content);
 				post.html = html;
 				post.store_dir = app.opts.store;
-				res.render('post', {post: post});
+				
+				if(post.strava_id) {
+					strava.activities.get({id:post.strava_id},function(err,payload) {
+						post.strava_activity = payload;
+						res.render('post', {post: post});
+					});
+				} else {
+
+					res.render('post', {post: post});
+				}
+
 			} else {
 				res.status(404).send('Not found');
 			}

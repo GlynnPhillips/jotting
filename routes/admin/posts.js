@@ -7,7 +7,7 @@ var async = require('async');
 
 exports.index = function (req, res){
 	
-	posts.listPosts(function(err, allPosts) {
+	posts.list({}, function(allPosts) {
 		res.render('admin/posts', {posts: allPosts});
 	});
 };
@@ -35,6 +35,7 @@ exports.add = function (app){
 			postLong = req.body.long || '',
 			postDate = new Date(),
 			postCountry = which_country([postLong, postLat]) || '',
+			stravaId = req.body.strava || '',
 			uploadedImages = req.files.image;
 
 		if(typeof uploadedImages !== 'undefined') {
@@ -79,6 +80,7 @@ exports.add = function (app){
 				content: postContent,
 				latitude: postLat,
 				longitude: postLong,
+				strava_id: stravaId,
 				country: postCountry
 			}
 

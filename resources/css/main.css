@@ -21,6 +21,14 @@ p {
 	font-size: 1.6rem;
 }
 
+h2 {
+	display: inline-block;
+	font-size: 2.6rem;
+	text-transform: uppercase;
+	color: #3e85a2;
+	border-bottom: 1px solid;
+}
+
 .hero {
 	height: 40%;
 	color: #fff;
@@ -54,12 +62,12 @@ p {
 }
 
 .content {
-	width: 100%;
 	max-width: 960px;
 	margin: 0 40px;
 }
 
-.content::first-letter {
+.content p:first-of-type::first-letter,
+.content p:first-of-type:first-letter {
 	float: left;
 	font-weight: bold;
 	font-size: 7.8rem;
@@ -73,3 +81,4 @@ p {
 	font-size: 2.4rem;
 	line-height: 1.5;
 }
+

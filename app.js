@@ -5,6 +5,7 @@ var multer = require('multer');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var fs = require('fs');
+var dateformat = require('dateformat');
 
 var opts = {
 	credentials: process.env.CREDENTIALS,
@@ -41,6 +42,7 @@ function configureApp (app) {
 	app.express.set('view engine', 'dust');	
 	app.express.engine('dust', dustjs.dust({layout: 'layout'}));
 	app.express.set('views', __dirname + '/views/');
+	
 	app.express.use( bodyParser.json() );
 	app.express.use(bodyParser.urlencoded({
 		extended: true
@@ -52,9 +54,12 @@ function configureApp (app) {
 		}
 	}));
 
+	console.log(dustjs.dust);
+
 	app.express.use('/resources', express.static(__dirname+'/resources'));
 	app.express.use(app.opts.store, express.static(app.opts.store));
 }
+
 function loadModels (app) {
 	require('./models/posts')(app);
 
@@ -67,6 +72,7 @@ function loadRoutes (app) {
 	var auth = require('./middleware/auth.js');
 
 	var posts = require('./routes/posts');
+	var pages = require('./routes/pages');
 
 
 	app.express.get('/admin/posts', auth, admin_posts.index);
@@ -80,13 +86,7 @@ function loadRoutes (app) {
 	app.express.post('/admin/login', login.authenticate(app));
 	
 	app.express.get('/post/:id', posts.page(app));
-	/*
-	require('./routes/admin/login')(app);
-	require('./routes/admin/auth')(app);
-	require('./routes/admin/create-post')(app);
-	require('./routes/admin/add-post')(app);
-	
-	*/
+	app.express.get('/', pages.index(app));
 }
 
 function startApp (app) {

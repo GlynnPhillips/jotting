@@ -39,6 +39,10 @@
 			<li>{name}</li>
 		{/post.images}
 	</ul>
+	
+	<label for="strava" class="grid-12">Strava ID</label>
+	<input type="text" name="strava" value="{post.strava_id}" id="strava" class="grid-12 mb20"/>
+
 	<fieldset class="mb20 grid-12">
 		<label for="pub_status">Publish post</label>
 		<input type="checkbox"  id="pub_status" name="pub_status" {?post.published}checked="checked"{/post.published}/>	

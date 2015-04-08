@@ -1,0 +1,5 @@
+<div class="content">
+	{#posts}
+		<h1 class="heading-text"><a href="/post/{_id}">{title}</a></h1>
+	{/posts}
+</div>

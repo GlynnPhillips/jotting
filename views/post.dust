@@ -1,6 +1,6 @@
 <header>
 	<div class="hero">
-		<h2>{post.publish_date}</h2>	
+	<h2>{@dateFormat date="2012-09-06T09:00:00" format="yyyy-mm-dd"/}</h2>
 		<h1 class="vertical-center heading-text">{post.title}</h1>
 		<div class="hero-bg" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.store_dir}/{post.images[0].name}); background-size: cover; background-position: 50%;"></div>
 	</div>
@@ -8,4 +8,26 @@
 
 <div class="content">
 	{post.html|s}
+	{?post.strava_activity}
+		<div>
+		<h2>Stats</h2>
+			<dl>
+				<dt>Elevation Gain</dt>
+				<dd>{post.strava_activity.total_elevation_gain}</dd>
+				<dt>Distance</dt>
+				<dd>{post.strava_activity.distance}</dd>
+			</dl>
+			{?post.strava_id}
+				<a href="https://www.strava.com/activities/{post.strava_id}">Strava activity</a>
+			{/post.strava_id}
+		</div>
+	{/post.strava_activity}
 </div>
+
+{!}
+<div class="post-media">
+	{#post.images}
+		<img src="{post.store_dir}/{name}" />
+	{/post.images}
+</div>
+{!}

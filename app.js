@@ -40,7 +40,12 @@ function configureApp (app) {
 	}));
 
 	app.express.set('view engine', 'dust');	
-	app.express.engine('dust', dustjs.dust({layout: 'layout'}));
+	app.express.engine('dust', dustjs.dust({
+		layout: 'layout', 
+		helpers: [
+			'./helpers/dateformat'
+		]
+	}));
 	app.express.set('views', __dirname + '/views/');
 	
 	app.express.use( bodyParser.json() );

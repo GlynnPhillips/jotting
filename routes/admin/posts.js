@@ -33,17 +33,21 @@ exports.add = function (app){
 			postContent = req.body.content || '',
 			postLat = req.body.lat || '',
 			postLong = req.body.long || '',
-			postDate = new Date(),
+			postDate = req.body.date || '',
 			postCountry = which_country([postLong, postLat]) || '',
 			stravaId = req.body.strava || '',
 			uploadedImages = req.files.image;
-
+		
 		if(typeof uploadedImages !== 'undefined') {
 			uploadedImages = [].concat(req.files.image);
 		}
 
 		if(req.body.pub_status === 'on') {
 			pubStatus = true;
+
+			if(postDate === '') {
+				postDate = new Date();
+			}
 		}
 		
 		function getExifData (images, callback) {

@@ -25,20 +25,39 @@ h2 {
 	display: inline-block;
 	font-size: 2.6rem;
 	text-transform: uppercase;
-	color: #3e85a2;
 	border-bottom: 1px solid;
 }
 
+.highlight-text {
+	color: #3e85a2;
+}
+
+.overlay-text {
+	color: #fff;
+}
+
 .hero {
+	position: relative;
 	height: 40%;
 	color: #fff;
 	overflow: hidden;
 	margin-bottom: 80px;
 }
 
+.mb10 {
+	margin-bottom: 10px;
+}
+
+.zindex10 {
+	z-index: 10;
+}
+
 .hero-bg {
-	margin-top: -100px;
-	height: 150%;
+	position: absolute;
+	top: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .vertical-center {
@@ -57,8 +76,11 @@ h2 {
 	line-height: 1;
 	font-size: 5rem;
 	z-index: 10;
-	margin-left: 40px;
 	text-transform: uppercase;
+}
+
+.standard-indent {
+	margin-left: 40px;
 }
 
 .content {

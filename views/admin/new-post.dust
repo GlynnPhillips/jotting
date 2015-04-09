@@ -49,6 +49,7 @@
 	</fieldset>
 
 	<input type="hidden" value="{post.user}" name="user" id="user" />
+	<input type="hidden" value="{post.published_date}" name="date" id="date" />
 	<input type="submit" value="Save" class="button">
 	
 </form>

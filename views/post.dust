@@ -4,7 +4,7 @@
 			<h2 class="mb10">{@dateFormat date="{post.publish_date}" format="d mmmm yyyy"/}</h2>
 			<h1 class="heading-text">{post.title}</h1>
 		</div>
-		<div class="hero-bg" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.store_dir}/{post.images[0].name}); background-size: cover; background-position: 50%;"></div>
+		<div class="hero-bg" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.stores.fullsize}/{post.images[0].name}); background-size: cover; background-position: 50%;"></div>
 	</div>
 </header>
 
@@ -26,10 +26,8 @@
 	{/post.strava_activity}
 </div>
 
-{!}
 <div class="post-media">
 	{#post.images}
-		<img src="{post.store_dir}/{name}" />
+		<img src="{post.stores.thumbs}/{name}" />
 	{/post.images}
 </div>
-{!}

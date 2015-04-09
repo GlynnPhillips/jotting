@@ -5,14 +5,16 @@ var multer = require('multer');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var fs = require('fs');
-var dateformat = require('dateformat');
+var easyimg = require('easyimage');
 
 var opts = {
 	credentials: process.env.CREDENTIALS,
 	db: process.env.MONGO_URL,
 	secret: process.env.SECRET,
-	store: process.env.CLOUD_DIR || __dirname + '/uploads'
+	store: process.env.CLOUD_DIR || __dirname + '/uploads',
 };
+
+opts.thumb_store = opts.store + '/thumbs';
 
 initApp(opts);
 
@@ -56,6 +58,18 @@ function configureApp (app) {
         dest: app.opts.store,
         rename: function (fieldname, filename) {
 			return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
+		},
+		onFileUploadComplete: function (file, req, res) {
+			easyimg.rescrop({
+				src:file.path, dst:app.opts.thumb_store + '/' + file.name,
+				width:400, height:400,
+				cropwidth:300, cropheight:300,
+				x:0, y:0
+			}).then(function(image) {
+				console.log(image);
+			}, function (err) {
+				console.log(err);
+			});
 		}
 	}));
 

@@ -45,7 +45,8 @@ function configureApp (app) {
 	app.express.engine('dust', dustjs.dust({
 		layout: 'layout', 
 		helpers: [
-			'./helpers/dateformat'
+			'./helpers/dateformat',
+			'./helpers/ismultiple'
 		]
 	}));
 	app.express.set('views', __dirname + '/views/');

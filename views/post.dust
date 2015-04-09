@@ -10,6 +10,8 @@
 
 <div class="content">
 	{post.html|s}
+	
+	{!}
 	{?post.strava_activity}
 		<div>
 		<h2>Stats</h2>
@@ -24,10 +26,11 @@
 			{/post.strava_id}
 		</div>
 	{/post.strava_activity}
+	{!}
+	<div class="post-media">
+		{#post.images}
+			<img src="{post.stores.thumbs}/{name}" class="col col-3 {@isMultiple of=4}last{/isMultiple}" />
+		{/post.images}
+	</div>
 </div>
 
-<div class="post-media">
-	{#post.images}
-		<img src="{post.stores.thumbs}/{name}" />
-	{/post.images}
-</div>

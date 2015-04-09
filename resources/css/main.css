@@ -84,7 +84,7 @@ h2 {
 }
 
 .content {
-	max-width: 960px;
+	max-width: 920px;
 	margin: 0 40px;
 }
 
@@ -104,3 +104,14 @@ h2 {
 	line-height: 1.5;
 }
 
+.col {
+	margin-right: 2.34375%
+}
+
+.col-3 {
+		width: 23.2421875%;
+}
+
+.last {
+	margin-right: 0 !important;
+}

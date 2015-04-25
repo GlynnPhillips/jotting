@@ -1,5 +1,9 @@
 # jotting
 
+## Status
+
+This project is currently in early development and much of what has been built is throw away. Its currently been used for testing with the users.
+
 A simple, lightweight and fast platform for taking notes whist on the move.
 
 Currently in inital stages of planning and prototyping with the plan to have an intial launch in time for [the transcontinental race](http://www.transcontinentalrace.com/).

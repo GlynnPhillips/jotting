@@ -11,7 +11,7 @@
 	"bugs": "https://github.com/glynnphillips/jotting/issues",
 	"engines": {
 		"node": ">=0.10"
-	}
+	},
   "dependencies": {
     "adaro": "^2.0.0-1",
     "async": "^0.9.0",

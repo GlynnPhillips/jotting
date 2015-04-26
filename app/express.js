@@ -5,6 +5,7 @@ var dustjs = require('adaro');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var multer = require('multer');
+var easyimg = require('easyimage');
 
 exports.configureExpress = configureExpress;
 

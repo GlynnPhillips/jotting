@@ -1,7 +1,4 @@
-var mongoose = require('mongoose');
-var fs = require('fs');
-var easyimg = require('easyimage');
-
+'use strict'
 
 var startApplication = require('./app/start.js');
 
@@ -15,9 +12,7 @@ var opts = {
 
 opts.thumb_store = opts.store + '/thumbs';
 
-
 startApplication(opts, function (err, app) {
-
 
 initApp(opts);
 
@@ -25,7 +20,6 @@ function initApp() {
 	loadModels(app);
 	loadRoutes(app);
 }
-
 
 function loadModels (app) {
 	require('./models/posts')(app);

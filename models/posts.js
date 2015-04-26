@@ -1,10 +1,7 @@
 module.exports = function(app) {
 	var mongoose = require('mongoose');
-	var connection_url = app.opts.db;
-
-	mongoose.connect(connection_url);
+	
 	var schema = mongoose.Schema;
-
 	var postSchema = new schema({
 		published: Boolean,
 		user: String,

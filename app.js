@@ -10,6 +10,7 @@ var opts = {
 	db: process.env.MONGO_URL,
 	secret: process.env.SECRET,
 	store: process.env.CLOUD_DIR || __dirname + '/uploads',
+	port: process.env.PORT || 3000
 };
 
 opts.thumb_store = opts.store + '/thumbs';
@@ -23,8 +24,6 @@ initApp(opts);
 function initApp() {
 	loadModels(app);
 	loadRoutes(app);
-	startApp(app);
-
 }
 
 
@@ -56,20 +55,6 @@ function loadRoutes (app) {
 	app.express.get('/post/:id', posts.page(app));
 	app.express.get('/', pages.index(app));
 }
-
-function startApp (app) {
-	var port = process.env.PORT || 3000;
-	app.express.listen(port, function (err) {
-		if(err) {
-			console.error('App failed to start');
-			console.error(err.stack);
-			process.exit(1);
-		}
-		console.log( "App started on port " + port );
-	});
-}
-
-
 
 });
 

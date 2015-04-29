@@ -1,5 +1,7 @@
 'use strict'
 
+var dustjs = require('adaro');
+var express = require('express');
 var startApplication = require('./app/start.js');
 
 var opts = {
@@ -19,6 +21,19 @@ initApp(opts);
 function initApp() {
 	loadModels(app);
 	loadRoutes(app);
+	app.express.set('view engine', 'dust');	
+	app.express.engine('dust', dustjs.dust({
+		layout: 'layout', 
+		helpers: [
+			'./helpers/dateformat',
+			'./helpers/ismultiple'
+		]
+	}));
+	app.express.set('views', __dirname + '/views/');
+
+
+	app.express.use('/resources', express.static(__dirname+'/resources'));
+	app.express.use(app.opts.store, express.static(app.opts.store));
 }
 
 function loadModels (app) {

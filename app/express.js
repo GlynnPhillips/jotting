@@ -1,7 +1,6 @@
 'use strict';
 
 var express = require('express');
-var dustjs = require('adaro');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var multer = require('multer');
@@ -21,15 +20,6 @@ function configureExpress (app) {
 		saveUninitialized: false,
 		secret: app.opts.secret
 	}));
-	app.express.set('view engine', 'dust');	
-	app.express.engine('dust', dustjs.dust({
-		layout: 'layout', 
-		helpers: [
-			'./helpers/dateformat',
-			'./helpers/ismultiple'
-		]
-	}));
-	app.express.set('views', __dirname + '/views/');
 	
 	app.express.use( bodyParser.json() );
 	app.express.use(bodyParser.urlencoded({
@@ -60,8 +50,6 @@ function configureAssets(app) {
 		}
 	}));
 
-	app.express.use('/resources', express.static(__dirname+'/resources'));
-	app.express.use(app.opts.store, express.static(app.opts.store));
 
 	return app;
 }

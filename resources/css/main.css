@@ -83,13 +83,13 @@ h2 {
 	margin-left: 40px;
 }
 
-.content {
-	max-width: 920px;
+.constrain-content {
+	max-width: 1100px;
 	margin: 0 40px;
 }
 
-.content p:first-of-type::first-letter,
-.content p:first-of-type:first-letter {
+.constrain-content p:first-of-type::first-letter,
+.constrain-content p:first-of-type:first-letter {
 	float: left;
 	font-weight: bold;
 	font-size: 7.8rem;
@@ -99,12 +99,13 @@ h2 {
 	color: #3e85a2;
 }
 
-.content p:first-of-type {
+.constrain-content p:first-of-type {
 	font-size: 2.4rem;
 	line-height: 1.5;
 }
 
 .col {
+	float: left;
 	margin-right: 2.34375%
 }
 
@@ -112,6 +113,22 @@ h2 {
 		width: 23.2421875%;
 }
 
+
+.col-6 {
+	width: 48.828125%;
+}
+
 .last {
 	margin-right: 0 !important;
+}
+
+.main-col {
+	float: left;
+	width: 60%;
+	margin-right: 10%;
+}
+
+.side-col {
+	float: left;
+	width: 30%;
 }

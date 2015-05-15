@@ -1,5 +1,18 @@
-<div class="content">
-	{#posts}
-		<h1 class="heading-text"><a href="/post/{_id}">{title}</a></h1>
-	{/posts}
-</div>
+{>layout /}
+
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+{/styles}
+
+{<content}
+	<header>
+		<div class="fs-hero text-center">
+			<img src="/resources/img/cobbles-to-kebabs.svg" class="vertical-center hero-logo"/>
+		</div>
+	</header>
+	<div class="content">
+		{#posts}
+			<h1 class="heading-text"><a href="/post/{_id}">{title}</a></h1>
+		{/posts}
+	</div>
+{/content}

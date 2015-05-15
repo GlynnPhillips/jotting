@@ -61,5 +61,5 @@
 	</form>
 {/content}
 {<scripts}
-	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<script type="text/javascript" src="/resources/js/admin/main.js"></script>
 {/scripts}

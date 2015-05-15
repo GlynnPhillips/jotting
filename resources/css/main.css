@@ -36,6 +36,19 @@ h2 {
 	color: #fff;
 }
 
+.fs-hero {
+	background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url(../img/hero.jpg) no-repeat;
+	background-size: cover;
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.hero-logo {
+	max-width: 80%;
+	width: auto;
+}
+
 .hero {
 	position: relative;
 	height: 40%;

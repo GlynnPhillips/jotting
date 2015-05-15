@@ -1,55 +1,65 @@
+{>layout /}
 
-<form action="/admin/add-post/{post._id}" method="post" enctype="multipart/form-data">
-	
-	<label for="title" class="grid-12">Post Title</label>
-	<input type="text" name="title" value="{post.title}" id="title" class="grid-12 mb20" required="required"/>
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/admin.css" />
+{/styles}
 
-	<label for="content" class="pin-left">Post Content</label>
-	<div id="md" class="mb20 mt10">
-		<span class="mb10 grid-12" id="md-btn">formatting help</span>
-		<ul aria-expanded="false">
-			<li># Heading one</li>
-			<li>## Heading two</li>
-			<li>## Heading three</li>
-			<li>**Bold**</li>
-			<li>*Italics*</li>
-			<li>[Click here for google](https://www.google.com)</li>
+{<content}
+	<form action="/admin/add-post/{post._id}" method="post" enctype="multipart/form-data">
+		
+		<label for="title" class="grid-12">Post Title</label>
+		<input type="text" name="title" value="{post.title}" id="title" class="grid-12 mb20" required="required"/>
+
+		<label for="content" class="pin-left">Post Content</label>
+		<div id="md" class="mb20 mt10">
+			<span class="mb10 grid-12" id="md-btn">formatting help</span>
+			<ul aria-expanded="false">
+				<li># Heading one</li>
+				<li>## Heading two</li>
+				<li>## Heading three</li>
+				<li>**Bold**</li>
+				<li>*Italics*</li>
+				<li>[Click here for google](https://www.google.com)</li>
+			</ul>
+		</div>
+		<textarea id="content" name="content" class="grid-12 mb20">{post.content}</textarea>
+
+		<fieldset class="mb20">
+			<button class="button mb20" type="button" id="find-pos">Find my location</button>
+
+			<label for="lat" class="grid-12">Latitude</label>
+			<input type="hidden" value="{post.latitude}" id="lat" name="lat" />
+			<span id="fake-lat" class="grid-12 fake-input mb20">{post.latitude}</span>
+
+			<label for="long" class="grid-12">Longitude</label>
+			<input type="hidden" value="{post.longitude}" id="long" name="long" />
+			<span id="fake-long" class="grid-12 fake-input mb20">{post.longitude}</span>
+
+		</fieldset>
+
+		<label for="image" class="grid-12">Images</label>
+		<input type="file"  id="image" name="image" class="grid-12 mb20" multiple="multiple"/>
+
+		<ul> 	
+			{#post.images}
+				<li>{name}</li>
+			{/post.images}
 		</ul>
-	</div>
-	<textarea id="content" name="content" class="grid-12 mb20">{post.content}</textarea>
+		
+		<label for="strava" class="grid-12">Strava ID</label>
+		<input type="text" name="strava" value="{post.strava_id}" id="strava" class="grid-12 mb20"/>
 
-	<fieldset class="mb20">
-		<button class="button mb20" type="button" id="find-pos">Find my location</button>
+		<fieldset class="mb20 grid-12">
+			<label for="pub_status">Publish post</label>
+			<input type="checkbox"  id="pub_status" name="pub_status" {?post.published}checked="checked"{/post.published}/>	
+		</fieldset>
 
-		<label for="lat" class="grid-12">Latitude</label>
-		<input type="hidden" value="{post.latitude}" id="lat" name="lat" />
-		<span id="fake-lat" class="grid-12 fake-input mb20">{post.latitude}</span>
-
-		<label for="long" class="grid-12">Longitude</label>
-		<input type="hidden" value="{post.longitude}" id="long" name="long" />
-		<span id="fake-long" class="grid-12 fake-input mb20">{post.longitude}</span>
-
-	</fieldset>
-
-	<label for="image" class="grid-12">Images</label>
-	<input type="file"  id="image" name="image" class="grid-12 mb20" multiple="multiple"/>
-
-	<ul> 	
-		{#post.images}
-			<li>{name}</li>
-		{/post.images}
-	</ul>
-	
-	<label for="strava" class="grid-12">Strava ID</label>
-	<input type="text" name="strava" value="{post.strava_id}" id="strava" class="grid-12 mb20"/>
-
-	<fieldset class="mb20 grid-12">
-		<label for="pub_status">Publish post</label>
-		<input type="checkbox"  id="pub_status" name="pub_status" {?post.published}checked="checked"{/post.published}/>	
-	</fieldset>
-
-	<input type="hidden" value="{post.user}" name="user" id="user" />
-	<input type="hidden" value="{post.published_date}" name="date" id="date" />
-	<input type="submit" value="Save" class="button">
-	
-</form>
+		<input type="hidden" value="{post.user}" name="user" id="user" />
+		<input type="hidden" value="{post.published_date}" name="date" id="date" />
+		<input type="submit" value="Save" class="button">
+		
+	</form>
+{/content}
+{<scripts}
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+{/scripts}

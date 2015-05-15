@@ -1,52 +1,70 @@
-<header>
-	<div class="hero">
-		<div class="vertical-center standard-indent zindex10">
-			<h2 class="mb10">{@dateFormat date="{post.publish_date}" format="d mmmm yyyy"/}</h2>
-			<h1 class="heading-text">{post.title}</h1>
+{>layout /}
+
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/resources/css/baguettebox.css" />
+{/styles}
+
+{<content}
+	<header>
+		<div class="hero">
+			<div class="vertical-center standard-indent zindex10">
+				<h2 class="mb10">{@dateFormat date="{post.publish_date}" format="d mmmm yyyy"/}</h2>
+				<h1 class="heading-text">{post.title}</h1>
+			</div>
+			<div class="hero-bg" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.stores.fullsize}/{post.images[0].name}); background-size: cover; background-position: 50%;"></div>
 		</div>
-		<div class="hero-bg" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.stores.fullsize}/{post.images[0].name}); background-size: cover; background-position: 50%;"></div>
-	</div>
-</header>
+	</header>
 
-<div class="constrain-content">
-	<div class="main-col">
-		{post.html|s}
-	</div>
-	<div class="side-col">
-		{#post.images}
-			<img src="{post.stores.thumbs}/{name}" class="col col-6 {@isMultiple of=2}last{/isMultiple} mb10" />
-		{/post.images}
+	<div class="constrain-content">
+		<div class="main-col">
+			{post.html|s}
+		</div>
+		<div class="side-col">
+			<div id="article-gallery">
+				{#post.images}
+					<a href="{post.stores.fullsize}/{name}">
+						<img src="{post.stores.thumbs}/{name}" class="col col-6 {@isMultiple of=2}last{/isMultiple} mb10" />
+					</a>
+				{/post.images}
+			</div>
 
 
+				<h2>Stats</h2>
+				<dl>
+					<dt>Elevation Gain</dt>
+					<dd>{post.strava_activity.total_elevation_gain}</dd>
+					<dt>Distance</dt>
+					<dd>{post.strava_activity.distance}</dd>
+				</dl>
+				{?post.strava_id}
+					<a href="https://www.strava.com/activities/{post.strava_id}">Strava activity</a>
+				{/post.strava_id}
+		</div>
+		
+		{!}
+		{?post.strava_activity}
+			<div>
 			<h2>Stats</h2>
-			<dl>
-				<dt>Elevation Gain</dt>
-				<dd>{post.strava_activity.total_elevation_gain}</dd>
-				<dt>Distance</dt>
-				<dd>{post.strava_activity.distance}</dd>
-			</dl>
-			{?post.strava_id}
-				<a href="https://www.strava.com/activities/{post.strava_id}">Strava activity</a>
-			{/post.strava_id}
-	</div>
-	
-	{!}
-	{?post.strava_activity}
-		<div>
-		<h2>Stats</h2>
-			<dl>
-				<dt>Elevation Gain</dt>
-				<dd>{post.strava_activity.total_elevation_gain}</dd>
-				<dt>Distance</dt>
-				<dd>{post.strava_activity.distance}</dd>
-			</dl>
-			{?post.strava_id}
-				<a href="https://www.strava.com/activities/{post.strava_id}">Strava activity</a>
-			{/post.strava_id}
+				<dl>
+					<dt>Elevation Gain</dt>
+					<dd>{post.strava_activity.total_elevation_gain}</dd>
+					<dt>Distance</dt>
+					<dd>{post.strava_activity.distance}</dd>
+				</dl>
+				{?post.strava_id}
+					<a href="https://www.strava.com/activities/{post.strava_id}">Strava activity</a>
+				{/post.strava_id}
+			</div>
+		{/post.strava_activity}
+		{!}
+		<div class="post-media">
 		</div>
-	{/post.strava_activity}
-	{!}
-	<div class="post-media">
 	</div>
-</div>
+{/content}
 
+
+{<scripts}
+	<script type="text/javascript" src="/resources/js/baguettebox.js"></script>
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+{/scripts}

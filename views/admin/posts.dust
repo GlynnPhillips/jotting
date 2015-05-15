@@ -1,18 +1,28 @@
-{?success}
-	<p class="success">{{success.msg}}</p>
-{/success}
+{>layout /}
 
-<a href="/admin/new-post" class="button mb20">Create new post</a>
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/admin.css" />
+{/styles}
 
-<div class="grid-12">
-	{#posts}
-	<article>
-		<div class="mb20">
-			<h1><a href="/admin/new-post/{_id}">{title}</a>{^published} - DRAFT{/published}</h1>
-			<p>This post has created in {country} and contains {images.length} images</p>
-			<a href="/admin/new-post/{_id}">Edit</a>
-			<a href="/admin/delete-post/{_id}">Delete</a>
-		</div>
-	</article>
-	{/posts}
-</div>
+
+{<content}
+	{?success}
+		<p class="success">{{success.msg}}</p>
+	{/success}
+
+	<a href="/admin/new-post" class="button mb20">Create new post</a>
+
+	<div class="grid-12">
+		{#posts}
+		<article>
+			<div class="mb20">
+				<h1><a href="/admin/new-post/{_id}">{title}</a>{^published} - DRAFT{/published}</h1>
+				<p>This post has created in {country} and contains {images.length} images</p>
+				<a href="/admin/new-post/{_id}">Edit</a>
+				<a href="/admin/delete-post/{_id}">Delete</a>
+			</div>
+		</article>
+		{/posts}
+	</div>
+{/content}
+

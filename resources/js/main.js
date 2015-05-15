@@ -1,3 +1,9 @@
+// Gallery
+baguetteBox.run('#article-gallery', {
+	animation: 'slideIn'
+});
+
+
 var mdContainer = document.getElementById('md');
 var mdList = mdContainer.getElementsByTagName('ul')[0];
 var mdBtn = document.getElementById('md-btn');

@@ -23,7 +23,6 @@ function initApp() {
 	loadRoutes(app);
 	app.express.set('view engine', 'dust');	
 	app.express.engine('dust', dustjs.dust({
-		layout: 'layout', 
 		helpers: [
 			'./helpers/dateformat',
 			'./helpers/ismultiple'

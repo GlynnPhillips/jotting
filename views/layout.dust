@@ -2,12 +2,12 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{title}</title>
-		<link rel="stylesheet" type="text/css" href="/resources/css/admin.css" />
-		<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+		{+styles /}
 	</head>
 	 
 	<body>
-		{>"{_main}"/}
-		<script type="text/javascript" src="/resources/js/main.js"></script>
+		{+content /}
+		
+		{+scripts /}
 	</body>
 </html>

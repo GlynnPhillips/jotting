@@ -132,3 +132,14 @@ h2 {
 	float: left;
 	width: 30%;
 }
+
+.hide-text {
+	text-indent: -99999em;
+	white-space: nowrap;
+	overflow: hidden;
+	height: 0;
+}
+
+button {
+	border: 0;
+}

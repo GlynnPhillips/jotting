@@ -6,13 +6,34 @@
 
 {<content}
 	<header>
-		<div class="fs-hero text-center">
-			<img src="/resources/img/cobbles-to-kebabs.svg" class="vertical-center hero-logo"/>
+		<div class="fs-hero text-center" id="hero">
+			<div id="logo" class="col-12">
+				<img src="/resources/img/cobbles-to-kebabs.svg" class="hero-logo mt40"/>
+			</div>
+			<h2 class="tagline">Flanders - Ventoux - Assietta - Vulovar - Lovcen - Istanbul</h2>
 		</div>
 	</header>
-	<div class="content">
-		{#posts}
-			<h1 class="heading-text"><a href="/post/{_id}">{title}</a></h1>
-		{/posts}
-	</div>
+	<section>
+
+		<div class="content pa20 hide-overflow">
+			<h1 class="col">Articles</h1>
+			<nav>
+				<a href="#" class="menu-icon"><span>Menu</span></a>
+			</nav>
+			<ul class="clean-list">
+			{#posts}
+				<li class="col col-12 article-list">
+					<img src="{stores.thumbs}/{images[0].name}"  class="col col-4"/>
+					<div class="col col-8 last">
+						<h2 class="article-list-title"><a href="/post/{_id}">{title}</a></h2>
+					</div>
+				</li>
+			{/posts}
+			</ul>
+		</div>
+	</sction>
 {/content}
+{<scripts}
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+{/scripts}

@@ -1,5 +1,10 @@
-module.exports = function(app) {
-	var mongoose = require('mongoose');
+'use strict'
+
+var mongoose = require('mongoose');
+
+exports.configureModels = configureModels;
+
+function configureModels (app) {
 	
 	var schema = mongoose.Schema;
 	var postSchema = new schema({

@@ -6,7 +6,7 @@ body {
 	font-size: 1.4em;
 	line-height: 1.75;
 	color: #333;
-	background: #f2f2f2;
+	background: #ededed;
 }
 html,
 body {
@@ -19,6 +19,14 @@ body {
 p {
 	margin-bottom: 24px;
 	font-size: 1.6rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	margin: 0;
 }
 
 h2 {
@@ -37,16 +45,147 @@ h2 {
 }
 
 .fs-hero {
+	position: fixed;
+	z-index: 10;
 	background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url(../img/hero.jpg) no-repeat;
 	background-size: cover;
-	position: relative;
 	height: 100%;
-	width: 100%;
+	color: #fff;
+	width: 50%;
+}
+.is--fixed .hero-logo {
+	-webkit-transition: max-width .2s ease-in-out;
+    -moz-transition: max-width .2s ease-in-out;
+	-o-transition: max-width .2s ease-in-out;
+	transition: max-width .2s ease-in-out;
+	max-width: 240px;
 }
 
 .hero-logo {
 	max-width: 80%;
 	width: auto;
+	margin-top: 40px;
+	-moz-animation-name: fadeIn;
+    -moz-animation-timing-function: ease;
+    -moz-animation-duration: 1s;
+
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-duration: 1s;
+
+    animation-name: fadeIn;
+    animation-timing-function: ease;
+    animation-duration: 1s;
+}
+
+.tagline {
+	position: absolute;
+	font-weight: normal;
+	font-size: 1.8rem;
+	border: 0;
+	width: 100%;
+	bottom: 10px;
+	left: 0;
+	-moz-animation-name: slideUp;
+    -moz-animation-timing-function: ease;
+    -moz-animation-duration: 1.2s;
+
+    -webkit-animation-name: slideUp;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-duration: 1.2s;
+
+    animation-name: slideUp;
+    animation-timing-function: ease;
+    animation-duration: 1.2s;
+}
+
+
+@-moz-keyframes slideUp {
+    0% {
+		opacity: 0;
+		bottom: -40px;
+    }
+    100% {
+		opacity: 1;
+		bottom: 10px;
+    }
+}
+@-webkit-keyframes slideUp {
+    0% {
+		opacity: 0;
+		bottom: -40px;
+    }
+    100% {
+		opacity: 1;
+		bottom: 10px;
+    }
+}
+@keyframes slideUp {
+    0% {
+		opacity: 0;
+		bottom: -40px;
+    }
+    100% {
+		opacity: 1;
+		bottom: 10px;
+    }
+}
+
+@-moz-keyframes slideUp {
+    0% {
+		opacity: 0;
+		bottom: -40px;
+    }
+    100% {
+		opacity: 1;
+		bottom: 10px;
+    }
+}
+@-webkit-keyframes slideUp {
+    0% {
+		opacity: 0;
+		bottom: -40px;
+    }
+    100% {
+		opacity: 1;
+		bottom: 10px;
+    }
+}
+@keyframes slideUp {
+    0% {
+		opacity: 0;
+		bottom: -40px;
+    }
+    100% {
+		opacity: 1;
+		bottom: 10px;
+    }
+}
+
+
+@-moz-keyframes fadeIn {
+    0% {
+		opacity: 0;
+    }
+    100% {
+		opacity: 1;
+    }
+}
+@-webkit-keyframes fadeIn {
+    0% {
+		opacity: 0;
+    }
+    100% {
+		opacity: 1;
+    }
+}
+@keyframes fadeIn {
+    0% {
+		opacity: 0;
+    }
+    100% {
+		opacity: 1;
+    }
 }
 
 .hero {
@@ -55,6 +194,10 @@ h2 {
 	color: #fff;
 	overflow: hidden;
 	margin-bottom: 80px;
+}
+
+.is--fixed {
+	position: fixed;
 }
 
 .mb10 {
@@ -96,6 +239,10 @@ h2 {
 	margin-left: 40px;
 }
 
+.content {
+	margin-left: 50%;
+}
+
 .constrain-content {
 	max-width: 1100px;
 	margin: 0 40px;
@@ -126,9 +273,20 @@ h2 {
 		width: 23.2421875%;
 }
 
+.col-4 {
+	width: 31.7708333333%;
+}
 
 .col-6 {
 	width: 48.828125%;
+}
+
+.col-8 {
+	width: 65.8854166666%;
+}
+
+.col-12 {
+	width: 100%;
 }
 
 .last {
@@ -146,6 +304,13 @@ h2 {
 	width: 30%;
 }
 
+@media only screen and (max-width: 48em) {
+	.col-12-768 {
+		width: 100%;
+		margin-right: 0;
+	}
+}
+
 .hide-text {
 	text-indent: -99999em;
 	white-space: nowrap;
@@ -155,4 +320,57 @@ h2 {
 
 button {
 	border: 0;
+}
+
+.clean-list {
+	list-style: none;
+	padding: 0;
+}
+
+.pa20 {
+	padding: 20px;
+ }
+
+.article-list {
+	background: #fff;
+	margin-bottom: 30px;
+}
+
+.article-list-title {
+	text-transform: none;
+	border: 0;
+}
+
+.article-list-title a {
+	color: #555;
+}
+
+.hide-overflow {
+	overflow: hidden;
+}
+
+.menu-icon {
+    position:relative;
+    display:inline-block;
+    width:20px;
+}
+ 
+.menu-icon {
+	float: right;
+    height:6px;
+    border-top:2px solid #222;
+    border-bottom:2px solid #222;
+}
+ 
+.menu-icon:before {
+    content:"";
+    position:absolute; 
+    top:2px;
+    left:0;
+    width:100%;
+    border-top:2px solid #222;
+}
+
+.menu-icon span {
+	display: none;
 }

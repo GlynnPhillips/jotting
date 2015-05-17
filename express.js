@@ -1,10 +1,11 @@
 'use strict';
 
+var dustjs = require('adaro');
 var express = require('express');
-var bodyParser = require('body-parser');
 var session = require('express-session');
-var multer = require('multer');
 var easyimg = require('easyimage');
+var multer = require('multer');
+var bodyParser = require('body-parser');
 
 exports.configureExpress = configureExpress;
 
@@ -25,12 +26,24 @@ function configureExpress (app) {
 	app.express.use(bodyParser.urlencoded({
 		extended: true
 	}));
+	app.express.set('view engine', 'dust');	
+	app.express.engine('dust', dustjs.dust({
+		helpers: [
+			'./helpers/dateformat',
+			'./helpers/ismultiple'
+		]
+	}));
+
+
+	app.express.set('views', __dirname + '/views/');
 	
-	configureAssets
+	configureAssets(app)
 }
 
 function configureAssets(app) {
 
+	app.express.use('/resources', express.static(__dirname+'/resources'));
+	app.express.use(app.opts.store, express.static(app.opts.store));
 	app.express.use(multer({
         dest: app.opts.store,
         rename: function (fieldname, filename) {
@@ -49,7 +62,5 @@ function configureAssets(app) {
 			});
 		}
 	}));
-
-
 	return app;
 }

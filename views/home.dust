@@ -16,24 +16,30 @@
 	<section>
 
 		<div class="content pa20 hide-overflow">
-			<h1 class="col">Articles</h1>
-			<nav>
-				<a href="#" class="menu-icon"><span>Menu</span></a>
-			</nav>
-			<ul class="clean-list">
-			{#posts}
-				<li class="col col-12 article-list">
-					<img src="{stores.thumbs}/{images[0].name}"  class="col col-4"/>
-					<div class="col col-8 last">
-						<h2 class="article-list-title"><a href="/post/{_id}">{title}</a></h2>
-					</div>
-				</li>
-			{/posts}
-			</ul>
+			<div class="main-body">
+				{!}
+				<h1 class="col">Articles</h1>
+				<nav>
+					<a href="#" class="menu-icon"><span>Menu</span></a>
+				</nav>
+				{!}
+				<ul class="clean-list">
+				{#posts}
+					<li class="col col-12 article-list">
+						<img src="{stores.thumbs}/{images[0].name}"  class="col col-4"/>
+						<div class="col col-8 last">
+							<time datetime="">{@dateFormat date="{publish_date}" format="d mmmm yyyy"/}</time>
+							<h2 class="article-list-title"><a href="/post/{_id}">{title}</a></h2>
+						</div>
+					</li>
+				{/posts}
+				</ul>
+			</div>
 		</div>
 	</sction>
 {/content}
 {<scripts}
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 {/scripts}

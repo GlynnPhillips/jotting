@@ -25,3 +25,5 @@ function loadRoutes(app) {
 	app.express.get('/post/:id', posts.page(app));
 	app.express.get('/', pages.index(app));
 }
+
+

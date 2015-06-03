@@ -19,3 +19,8 @@ startApplication(opts, function (err, app) {
 
 	console.log('Jotting is now running on port ' + opts.port);
 });
+
+
+
+
+

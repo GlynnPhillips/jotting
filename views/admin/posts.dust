@@ -19,7 +19,7 @@
 				<h1><a href="/admin/new-post/{_id}">{title}</a>{^published} - DRAFT{/published}</h1>
 				<p>This post has created in {country} and contains {images.length} images</p>
 				<a href="/admin/new-post/{_id}">Edit</a>
-				<a href="/admin/confirm-deletion/{_id}">Delete</a>
+				<a href="/admin/delete-post/{_id}">Delete</a>
 			</div>
 		</article>
 		{/posts}

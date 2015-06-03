@@ -7,7 +7,7 @@
 
 {<content}
 	<header>
-		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.stores.fullsize}/{post.images[0].name}); background-size: cover; background-position: 50%;">
+		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.stores.fullsize}/{post.images[0].name});">
 			<h2 class="mb10"><time datetime="{post.publish_date}">{@dateFormat date="{post.publish_date}" format="d mmmm yyyy"/}</time></h2>
 			<h1 class="heading-text">{post.title}</h1>
 			{?post.strava_activity}

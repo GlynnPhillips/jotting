@@ -14,23 +14,20 @@
 		</div>
 	</header>
 	<section>
-
 		<div class="content pa20 hide-overflow">
 			<div class="main-body">
-				{!}
-				<h1 class="col">Articles</h1>
-				<nav>
-					<a href="#" class="menu-icon"><span>Menu</span></a>
-				</nav>
-				{!}
+				{>menu /}	
+				<p>One Yorkshireman, one Cornish man escaping London for two weeks for mainland Europes roads, as they race others unsupported to the border of Asia.  With 4 intermediate checkpoints ahead the aim is to ride the +4000km route through the unknown challenging us both physically and mentally.</p> 
+
+				<p>With aims to well exceed 300km a day, whilst wild camping under the stars at night for some well earned rest. We hope raise some well earn support for charities</p>
+
+				<p class="mb60">Follow us on our travels and watch the race unfold.</p>		
 				<ul class="clean-list">
 				{#posts}
-					<li class="col col-12 article-list">
-						<img src="{stores.thumbs}/{images[0].name}"  class="col col-4"/>
-						<div class="col col-8 last">
-							<time datetime="">{@dateFormat date="{publish_date}" format="d mmmm yyyy"/}</time>
-							<h2 class="article-list-title"><a href="/post/{_id}">{title}</a></h2>
-						</div>
+					<li class="list-article">
+							<time datetime="" class="list-article-date"><span>{@dateFormat date="{publish_date}" format="dd"/}</span><span class="month">{@dateFormat date="{publish_date}" format="mmm"/}</span></time>
+							<h2 class="list-article-title"><a href="/post/{_id}" class="no-dec">{title}</a></h2>
+							<p class="pin-left">{@substr str="{content}" len="200" /}.. <a href="/post/{_id}">continue</a></p>
 					</li>
 				{/posts}
 				</ul>
@@ -39,7 +36,6 @@
 	</sction>
 {/content}
 {<scripts}
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 {/scripts}

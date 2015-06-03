@@ -30,7 +30,8 @@ function configureExpress (app) {
 	app.express.engine('dust', dustjs.dust({
 		helpers: [
 			'./helpers/dateformat',
-			'./helpers/ismultiple'
+			'./helpers/ismultiple',
+			'./helpers/substr'
 		]
 	}));
 

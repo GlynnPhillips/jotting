@@ -118,3 +118,15 @@ exports.remove = function (req, res){
 		res.redirect('/admin/posts');
 	});
 };
+
+exports.confirmRemoval = function (req, res) {
+	var id = req.params.id; 	
+	
+	if(id) {
+		posts.byId({_id: id}, function(post) {
+			res.render('admin/confirm-deletion', {post: post});
+		});
+	} else {
+		res.render('admin/');
+	}
+};

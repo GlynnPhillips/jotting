@@ -1,0 +1,13 @@
+{>layout /}
+
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/admin.css" />
+{/styles}
+
+
+{<content}
+	<div class="grid-12">
+		<h1>Are you sure you want to delete "{post.title}"</h1>
+		<a href="/admin/delete-post/{post._id}">Delete</a>
+	</div>
+{/content}

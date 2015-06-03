@@ -2,7 +2,6 @@ html {
 	font-size: 62.5%;
 }
 body {
-	font-family:HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 	font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 1.4em;
 	line-height: 1.75;
@@ -17,13 +16,30 @@ body {
 	overflow-x: hidden;
 }
 
+button {
+	border: 0;
+}
+
 p {
+	margin-top: 0;
 	margin-bottom: 24px;
+	font-size: 16px;
 	font-size: 1.6rem;
 }
 
 a {
+	color: #3e85a2;
+	border-bottom: 1px dotted;
 	text-decoration: none;
+}
+
+a:hover {
+	border-bottom: 1px solid;
+}
+
+a.no-dec,
+a.no-dec:hover {
+	border-bottom: 0;
 }
 
 h1 {
@@ -32,19 +48,22 @@ h1 {
 
 h2 {
 	display: inline-block;
+	font-size: 26px;
 	font-size: 2.6rem;
 	text-transform: uppercase;
 	border-bottom: 1px solid;
 	font-weight: normal;
 }
 
-.highlight-text {
-	color: #3e85a2;
+img {
+	width: auto;
+	max-width: 100%;
 }
 
-.overlay-text {
-	color: #fff;
-}
+
+/*-------------
+ Hero
+-------------*/
 
 .fs-hero {
 	position: fixed;
@@ -55,13 +74,6 @@ h2 {
 	height: 100%;
 	color: #fff;
 	width: 50%;
-}
-.is--fixed .hero-logo {
-	-webkit-transition: max-width .2s ease-in-out;
-    -moz-transition: max-width .2s ease-in-out;
-	-o-transition: max-width .2s ease-in-out;
-	transition: max-width .2s ease-in-out;
-	max-width: 240px;
 }
 
 .hero-logo {
@@ -84,6 +96,7 @@ h2 {
 .tagline {
 	position: absolute;
 	font-weight: normal;
+	font-size: 18px;
 	font-size: 1.8rem;
 	border: 0;
 	width: 100%;
@@ -102,6 +115,235 @@ h2 {
     animation-duration: 1.2s;
 }
 
+
+/*-------------
+ Menu bar
+-------------*/
+
+.menu-icon,
+.menu-icon:before,
+.menu-icon:after {
+	width: 16px;
+	background: #333;
+	height: 2px;
+	display: inline-block;
+}
+.menu-icon {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	margin: -1px 0 0;
+}
+.menu-icon:before,
+.menu-icon:after {
+	content: "";
+	position: absolute;
+	left: 0;
+}
+.menu-icon:before {
+	top: -4px;
+}
+.menu-icon:after {
+	top: 4px;
+}
+
+.menu-button {
+	float: right;
+	height: 22px;
+	color: #333;
+	padding-left: 35px;
+	position: relative;
+}
+
+.menu-button:hover {
+	color: #3e85a2;
+}
+
+.menu-button:hover .menu-icon,
+.menu-button:hover .menu-icon:after,
+.menu-button:hover .menu-icon:before {
+	background: #3e85a2;
+}
+
+.main-menu {
+	list-style: none;
+	clip: rect(0 0 0 0);
+	max-height: 0;
+	display: block;
+	overflow: hidden;
+	padding: 0;
+	text-align: right;
+	margin: 0;
+	list-style: none;
+	width: 100%;
+	-webkit-transition: max-height 0.5s;
+	-moz-transition: max-height 0.5s;
+	transition: max-height 0.5s;
+}
+
+.reveal-menu {
+	max-height: 200px;
+}
+
+.main-menu a {
+	float: left;
+	width: 100%;
+	color: #333;
+	padding: 10px 0;
+}
+
+.main-menu a:hover {
+	color: #3e85a2;
+}
+
+/*-------------
+ Article list
+-------------*/
+
+.list-article-date {
+	float: left;
+	font-size: 40px;
+	font-size: 4rem;
+	text-transform: uppercase;
+	margin-left: -2em;
+	margin-top: 5px;
+	color: #3e85a2;
+}
+
+.list-article-date span {
+	display: block;
+	line-height: 1;
+}
+
+.list-article-date .month {
+	font-size: 22px;
+	font-size: 2.2rem;
+}
+
+.list-article {
+	float: left;
+	margin-bottom: 40px;
+	padding-left: 6em;
+}
+
+.list-article-title {
+	float: left;
+	font-size: 26px;
+	font-size: 2.6rem;
+	text-transform: none;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.list-article-title a:hover {
+	border-bottom: 1px solid #3e85a2; 
+	color: #3e85a2;
+}	
+
+.list-article-title a {
+	color: #555;
+}
+
+/*----------------
+ Article content
+-----------------*/
+
+.heading-text {
+	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+	letter-spacing: 3px;
+	line-height: 1;
+	font-size: 50px;
+	font-size: 5rem;
+	z-index: 10;
+	text-transform: uppercase;
+}
+
+.content {
+	margin-left: 50%;
+}
+
+.main-body {
+	padding: 20px 40px;
+}
+
+.content-text p:first-of-type::first-letter,
+.content-text p:first-of-type:first-letter {
+	float: left;
+	font-weight: bold;
+	font-size: 78px;
+	font-size: 7.8rem;
+	line-height: 1;
+	margin-bottom: -40px;
+	margin-right: 6px;
+	color: #3e85a2;
+}
+
+.content-text p:first-of-type {
+	font-size: 24px;
+	font-size: 2.4rem;
+	line-height: 1.5;
+}
+
+
+/*----------------
+ Smaller screens
+-----------------*/
+
+@media screen and (max-width: 800px) {
+	
+	.hero-logo {
+		max-width: 50%;
+		margin-top: 20px;
+	}
+
+	.heading-text {
+		font-size: 25px;
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 12px;
+		font-size: 1.2rem;
+	}
+	.tagline {
+		font-size: 13px;
+		font-size: 1.3rem;
+		margin-bottom: 0;
+	}
+
+	.fs-hero {
+		position: relative;
+		background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(../img/hero.jpg) no-repeat;
+		background-size: cover;
+		height: 50%;
+		color: #fff;
+		width: 100%;
+	}
+	.content,
+	#main-menu:target {
+		margin-left: 0;
+	}
+	.small-logo {
+		max-width: 200px;
+	}
+
+	.main-body {
+		padding: 20px;
+	}
+	.menu-text {
+		position: absolute; 
+		overflow: hidden; 
+		clip: rect(0 0 0 0); 
+		height: 1px; width: 1px; 
+		margin: -1px; padding: 0; border: 0; 
+	}
+}
+
+
+/*----------------
+ Animations
+-----------------*/
 
 @-moz-keyframes slideUp {
     0% {
@@ -191,17 +433,9 @@ h2 {
     }
 }
 
-.hero {
-	position: relative;
-	height: 40%;
-	color: #fff;
-	overflow: hidden;
-	margin-bottom: 80px;
-}
 
-.is--fixed {
-	position: fixed;
-}
+
+
 
 .mb10 {
 	margin-bottom: 10px;
@@ -211,64 +445,8 @@ h2 {
 	z-index: 10;
 }
 
-.hero-bg {
-	position: absolute;
-	top: 0;
-	z-index: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.vertical-center {
-	position: relative;
-    top: 50%;
-	transform: translateY(-50%);
-}
-
 .text-center {
 	text-align: center;
-}
-
-.heading-text {
-	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
-	letter-spacing: 3px;
-	line-height: 1;
-	font-size: 5rem;
-	z-index: 10;
-	text-transform: uppercase;
-}
-
-.standard-indent {
-	margin-left: 40px;
-}
-
-.content {
-	margin-left: 50%;
-}
-
-.main-body {
-	padding: 20px 40px;
-}
-
-.constrain-content {
-	max-width: 1100px;
-	margin: 0 40px;
-}
-
-.constrain-content p:first-of-type::first-letter,
-.constrain-content p:first-of-type:first-letter {
-	float: left;
-	font-weight: bold;
-	font-size: 7.8rem;
-	line-height: 1;
-	margin-bottom: -40px;
-	margin-right: 6px;
-	color: #3e85a2;
-}
-
-.constrain-content p:first-of-type {
-	font-size: 2.4rem;
-	line-height: 1.5;
 }
 
 .col {
@@ -292,6 +470,10 @@ h2 {
 	width: 65.8854166666%;
 }
 
+.col-9 {
+	width: 74.4140625%;
+}
+
 .col-12 {
 	width: 100%;
 }
@@ -300,15 +482,8 @@ h2 {
 	margin-right: 0 !important;
 }
 
-.main-col {
+.pin-left {
 	float: left;
-	width: 60%;
-	margin-right: 10%;
-}
-
-.side-col {
-	float: left;
-	width: 30%;
 }
 
 @media only screen and (max-width: 48em) {
@@ -325,10 +500,6 @@ h2 {
 	height: 0;
 }
 
-button {
-	border: 0;
-}
-
 .clean-list {
 	list-style: none;
 	padding: 0;
@@ -338,78 +509,12 @@ button {
 	padding: 20px;
  }
 
-.article-list {
-	margin-bottom: 30px;
-}
-
-.article-list-title {
-	text-transform: none;
-	border: 0;
-}
-
-.article-list-title a {
-	color: #555;
+.mb60 {
+	margin-bottom: 60px;
 }
 
 .hide-overflow {
 	overflow: hidden;
 }
 
-.menu-icon {
-    position:relative;
-    display:inline-block;
-    width:20px;
-}
- 
-.menu-icon {
-	float: right;
-    height:6px;
-    border-top:2px solid #222;
-    border-bottom:2px solid #222;
-}
- 
-.menu-icon:before {
-    content:"";
-    position:absolute; 
-    top:2px;
-    left:0;
-    width:100%;
-    border-top:2px solid #222;
-}
 
-.menu-icon span {
-	display: none;
-}
-
-
-@media screen and (max-width: 800px) {
-	
-	.hero-logo {
-		max-width: 50%;
-		margin-top: 20px;
-	}
-
-	.heading-text {
-		font-size: 2rem;
-	}
-
-	h2 {
-		font-size: 1.2rem;
-	}
-	.tagline {
-		font-size: .9rem;
-		margin-bottom: 0;
-	}
-
-	.fs-hero {
-		position: relative;
-		background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(../img/hero.jpg) no-repeat;
-		background-size: cover;
-		height: 30%;
-		color: #fff;
-		width: 100%;
-	}
-	.content {
-		margin-left: 0;
-	}
-}

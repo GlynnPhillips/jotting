@@ -4,6 +4,7 @@ var posts = mongoose.model('posts');
 var marked = require('marked');
 var im = require('imagemagick');
 var async = require('async');
+var easyimg = require('easyimage');
 
 exports.index = function (req, res){
 	
@@ -53,6 +54,27 @@ exports.add = function (app){
 		function getExifData (images, callback) {
 			var postImages = [];
 			async.each(images, function(image, callback) {
+				fs.readFile(app.opts.store + '/' + image.name, function (err, file) {
+					im.resize({
+						srcPath: app.opts.store + '/' + image.name,
+						dstPath: app.opts.thumb_store + '/' + image.name,
+						width:   400,
+						height: 400
+					}, function(err, stdout, stderr){
+						if (err) throw err;
+						im.crop({
+							srcPath: app.opts.thumb_store + '/' + image.name,
+							dstPath: app.opts.thumb_store + '/' + image.name,
+							width: 300,
+							height: 300,
+							quality: 1,
+							gravity: "Center"
+						}, function(err, stdout, stderr){
+							// foo 
+						});
+					});
+				});
+					
 				im.readMetadata(app.opts.store + '/' + image.name, function(error, metadata) {
 				if(error) {
 					throw error;
@@ -110,6 +132,18 @@ exports.add = function (app){
 		}
 	}
 };
+
+exports.confirmRemoval = function (req, res) {
+	var id = req.params.id; 	
+	
+	if(id) {
+		posts.byId({_id: id}, function(post) {
+			res.render('admin/confirm-deletion', {post: post});
+		});
+	} else {
+		res.render('admin/');
+	}
+}
 
 exports.remove = function (req, res){
 	var id = req.params.id;

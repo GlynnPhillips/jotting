@@ -18,14 +18,19 @@ exports.page = function (app) {
 
 				if(post.strava_id) {
 					strava.activities.get({id:post.strava_id},function(err,payload) {
-						var activity = {};
 						
-						activity['elevation'] = payload.total_elevation_gain.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+						if(!err) {
+							
+							var activity = {};
 						
-						activity['distance'] = payload.distance / 1000;
-						activity['distance'] = Math.round( activity['distance'] * 10 ) / 10;
+							activity['elevation'] = payload.total_elevation_gain.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+							
+							activity['distance'] = payload.distance / 1000;
+							activity['distance'] = Math.round( activity['distance'] * 10 ) / 10;
 
-						post.strava_activity = activity;
+							post.strava_activity = activity;
+
+						}
 						res.render('post', {post: post});
 					});
 				} else {

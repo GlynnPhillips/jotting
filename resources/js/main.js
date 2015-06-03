@@ -30,3 +30,14 @@ if(gallery) {
 }
 
 
+//menu 
+
+var menuBtn = document.getElementById('menu-button'),
+	menu = document.getElementById('main-menu');
+
+menuBtn.addEventListener('click', function(evt) {
+	menu.classList.toggle('reveal-menu');
+
+	evt.preventDefault();
+});
+

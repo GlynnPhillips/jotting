@@ -13,8 +13,9 @@ function loadRoutes(app) {
 
 
 	app.express.get('/admin/posts', auth, admin_posts.index);
-	app.express.get('/admin/new-post/:id?',  auth, admin_posts.new);
+	app.express.get('/admin/new-post/:id?',  auth, admin_posts.new(app));
 	app.express.get('/admin/delete-post/:id',  auth, admin_posts.remove);
+	app.express.get('/admin/confirm-deletion/:id',  auth, admin_posts.confirmRemoval);
 	app.express.post('/admin/add-post/:id?',  auth, admin_posts.add(app));
 
 	

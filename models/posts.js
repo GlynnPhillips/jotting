@@ -17,7 +17,8 @@ function configureModels (app) {
 		longitude: String,
 		country: String,
 		strava_id: String,
-		images: []
+		images: [],
+		featured_image: String
 	});
 
 	postSchema.statics = {

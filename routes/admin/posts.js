@@ -12,15 +12,22 @@ exports.index = function (req, res){
 	});
 };
 
-exports.new = function (req, res){
-	var id = req.params.id;
+exports.new = function (app){
+	return function(req, res) {
+		var id = req.params.id;
 
-	if(id) {
-		posts.byId({_id: id}, function(post) {
-			res.render('admin/new-post', {post: post});
-		});
-	} else {
-		res.render('admin/new-post');
+		if(id) {
+			posts.byId({_id: id}, function(post) {
+				
+				post.stores = {
+					admin: app.opts.admin_store
+				}
+				
+				res.render('admin/new-post', {post: post});
+			});
+		} else {
+			res.render('admin/new-post');
+		}
 	}
 };
 
@@ -36,7 +43,9 @@ exports.add = function (app){
 			postDate = req.body.date || '',
 			postCountry = which_country([postLong, postLat]) || '',
 			stravaId = req.body.strava || '',
-			uploadedImages = req.files.image;
+			uploadedImages = req.files.image,
+			featuredImage = req.body.featured || null
+		
 		
 		if(typeof uploadedImages !== 'undefined') {
 			uploadedImages = [].concat(req.files.image);
@@ -85,7 +94,8 @@ exports.add = function (app){
 				latitude: postLat,
 				longitude: postLong,
 				strava_id: stravaId,
-				country: postCountry
+				country: postCountry,
+				featured_image: featuredImage 
 			}
 
 			if(!id) {

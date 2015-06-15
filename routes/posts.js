@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 var marked = require('marked');
 var strava = require('strava-v3');
+var knox = require('knox');
+var async = require('async');
 
 exports.page = function (app) {
 	return function (req, res) {
@@ -11,11 +13,8 @@ exports.page = function (app) {
 			if(post.published || req.session.access) {
 				var html = marked(post.content);
 				post.html = html;
-				post.stores = {
-					fullsize: app.opts.store,
-					thumbs: app.opts.thumb_store
-				}
-
+				post.image_path = app.opts.image_path;
+								
 				if(post.strava_id) {
 					strava.activities.get({id:post.strava_id},function(err,payload) {
 						if(!err) {
@@ -28,12 +27,10 @@ exports.page = function (app) {
 
 							post.strava_activity = activity;
 						}
-						res.render('post', {post: post});
 					});
-				} else {
-
-					res.render('post', {post: post});
 				}
+
+				res.render('post', {post: post});
 
 			} else {
 				res.status(404).send('Not found');

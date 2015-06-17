@@ -42,7 +42,9 @@
 
 		<ul> 	
 			{#post.images}
-				<li>{name}</li>
+				<li>
+					<img src="{post.stores.thumbs}/{name}" />
+					<input type="radio" name="featured" value="{name}" id="{name}" {@select key=post.featured_image}{@eq value=name} checked {/eq}{/select}/><label for="{name}">{name}</label></li>
 			{/post.images}
 		</ul>
 		

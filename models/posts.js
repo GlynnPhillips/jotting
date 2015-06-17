@@ -23,7 +23,7 @@ function configureModels (app) {
 
 	postSchema.statics = {
 		list: function (query, callback) {
-			this.find(query, function(err, posts) {
+			this.find(query, null, {sort: {publish_date: -1}}, function(err, posts) {
 				callback(posts)
 			});
 		},

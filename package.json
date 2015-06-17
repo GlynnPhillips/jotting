@@ -13,7 +13,7 @@
   },
   "bugs": "https://github.com/glynnphillips/jotting/issues",
   "engines": {
-    "node": ">=0.10"
+    "node": "0.10"
   },
   "dependencies": {
     "adaro": "1.0.0-5",

@@ -7,7 +7,7 @@
 
 {<content}
 	<header>
-		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.stores.fullsize}/{post.images[0].name}); background-size: cover; background-position: 50%;">
+		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.image_path}/fullsize/{?post.featured_image}{post.featured_image}{:else}{post.images[0].name}{/post.featured_image}); background-size: cover; background-position: 50%;">
 			<div class="pa20">
 				<h2 class="mb10"><time datetime="{post.publish_date}">{@dateFormat date="{post.publish_date}" format="d mmmm yyyy"/}</time></h2>
 				<h1 class="heading-text">{post.title}</h1>
@@ -27,8 +27,8 @@
 			</div>
 			<div id="article-gallery">
 				{#post.images}
-					<a href="{post.stores.large}/{name}">
-						<img src="{post.stores.thumbs}/{name}" class="col col-6 {@isMultiple of=2}last{/isMultiple} mb10" />
+					<a href="{post.image_path}/large/{name}">
+						<img src="{post.image_path}/thumbs/{name}" class="col col-6 {@isMultiple of=2}last{/isMultiple} mb10" />
 					</a>
 				{/post.images}
 			</div>
@@ -38,7 +38,9 @@
 
 
 {<scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="/resources/js/baguettebox.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 {/scripts}

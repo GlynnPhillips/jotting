@@ -6,8 +6,7 @@
 			<spani class="menu-text">Menu</span>
 		</a>
 		<ul class="main-menu" id="main-menu">
-			<li><a href="/" class="no-dec">About</a></li>
-			<li><a href="/articles" class="no-dec">Articles</a></li>
+			<li><a href="/" class="no-dec">Home</a></li>
 			<li><a href="/sponsors" class="no-dec">Sponsors</a></li>
 		</ul>
 	</nav>

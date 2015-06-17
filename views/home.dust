@@ -7,10 +7,7 @@
 {<content}
 	<header>
 		<div class="fs-hero text-center" id="hero">
-			<div id="logo" class="col-12">
-				<img src="/resources/img/cobbles-to-kebabs.svg" class="hero-logo mt40"/>
-			</div>
-			<h2 class="tagline">Flanders - Ventoux - Assietta - Vulovar - Lovcen - Istanbul</h2>
+			<div id="map" class="map"></div>
 		</div>
 	</header>
 	<section>
@@ -33,9 +30,14 @@
 				</ul>
 			</div>
 		</div>
-	</sction>
+	</section>
 {/content}
 {<scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6L2loJwFPunTCW4U9l3XPEWaa6JEOc9k">
+    </script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 {/scripts}

@@ -71,7 +71,8 @@ function configureAssets(app) {
 			});
 			easyimg.rescrop({
 				src:file.path, dst:app.opts.thumb_store + '/' + file.name,
-				width:400, height:400,
+				width:450, height:450,
+				quality: 80,
 				cropwidth:300, cropheight:300,
 				x:0, y:0
 			}).then(function(image) {

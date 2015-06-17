@@ -15,11 +15,13 @@
 	<div class="grid-12">
 		{#posts}
 		<article>
-			<div class="mb20">
-				<h1><a href="/admin/new-post/{_id}">{title}</a>{^published} - DRAFT{/published}</h1>
-				<p>This post has created in {country} and contains {images.length} images</p>
-				<a href="/admin/new-post/{_id}">Edit</a>
-				<a href="/admin/confirm-deletion/{_id}">Delete</a>
+			<div class="mb20 pb10 line-below">
+				<h1 class="mb10">{title}{^published} - DRAFT{/published}</h1>
+				<p class="mb10"><time datetime="{publish_date}">{@dateFormat date="{publish_date}" format="d mmmm yyyy"/}</time> | {images.length} images</p> 
+
+				<a class="mr20" href="/admin/new-post/{_id}">Edit</a> 
+				<a href="/post/{_id}">View</a> 
+				<a class="pin-right" href="/admin/confirm-deletion/{_id}">Delete</a>
 			</div>
 		</article>
 		{/posts}

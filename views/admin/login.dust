@@ -6,10 +6,10 @@
 
 {<content}
 	<form action="/admin/login?dest={dest}" method="post">
-		<label>Username:</label>
-		<input type="text" name="username"/>
-		<label>Password:</label>
-		<input type="password" name="password"/>
-		<input type="submit" value="Log In"/>
+		<label class="pin-left">Username:</label>
+		<input class="grid-12 mb20" type="text" name="username"/>
+		<label class="pin-left">Password:</label>
+		<input class="grid-12" type="password" name="password"/>
+		<input class="grid-12" type="submit" value="Log In"/>
 	</form>
 {/content}

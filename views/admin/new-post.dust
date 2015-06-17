@@ -37,19 +37,21 @@
 
 		</fieldset>
 
+		<label for="strava" class="grid-12">Strava ID</label>
+		<input type="text" name="strava" value="{post.strava_id}" id="strava" class="grid-12 mb20"/>
+		
 		<label for="image" class="grid-12">Images</label>
 		<input type="file"  id="image" name="image" class="grid-12 mb20" multiple="multiple"/>
 
 		<ul> 	
 			{#post.images}
 				<li>
-					<img src="{post.stores.thumbs}/{name}" />
-					<input type="radio" name="featured" value="{name}" id="{name}" {@select key=post.featured_image}{@eq value=name} checked {/eq}{/select}/><label for="{name}">{name}</label></li>
+					<input type="radio" name="featured" value="{name}" class="featured-image" id="{name}" {@select key=post.featured_image}{@eq value=name} checked {/eq}{/select}/>
+					<label for="{name}">
+						<img src="{post.image_path}/thumbs/{name}" />
+					</label></li>
 			{/post.images}
 		</ul>
-		
-		<label for="strava" class="grid-12">Strava ID</label>
-		<input type="text" name="strava" value="{post.strava_id}" id="strava" class="grid-12 mb20"/>
 
 		<fieldset class="mb20 grid-12">
 			<label for="pub_status">Publish post</label>

@@ -19,9 +19,7 @@ exports.new = function (app){
 		if(id) {
 			posts.byId({_id: id}, function(post) {
 				
-				post.stores = {
-					admin: app.opts.admin_store
-				}
+				post.image_path = app.opts.image_path;
 				
 				res.render('admin/new-post', {post: post});
 			});

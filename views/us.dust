@@ -1,0 +1,43 @@
+{>layout /}
+
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/resources/css/baguettebox.css" />
+{/styles}
+
+{<content}
+	<header>
+		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/img_50251434572091156.JPG); background-size: cover; background-position: 50%;">
+			<div class="pa20">
+				
+				<h2 class="mb10">Us</h2>
+				<h1 class="heading-text">The Riders</h1>
+			</div>
+		</div>
+	</header>
+
+	<div class="content pa20 hide-overflow" id="content">
+		
+		<div class="main-body">
+			{>menu /}	
+			<div class="hide-overflow col-12">
+				
+				<img src="https://s3-eu-west-1.amazonaws.com/cobbles/large/img_69591434572093363.JPG" />
+				<h2>Tim France</h2>	
+				<p>Tim started his life on two wheels using knobbly tyres smashing it around the moors of his Yorkshire homeland, over the past few years the knobbly tyres have been replaced by slicks, and the road surfaces have gotten smoother, but the desire to push his body to the limit remains the same. The Transcontinental race will be his biggest test to date, both mentally and physically and one which he will relish. Tim is raising money for Sue Ryder, who provide hospice care to those who need it the most, and who have helped his family personally over the years.</p>
+				
+				<img src="https://s3-eu-west-1.amazonaws.com/cobbles/large/screen-shot-2015-04-02-at-12-56-1414332507546041433866330826.png" />
+				<h2>Neil Phillips</h2>	
+				<p>A Cornish country boy now living and riding in the big city, racing bikes and a sense of exploring, its been a goal to combine the two since see the inception of the Transcontinental race three years ago.  With Mays earthquakes hitting and devastating remote, hard to reach areas of Nepal it seems only right to try and help the 100’s of thousands that have been effected by natures forces.</p>
+			</div>
+		</div>
+	</div>
+{/content}
+
+
+{<scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+{/scripts}

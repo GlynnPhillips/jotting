@@ -7,6 +7,12 @@ body {
 	font-size: 13px;
 }
 
+img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+}
+
 h1 {
 	font-size: 1.6rem;
 	font-weight: bold;
@@ -95,4 +101,19 @@ li {
 
 .pin-left {
 	float: left;
+}
+
+.featured-image {
+	display: none;
+}
+
+.featured-image:checked + label {
+	border: 5px solid #069;
+}
+
+.featured-image + label {
+	float: left;
+	clear: both;
+	width: 150px;
+	margin-bottom: 10px;
 }

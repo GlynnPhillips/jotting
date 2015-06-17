@@ -12,3 +12,15 @@ exports.index = function (app) {
 		});
 	}
 };
+
+exports.us = function (app) {
+	return function (req, res) {
+		res.render('us');
+	}
+};
+
+exports.support = function (app) {
+	return function (req, res) {
+		res.render('support');
+	}
+};

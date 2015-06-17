@@ -45,24 +45,24 @@ $(function(){
 				icon: 'http://www.glynnphillips.co.uk/marker.png'
 			});
 			var marker = new google.maps.Marker({
-				position: new google.maps.LatLng(45.998719,5.479643),
+				position: new google.maps.LatLng(44.173966,5.278285),
 				map: map,
-				icon: 'http://www.glynnphillips.co.uk/marker.png'
+				icon: 'http://www.glynnphillips.co.uk/ventoux-marker.png'
 			});
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(45.112485,7.591799),
 				map: map,
-				icon: 'http://www.glynnphillips.co.uk/marker.png'
+				icon: 'http://www.glynnphillips.co.uk/assietta-marker.png'
 			});
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(45.345238,19.001020),
 				map: map,
-				icon: 'http://www.glynnphillips.co.uk/marker.png'
+				icon: 'http://www.glynnphillips.co.uk/vukovar-marker.png'
 			});
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(42.399444,18.818889),
 				map: map,
-				icon: 'http://www.glynnphillips.co.uk/marker.png'
+				icon: 'http://www.glynnphillips.co.uk/lovcen-marker.png'
 			});
 		  }
 		  google.maps.event.addDomListener(window, 'load', initialize);	

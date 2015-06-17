@@ -7,7 +7,8 @@
 		</a>
 		<ul class="main-menu" id="main-menu">
 			<li><a href="/" class="no-dec">Home</a></li>
-			<li><a href="/sponsors" class="no-dec">Sponsors</a></li>
+			<li><a href="/us" class="no-dec">Us</a></li>
+			<li><a href="/support" class="no-dec">Supported By</a></li>
 		</ul>
 	</nav>
 </div>

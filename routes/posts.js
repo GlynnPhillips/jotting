@@ -24,13 +24,22 @@ exports.page = function (app) {
 							
 							activity['distance'] = payload.distance / 1000;
 							activity['distance'] = Math.round( activity['distance'] * 10 ) / 10;
-
+							activity['name'] = payload.name;
+							activity['id'] = payload.id;
+							
 							post.strava_activity = activity;
+							
+							res.render('post', {post: post});
+						} else {
+						
+							res.render('post', {post: post});
 						}
-					});
+
+					})
+				} else {
+					res.render('post', {post: post});
 				}
 
-				res.render('post', {post: post});
 
 			} else {
 				res.status(404).send('Not found');

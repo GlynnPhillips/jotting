@@ -60,6 +60,16 @@ img {
 	max-width: 100%;
 }
 
+.opacity {
+	opacity: 0.7;
+	-webkit-transition: opacity 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.opacity:hover {
+	opacity: 1;
+}
 
 /*-------------
  Hero
@@ -267,6 +277,12 @@ img {
 
 .main-body {
 	padding: 20px 40px;
+}
+
+.main-body h2 {
+	font-size: 20px;
+	font-size: 2rem;
+	margin-bottom: 10px;
 }
 
 .content-text p:first-of-type::first-letter,

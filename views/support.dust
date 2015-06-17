@@ -1,0 +1,62 @@
+{>layout /}
+
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/resources/css/baguettebox.css" />
+{/styles}
+
+{<content}
+	<header>
+		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/support1434575385034.jpg); background-size: cover; background-position: 50%;">
+			<div class="pa20">
+				<h2 class="mb10"></h2>
+				<h1 class="heading-text">Supported By</h1>
+			</div>
+		</div>
+	</header>
+
+	<div class="content pa20 hide-overflow" id="content">
+		
+		<div class="main-body">
+			{>menu /}	
+			<div class="hide-overflow col-12">
+				
+				<p>To allow us to embark on this adventure we have had the kind support of several sponsors. We are hugely appreciative of this amazing backing, supplying us with some of the best kit available.</p>
+				<div class="text-center">
+					<a href="http://www.genesisbikes.co.uk" class="no-dec opacity">
+						<img src="/resources/img/genesis-logo.png" alt="Genesis Bikes" />	
+					</a>
+					<a href="http://www.sp-dynamo.com/ShutterPrecision.html" class="no-dec opacity">
+						<img src="/resources/img/shutter-precision-logo.png" alt="Shutter Precision" />	
+					</a>
+					<br />
+					<a href="http://www.madison.co.uk/" class="no-dec opacity">
+						<img src="/resources/img/madison-logo.png" alt="Madison" />	
+					</a>
+					<a href="http://www.dtswiss.com/Home" class="no-dec opacity">
+						<img src="/resources/img/dt-swiss-logo.png" alt="DT Swiss" />	
+					</a>
+					<br />
+					<a href="http://www.pro-bikegear.com/en-gb" class="no-dec opacity">
+						<img src="/resources/img/pro-vibe-logo.png" alt="Pro vibe" />	
+					</a>
+					<a href="http://www.lazersport.co.uk/" class="no-dec opacity">
+						<img src="/resources/img/lazer-logo.png" alt="Lazer Helmets" />	
+					</a>
+					<br />
+					<a href="http://www.shimano.co.uk/" class="no-dec opacity">
+						<img src="/resources/img/shimano-logo.png" alt="Shimano" />	
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{/content}
+
+
+{<scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+{/scripts}

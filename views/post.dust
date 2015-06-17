@@ -25,6 +25,11 @@
 			<div class="hide-overflow col-12 content-text">
 				{post.html|s}
 			</div>
+			{?post.strava_activity}
+				<div class="hide-overflow col-12">
+					<p>Strava route: <a href="https://www.strava.com/activities/{post.strava_activity.id}">{post.strava_activity.name|s}</a></p>
+				</div>
+			{/post.strava_activity}
 			<div id="article-gallery">
 				{#post.images}
 					<a href="{post.image_path}/large/{name}">

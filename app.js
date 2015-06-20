@@ -11,7 +11,9 @@ var opts = {
 	port: process.env.PORT || 3000,
 	s3_key : process.env.s3_key,
 	s3_bucket: process.env.s3_bucket,
-	s3_secret: process.env.s3_secret
+	s3_secret: process.env.s3_secret,
+	neil_donate_api: process.env.neil_donate_api,
+	tim_donate_api: process.env.tim_donate_api
 };
 
 opts.thumb_store = opts.store + '/thumbs';

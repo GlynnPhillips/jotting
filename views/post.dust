@@ -3,6 +3,13 @@
 {<styles}
 	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/resources/css/baguettebox.css" />
+	<meta property="og:title" content="{post.title}" />
+	<meta property="og:site_name" content="Cobbles to Kebabs" />
+	{?post.featured_image}
+		<meta property="og:image" content="{post.image_path}/large/{post.featured_image}" />
+	{:else}
+		<meta property="og:image" content="{post.image_path}/large/{post.featured_image}" />
+	{/post.featured_image}
 {/styles}
 
 {<content}

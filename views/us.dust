@@ -2,7 +2,6 @@
 
 {<styles}
 	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/resources/css/baguettebox.css" />
 {/styles}
 
 {<content}
@@ -24,11 +23,13 @@
 				
 				<img src="https://s3-eu-west-1.amazonaws.com/cobbles/large/img_69591434572093363.JPG" />
 				<h2>Tim France</h2>	
-				<p>Tim started his life on two wheels using knobbly tyres smashing it around the moors of his Yorkshire homeland, over the past few years the knobbly tyres have been replaced by slicks, and the road surfaces have gotten smoother, but the desire to push his body to the limit remains the same. The Transcontinental race will be his biggest test to date, both mentally and physically and one which he will relish. Tim is raising money for Sue Ryder, who provide hospice care to those who need it the most, and who have helped his family personally over the years.</p>
+				<p>Tim started his life on two wheels using knobbly tyres smashing it around the moors of his Yorkshire homeland, over the past few years the knobbly tyres have been replaced by slicks, and the road surfaces have gotten smoother, but the desire to push his body to the limit remains the same. The Transcontinental race will be his biggest test to date, both mentally and physically and one which he will relish.</p>
+				<p>Tim is raising money for Sue Ryder, who provide hospice care to those who need it the most, and who have helped his family personally over the years.</p>
 				
 				<img src="https://s3-eu-west-1.amazonaws.com/cobbles/large/screen-shot-2015-04-02-at-12-56-1414332507546041433866330826.png" />
 				<h2>Neil Phillips</h2>	
-				<p>A Cornish country boy now living and riding in the big city, racing bikes and a sense of exploring, its been a goal to combine the two since see the inception of the Transcontinental race three years ago.  With Mays earthquakes hitting and devastating remote, hard to reach areas of Nepal it seems only right to try and help the 100’s of thousands that have been effected by natures forces.</p>
+				<p>A Cornish country boy now living and forever rolling around the big city on two wheels. With a passion for racing bikes but with a sense of exploring further afield, it’s been a goal to combine the two since see the inception of the Transcontinental race three years ago. Loving hills and leaving the comfort of paved surfaces, this year’s inception couldn’t be a better challenge.</p>
+				 <p>Neil is raising money for C.A.L.M, a charity helping to support and raise awareness for the insanely high suicide rates amongst young males.</p>
 			</div>
 		</div>
 	</div>

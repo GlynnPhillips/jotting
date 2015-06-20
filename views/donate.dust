@@ -1,0 +1,56 @@
+{>layout /}
+
+{<styles}
+	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+{/styles}
+
+{<content}
+	<header>
+		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/support1434575385034.jpg); background-size: cover; background-position: 50%;">
+			<div class="pa20">
+				
+				<h2 class="mb10">Charitable</h2>
+				<h1 class="heading-text">Donations</h1>
+			</div>
+		</div>
+	</header>
+
+	<div class="content pa20 hide-overflow" id="content">
+		
+		<div class="main-body">
+			{>menu /}	
+			<div class="hide-overflow col-12">
+				
+				<p>We are raising money for two worth while causes, that mean something to us and people around us. It would be hugely appreciated if you could spare a little bit of cash to help these charities make a difference.</p>
+				
+				<p>Many thanks,
+				<br />	
+				Neil & Tim</p>
+				
+				<h2>C.A.L.M</h2>	
+				<p><a href="https://www.thecalmzone.net/">C.A.L.M</a> is a charity held closely to many very good friends hearts, they have been helping to support young men in need. Suicide is currently the single biggest killer of men aged 20-45 in the UK and in 2013 78% of all suicides were male. Long term C.A.L.M want to change culture so that any man can confidently get help when they need it.</p>
+
+				<p>Most men who take their own lives aren’t in contact with any other agency, and don’t identify with much out there.  When asked, what they indicated they wanted was practical, anonymous, confidential help from professionals, which is why CALM was formed.</p>
+			
+				{?donations}
+				<p>So far Neil has raised £{donations.neil.total} including gift aid for C.A.L.M. <a href="{donations.neil.url}">Help Neil reach his £{donations.neil.target}.</a></p>
+				{/donations}
+
+				<h2>Sue Ryder</h2>	
+				<p><a href="http://www.sueryder.org/">Sue Ryder</a> provide incredible hospice and neurological care for people facing a frightening, lifechanging diagnosis. We do whatever we can to be a safety net for our patients and their loved ones at the most difficult time of their lives. We see the person, not the condition.</p>
+				 <p>Not only do we treat more conditions than any other UK charity in our hospices, neurological care centres and out in the community; we also campaign to improve the lives of people living with them. We see the person, not the condition, taking time to understand the small things that help that person live the fullest life they can.</p>
+			
+				<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=TimothyFrance">Help Tim raise money for Sue Ryder.</a></p>
+
+</div>
+		</div>
+	</div>
+{/content}
+
+
+{<scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+{/scripts}

@@ -3,11 +3,11 @@
 	<nav>
 		<a href="#main-menu" class="menu-button no-dec" id="menu-button">
 			<span class="menu-icon"></span>
-			<spani class="menu-text">Menu</span>
+			<span class="menu-text">Menu</span>
 		</a>
 		<ul class="main-menu" id="main-menu">
 			<li><a href="/" class="no-dec">Home</a></li>
-			<li><a href="/us" class="no-dec">Us</a></li>
+			<li><a href="/us" class="no-dec">About Us</a></li>
 			<li><a href="/support" class="no-dec">Supported By</a></li>
 			<li><a href="/donate" class="no-dec">Donate</a></li>
 		</ul>

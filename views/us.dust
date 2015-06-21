@@ -5,15 +5,13 @@
 {/styles}
 
 {<content}
-	<header>
-		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/img_50251434572091156.JPG); background-size: cover; background-position: 50%;">
-			<div class="pa20">
-				
-				<h2 class="mb10">Us</h2>
-				<h1 class="heading-text">The Riders</h1>
-			</div>
+	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/img_50251434572091156.JPG); background-size: cover; background-position: 50%;">
+		<div class="pa20">
+			
+			<h2 class="mb10">About Us</h2>
+			<h1 class="heading-text">The Riders</h1>
 		</div>
-	</header>
+	</div>
 
 	<div class="content pa20 hide-overflow" id="content">
 		

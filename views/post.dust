@@ -13,17 +13,15 @@
 {/styles}
 
 {<content}
-	<header>
-		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.image_path}/fullsize/{?post.featured_image}{post.featured_image}{:else}{post.images[0].name}{/post.featured_image}); background-size: cover; background-position: 50%;">
-			<div class="pa20">
-				<h2 class="mb10"><time datetime="{post.publish_date}">{@dateFormat date="{post.publish_date}" format="d mmmm yyyy"/}</time></h2>
-				<h1 class="heading-text">{post.title}</h1>
-				{?post.strava_activity}
-					<p class="tagline">Elevation: {post.strava_activity.elevation}m - Distance: {post.strava_activity.distance}km</p>
-				{/post.strava_activity}
-			</div>
+	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url({post.image_path}/fullsize/{?post.featured_image}{post.featured_image}{:else}{post.images[0].name}{/post.featured_image}); background-size: cover; background-position: 50%;">
+		<div class="pa20">
+			<h2 class="mb10"><time datetime="{post.publish_date}">{@dateFormat date="{post.publish_date}" format="d mmmm yyyy"/}</time></h2>
+			<h1 class="heading-text">{post.title}</h1>
+			{?post.strava_activity}
+				<p class="tagline">Elevation: {post.strava_activity.elevation}m - Distance: {post.strava_activity.distance}km</p>
+			{/post.strava_activity}
 		</div>
-	</header>
+	</div>
 
 	<div class="content pa20 hide-overflow" id="content">
 		

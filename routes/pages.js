@@ -44,7 +44,6 @@ exports.donate = function (app) {
 					target: body.pageDetails[0].targetAmount,
 					url: body.personalUrl
 				}
-				console.log(donations);
 				res.render('donate', {donations: donations});
 			 } else {
 				res.render('donate');

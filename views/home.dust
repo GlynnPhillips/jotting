@@ -5,11 +5,9 @@
 {/styles}
 
 {<content}
-	<header>
-		<div class="fs-hero text-center" id="hero">
-			<div id="map" class="map"></div>
-		</div>
-	</header>
+	<div class="fs-hero text-center" id="hero">
+		<div id="map" class="map"></div>
+	</div>
 	<section>
 		<div class="content pa20 hide-overflow">
 			<div class="main-body">
@@ -32,6 +30,7 @@
 		</div>
 	</section>
 {/content}
+
 {<scripts}
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>

@@ -5,15 +5,13 @@
 {/styles}
 
 {<content}
-	<header>
-		<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/support1434575385034.jpg); background-size: cover; background-position: 50%;">
-			<div class="pa20">
-				
-				<h2 class="mb10">Charitable</h2>
-				<h1 class="heading-text">Donations</h1>
-			</div>
+	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/support1434575385034.jpg); background-size: cover; background-position: 50%;">
+		<div class="pa20">
+			
+			<h2 class="mb10">Charitable</h2>
+			<h1 class="heading-text">Donations</h1>
 		</div>
-	</header>
+	</div>
 
 	<div class="content pa20 hide-overflow" id="content">
 		
@@ -33,7 +31,9 @@
 				<p>Most men who take their own lives aren’t in contact with any other agency, and don’t identify with much out there.  When asked, what they indicated they wanted was practical, anonymous, confidential help from professionals, which is why CALM was formed.</p>
 			
 				{?donations}
-				<p>So far Neil has raised £{donations.neil.total} including gift aid for C.A.L.M. <a href="{donations.neil.url}">Help Neil reach his £{donations.neil.target}.</a></p>
+					<p>So far Neil has raised £{donations.neil.total} including gift aid for C.A.L.M. <a href="{donations.neil.url}">Help Neil reach his £{donations.neil.target} target.</a></p>
+				{:else}
+					<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=NeilPhillipsTCR">Help Neil raise money for C.A.L.M.</a></p>
 				{/donations}
 
 				<h2>Sue Ryder</h2>	

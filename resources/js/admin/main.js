@@ -1,3 +1,53 @@
+// Auto Save
+
+var form = document.querySelector('[data-object="autosave"]');
+
+if(form) {
+	
+	var request = new XMLHttpRequest();
+	
+	
+	function autoSave (){
+		var postUrl = form.getAttribute("action");
+		var data = new FormData();
+		
+		data.append("autosaving", 'true');
+		data.append('title', document.getElementById('title').value);
+		data.append('content', document.getElementById('content').value);
+		data.append('lat', document.getElementById('lat').value);
+		data.append('long', document.getElementById('long').value);
+		data.append('strava', document.getElementById('strava').value);
+		data.append('user', document.getElementById('user').value);
+		data.append('date', document.getElementById('date').value);
+		
+		if(document.getElementById('pub_status').checked) {
+			data.append('pub_status', 'on');
+		} else {
+			data.append('pub_status', 'off');
+		}
+
+		request.open("POST", postUrl + "?as=true", true);
+
+		request.onreadystatechange = function () {
+			if (request.readyState != 4 || request.status != 200) return;
+				var req = JSON.parse(request.responseText); 
+				
+				if(req.type === 'save') {
+					console.log('First save');
+					form.setAttribute('action', postUrl + req.id);
+				} else {
+					console.log('repeat save');
+				}
+		};
+		
+		request.send(data);
+		
+	}
+	
+	setInterval(autoSave, 15000);	
+}
+
+
 var mdContainer = document.getElementById('md');
 var mdList = mdContainer.getElementsByTagName('ul')[0];
 var mdBtn = document.getElementById('md-btn');

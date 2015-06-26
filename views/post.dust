@@ -1,6 +1,7 @@
 {>layout /}
 
 {<styles}
+	<title>Cobbles to Kebabs | {post.title}</title>
 	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/resources/css/baguettebox.css" />
 	<meta property="og:title" content="{post.title}" />
@@ -10,6 +11,8 @@
 	{:else}
 		<meta property="og:image" content="{post.image_path}/large/{post.featured_image}" />
 	{/post.featured_image}
+	<meta property="og:url" content="http://cobbles-to-kebabs.co.uk/post/{post._id}" />
+	<meta property="og:type" content="article" />
 {/styles}
 
 {<content}

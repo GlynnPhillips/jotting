@@ -5,7 +5,7 @@
 {/styles}
 
 {<content}
-	<form action="/admin/add-post/{post._id}" method="post" enctype="multipart/form-data">
+	<form action="/admin/add-post/{post._id}" method="post" enctype="multipart/form-data" data-object="autosave">
 		
 		<label for="title" class="grid-12">Post Title</label>
 		<input type="text" name="title" value="{post.title}" id="title" class="grid-12 mb20" required="required"/>

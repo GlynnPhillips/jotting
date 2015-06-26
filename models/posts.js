@@ -32,14 +32,14 @@ function configureModels (app) {
 
 			newPost.save(function(err, newPost) {
 				if (err) return console.error(err);
-				callback();
+				callback(newPost);
 			});
 		},
 
 		updatePost: function (conditions, postEntry, callback) {
-			this.update(conditions, postEntry, function(err, newPost) {
+			this.update(conditions, postEntry, function(err, updatedPost) {
 				if (err) return console.error(err);
-				callback();
+				callback(updatedPost);
 			});
 		},
 

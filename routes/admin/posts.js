@@ -42,7 +42,8 @@ exports.add = function (app){
 			postCountry = which_country([postLong, postLat]) || '',
 			stravaId = req.body.strava || '',
 			uploadedImages = req.files.image,
-			featuredImage = req.body.featured || null
+			featuredImage = req.body.featured || null,
+			autoSave = req.query.as || false
 		
 		
 		if(typeof uploadedImages !== 'undefined') {
@@ -95,20 +96,35 @@ exports.add = function (app){
 				country: postCountry,
 				featured_image: featuredImage 
 			}
-
+			
 			if(!id) {
 				postEntry.images = postImages;
-				posts.addPost(postEntry, function () {
-					res.redirect('/admin/posts');
-				});
+
+				if(autoSave) {
+					posts.addPost(postEntry, function (newPost) {
+						res.send({id: newPost._id, type: 'save'});
+					});
+				} else {
+					posts.addPost(postEntry, function (newPost) {
+						res.redirect('/admin/posts');
+					});
+				}
 			} else {
 		
 				if(typeof uploadedImages !== 'undefined' && postImages.length > 0) {
 					postEntry.images = postImages;
 				}
-				posts.updatePost({_id: id}, postEntry, function () {
-					res.redirect('/admin/posts');
-				});
+				
+				if(autoSave) {
+					posts.updatePost({_id: id}, postEntry, function (updatedPost) {
+						res.send({id: updatedPost._id, type: 'update'});
+					});
+				} else {
+					posts.updatePost({_id: id}, postEntry, function () {
+						res.redirect('/admin/posts');
+					});
+
+				}
 			}
 		}
 		if(typeof uploadedImages !== 'undefined' && uploadedImages.length > 0) {

@@ -1,7 +1,13 @@
 {>layout /}
 
 {<styles}
+	<title>Cobbles to Kebabs | Donate</title>
 	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+	<meta property="og:title" content="Donate" />
+	<meta property="og:site_name" content="Cobbles to Kebabs" />
+	<meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/cobbles/large/support1434575385034.jpg" />
+	<meta property="og:url" content="http://cobbles-to-kebabs.co.uk/donate" />
+	<meta property="og:type" content="website" />
 {/styles}
 
 {<content}
@@ -31,17 +37,20 @@
 				<p>Most men who take their own lives aren’t in contact with any other agency, and don’t identify with much out there.  When asked, what they indicated they wanted was practical, anonymous, confidential help from professionals, which is why CALM was formed.</p>
 			
 				{?donations}
-					<p>So far Neil has raised £{donations.neil.total} including gift aid for C.A.L.M. <a href="{donations.neil.url}">Help Neil reach his £{donations.neil.target} target.</a></p>
+					<p>So far Neil has raised £{donations.neil.total} for C.A.L.M, <a href="{donations.neil.url}">{@gt key=donations.neil.target value=0}help Neil reach his £{donations.neil.target} target{:else}help Neil raise money for C.A.L.M{/gt}.</a></p>
 				{:else}
-					<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=NeilPhillipsTCR">Help Neil raise money for C.A.L.M.</a></p>
-				{/donations}
+					<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=NeilPhillipsTCR">Help Neil raise money for C.A.L.M.</a></p>				{/donations}
 
 				<h2>Sue Ryder</h2>	
 				<p><a href="http://www.sueryder.org/">Sue Ryder</a> provide incredible hospice and neurological care for people facing a frightening, lifechanging diagnosis. We do whatever we can to be a safety net for our patients and their loved ones at the most difficult time of their lives. We see the person, not the condition.</p>
 				 <p>Not only do we treat more conditions than any other UK charity in our hospices, neurological care centres and out in the community; we also campaign to improve the lives of people living with them. We see the person, not the condition, taking time to understand the small things that help that person live the fullest life they can.</p>
 			
-				<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=TimothyFrance">Help Tim raise money for Sue Ryder.</a></p>
-
+				{?donations}
+					<p>So far Tim has raised £{donations.tim.total} for Sue Ryder, <a href="{donations.neil.url}">{@gt key=donations.tim.target value=0}help Tim reach his £{donations.tim.target} target{:else}help Tim raise money for Sue Ryder{/gt}.</a></p>
+				{:else}
+					<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=TimothyFrance">Help Tim raise money for Sue Ryder.</a></p>
+				{/donations}
+				
 </div>
 		</div>
 	</div>
@@ -53,4 +62,14 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64360970-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 {/scripts}

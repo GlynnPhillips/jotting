@@ -33,22 +33,36 @@ exports.donate = function (app) {
 			{
 				name: 'neil',
 				url: app.opts.neil_donate_api
+			},
+			{
+				name: 'tim',
+				url: app.opts.tim_donate_api
 			}
 		];
-		request(app.opts.neil_donate_api, function (error, response, body) {
-			var donations = {};
-			if (!error && response.statusCode == 200) {
-				var body = JSON.parse(body);
-				donations['neil'] = {
-					total: body.pageDetails[0].donationTotalGA,
-					target: body.pageDetails[0].targetAmount,
-					url: body.personalUrl
-				}
-				res.render('donate', {donations: donations});
-			 } else {
+
+		var donations = {};
+			
+		async.each(riders, function(rider, callback) {
+
+			request(rider.url, function (error, response, body) {
+				if (!error && response.statusCode == 200) {
+					var body = JSON.parse(body);
+					donations[rider.name] = {
+						total: body.pageDetails[0].donationTotalNet,
+						target: body.pageDetails[0].targetAmount,
+						url: body.personalUrl
+					}
+					callback();
+				 }
+
+			});
+		}, function(err){
+			if( err ) {
 				res.render('donate');
-			 }
-		});			
+			} else {
+				res.render('donate', {donations: donations});
+			}
+		});	
 			
 	}
 };

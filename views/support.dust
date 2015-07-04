@@ -24,7 +24,7 @@
 			{>menu /}	
 			<div class="hide-overflow col-12">
 				
-				<p>To allow us to embark on this adventure we have had the kind support of several sponsors. We are hugely appreciative of this amazing backing, supplying us with some of the best kit available.</p>
+				<p>To allow us to embark on this adventure we have had the kind support of several sponsors. We are hugely appreciative of this amazing backing, supplying us with some of the best <a href="/kit/">kit</a> available.</p>
 				<div class="text-center">
 					<a href="http://www.genesisbikes.co.uk" class="no-dec opacity">
 						<img src="/resources/img/genesis-logo.png" alt="Genesis Bikes" />	
@@ -47,11 +47,17 @@
 						<img src="/resources/img/lazer-logo.png" alt="Lazer Helmets" />	
 					</a>
 					<br />
+					<a href="http://www.tokyofixed.cc/" class="no-dec opacity">
+						<img src="/resources/img/tokyo-fixed-logo.png" alt="Tokyo Fixed" />	
+					</a>
+					<a href="http://uk.oakley.com/" class="no-dec opacity">
+						<img src="/resources/img/oakley-logo.png" alt="Oakley" />	
+					</a>
 					<a href="http://www.shimano.co.uk/" class="no-dec opacity">
 						<img src="/resources/img/shimano-logo.png" alt="Shimano" />	
 					</a>
-					<a href="http://www.tokyofixed.cc/" class="no-dec opacity">
-						<img src="/resources/img/tokyo-fixed-logo.png" alt="Tokyo Fixed" />	
+					<a href="https://www.fujifilm.eu/uk/" class="no-dec opacity">
+						<img src="/resources/img/fuji-logo.png" alt="Fujifilm" />	
 					</a>
 				</div>
 			</div>

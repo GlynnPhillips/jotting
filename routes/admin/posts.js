@@ -127,11 +127,7 @@ exports.add = function (app){
 				}
 			}
 		}
-		if(typeof uploadedImages !== 'undefined' && uploadedImages.length > 0) {
-			getExifData(uploadedImages);
-		} else {
-			createRecord([]);	
-		}
+		createRecord(uploadedImages);	
 	}
 };
 

@@ -1,6 +1,7 @@
 // Auto Save
 
 var form = document.querySelector('[data-object="autosave"]');
+var message = document.querySelector('[data-object="autosave-message"]');
 
 if(form) {
 	
@@ -29,15 +30,23 @@ if(form) {
 		request.open("POST", postUrl + "?as=true", true);
 
 		request.onreadystatechange = function () {
-			if (request.readyState != 4 || request.status != 200) return;
+			if (request.readyState != 4 || request.status != 200) {
+
+				message.innerHTML = 'Auto save failed! When you actually go to save it might fail as well, make sure you backup the bulk of your writing.';
+				message.classList.add('failure');
+
+				setTimeout(function() { 
+					message.classList.remove('failure');
+					message.innerHTML = '';
+				}, 5000)
+
+			} else {
 				var req = JSON.parse(request.responseText); 
 				
 				if(req.type === 'save') {
-					console.log('First save');
 					form.setAttribute('action', postUrl + req.id);
-				} else {
-					console.log('repeat save');
 				}
+			}
 		};
 		
 		request.send(data);

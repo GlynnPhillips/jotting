@@ -117,3 +117,16 @@ li {
 	width: 150px;
 	margin-bottom: 10px;
 }
+
+.autosave-message {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.autosave-message.failure {
+	padding: 5px 0;
+	background: #D10202;
+	color: #fff;
+	width: 100%;
+}

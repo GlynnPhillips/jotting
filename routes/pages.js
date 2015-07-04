@@ -66,3 +66,10 @@ exports.donate = function (app) {
 			
 	}
 };
+
+exports.kit = function (app) {
+	return function (req, res) {
+		res.render('kit');
+	}
+};
+

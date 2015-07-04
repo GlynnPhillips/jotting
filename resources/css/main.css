@@ -71,6 +71,23 @@ img {
 	opacity: 1;
 }
 
+
+dt,
+dd {
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+
+dt {
+	clear: left;
+	padding-right: 6px;
+	font-weight: 900;
+}
+
+dd {
+	padding-bottom: 6px;
+}
 /*-------------
  Hero
 -------------*/
@@ -199,7 +216,7 @@ img {
 }
 
 .js-menu.reveal-menu {
-	max-height: 200px;
+	max-height: 400px;
 }
 
 .js-menu.main-menu a {

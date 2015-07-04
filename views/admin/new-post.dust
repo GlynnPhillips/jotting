@@ -5,6 +5,8 @@
 {/styles}
 
 {<content}
+	<div class="autosave-message" data-object="autosave-message"></div>
+
 	<form action="/admin/add-post/{post._id}" method="post" enctype="multipart/form-data" data-object="autosave">
 		
 		<label for="title" class="grid-12">Post Title</label>

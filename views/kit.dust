@@ -1,0 +1,86 @@
+{>layout /}
+
+{<styles}
+	<title>Cobbles to Kebabs | Kit</title>
+	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+	<meta property="og:title" content="Kit" />
+	<meta property="og:site_name" content="Cobbles to Kebabs" />
+	<meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/cobbles/fullsize/trm59bpqdg4mfri-5spb_dwmquikln0lqjf_z0qzj0u-xju8pgzb_d5zi0clqs8rieq5jgahtw2ynzdnsd-4yya1435606520056.jpeg") />
+	<meta property="og:url" content="http://cobbles-to-kebabs.co.uk/kit/" />
+	<meta property="og:type" content="website" />
+{/styles}
+
+{<content}
+	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/fullsize/trm59bpqdg4mfri-5spb_dwmquikln0lqjf_z0qzj0u-xju8pgzb_d5zi0clqs8rieq5jgahtw2ynzdnsd-4yya1435606520056.jpeg); background-size: cover; background-position: 50%;">
+		<div class="pa20">
+			
+			<h2 class="mb10"></h2>
+			<h1 class="heading-text">The Kit</h1>
+		</div>
+	</div>
+
+	<div class="content pa20 hide-overflow" id="content">
+		
+		<div class="main-body">
+			{>menu /}	
+			<div class="hide-overflow col-12">
+				
+				<p>To allow us to embark on this adventure we have had the kind <a href="/support/">support of several sponsors</a>. We are hugely appreciative of this amazing backing, supplying us with some of the best kit available.</p>
+				
+				<dl>
+					<dt>Frame: </dt><dd>Prototype Genesis Datum (full carbon, 3 bottle cage mounts, hidden fender mounts)</dd>
+			
+					<dt>Fork: </dt><dd>Prototype Genesis Datum</dd>
+					<dt>Headset: </dt><dd>FSA Orbit</dd>
+
+
+					<dt>Bars: </dt><dd>Pro PLT compact 40cm</dd>
+					<dt>TT extensions: </dt><dd>Profile Design T2 clip-on aero bars</dd>
+					<dt>Stem: </dt><dd>Pro PLT 120mm -10degree</dd>
+					<dt>Seatpost: </dt><dd>Pro Vibe PLT</dd>
+
+					<dt>Saddle: </dt><dd>Pro Vibe Condor stainless</dd>
+					<dt>Bar Tape: </dt><dd>Pro digital Carbon bar tape</dd>
+
+					<dt>Bottom Bracket: </dt><dd>Shimano Road press fit</dd>
+					<dt>Crankset: </dt><dd>Shimano Ultegra FC-6800 172.5 52/36</dd>
+					<dt>Shifters: </dt><dd>ST-R785 hydro</dd>
+					<dt>Front rotor: </dt><dd>160mm</dd>
+					<dt>Rear rotor: </dt><dd>160mm</dd>
+					<dt>Front Mech: </dt><dd>Ultegra 6800</dd>
+					<dt>Rear Mech: </dt><dd>Ultegra 6800 GS cage</dd>
+					<dt>Cassette: </dt><dd>Ultegra CS-6700 11-32</dd>
+					<dt>Chain: </dt><dd>KMC X-11 (with quick links)</dd>
+
+
+					<dt>Front Rim: </dt><dd>DT Swiss XR331 32h</dd>
+					<dt>Rear Rim: </dt><dd>DT Swiss XR331 32h</dd>
+					<dt>Front Hub: </dt><dd>Shutter Precision SP 8X dynamo 15mm thru-axle</dd>
+					<dt>Rear Hub: </dt><dd>DT swiss 240S road rear 32h rear 142/12 centrelock</dd>
+					<dt>Tyres: </dt><dd>Gatorskin 32c folding</dd>
+
+					<dt>Front Light: </dt><dd>Supernova E3 Pro</dd>
+					<dt>Rear Light: </dt><dd>Supernove E3 taillight</dd>	
+				</dl>
+				
+		</div>
+	</div>
+{/content}
+
+
+{<scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64360970-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+{/scripts}

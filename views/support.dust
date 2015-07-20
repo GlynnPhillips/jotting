@@ -25,7 +25,7 @@
 			<div class="hide-overflow col-12">
 				
 				<p>To allow us to embark on this adventure we have had the kind support of several sponsors. We are hugely appreciative of this amazing backing, supplying us with some of the best <a href="/kit/">kit</a> available.</p>
-				<div class="text-center">
+				<div class="text-center mb60">
 					<a href="http://www.genesisbikes.co.uk" class="no-dec opacity">
 						<img src="/resources/img/genesis-logo.png" alt="Genesis Bikes" />	
 					</a>
@@ -59,7 +59,11 @@
 					<a href="https://www.fujifilm.eu/uk/" class="no-dec opacity">
 						<img src="/resources/img/fuji-logo.png" alt="Fujifilm" />	
 					</a>
+					<a href="http://www.rapha.cc/gb/en/" class="no-dec opacity">
+						<img src="/resources/img/rapha-logo.png" alt="Rapha">
+					</a>
 				</div>
+				<p>The Cobbles to Kebabs website and logo was designed and developed by <a href="http://www.glynnphillips.co.uk">Glynn Phillips</a></p>
 			</div>
 		</div>
 	</div>

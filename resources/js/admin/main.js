@@ -30,23 +30,32 @@ if(form) {
 		request.open("POST", postUrl + "?as=true", true);
 
 		request.onreadystatechange = function () {
-			if (request.readyState != 4 || request.status != 200) {
-
-				message.innerHTML = 'Auto save failed! When you actually go to save it might fail as well, make sure you backup the bulk of your writing.';
-				message.classList.add('failure');
-
-				setTimeout(function() { 
-					message.classList.remove('failure');
-					message.innerHTML = '';
-				}, 5000)
-
-			} else {
+			if(request.responseText !== "") {
 				var req = JSON.parse(request.responseText); 
-				
-				if(req.type === 'save') {
-					form.setAttribute('action', postUrl + req.id);
+
+				if (request.readyState != 4 || request.status != 200) {
+
+					if(req.type === 'save' || req.type === 'update') {
+						if(req.type === 'save') {
+							form.setAttribute('action', postUrl + req.id);
+						}
+
+					} else {
+					
+						message.innerHTML = 'Auto save failed! When you actually go to save it might fail as well, make sure you backup the bulk of your writing.';
+						message.classList.add('failure');
+
+						setTimeout(function() { 
+							message.classList.remove('failure');
+							message.innerHTML = '';
+						}, 5000)
+
+
+					}
 				}
+
 			}
+			
 		};
 		
 		request.send(data);

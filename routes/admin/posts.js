@@ -101,7 +101,7 @@ exports.add = function (app){
 				postEntry.images = postImages;
 
 				if(autoSave) {
-					posts.addPost(postEntry, function (newPost) {
+					posts.addPost(postEntry, function (newPost, err) {
 						res.send({id: newPost._id, type: 'save'});
 					});
 				} else {
@@ -116,8 +116,8 @@ exports.add = function (app){
 				}
 				
 				if(autoSave) {
-					posts.updatePost({_id: id}, postEntry, function (updatedPost) {
-						res.send({id: updatedPost._id, type: 'update'});
+					posts.updatePost({_id: id}, postEntry, function (updatedPost, err) {
+						res.status(200).send({id: updatedPost._id, type: 'update'});
 					});
 				} else {
 					posts.updatePost({_id: id}, postEntry, function () {

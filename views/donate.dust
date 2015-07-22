@@ -37,7 +37,7 @@
 				<p>Most men who take their own lives aren’t in contact with any other agency, and don’t identify with much out there.  When asked, what they indicated they wanted was practical, anonymous, confidential help from professionals, which is why CALM was formed.</p>
 			
 				{?donations}
-					<p>So far Neil has raised £{donations.neil.total} for C.A.L.M, <a href="{donations.neil.url}">{@gt key=donations.neil.target value=0}help Neil reach his £{donations.neil.target} target{:else}help Neil raise money for C.A.L.M{/gt}.</a></p>
+					<p>So far Neil has raised £{donations.neil.total}, {@gt key=donations.neil.target value=0}{@lt key=donations.neil.total value=donations.neil.target}<a href="{donations.neil.url}">help Neil reach his £{donations.neil.target} target</a>{:else}so has smashed his £{donations.neil.target} target but don't stop there and <a href="{donations.neil.url}">help Neil raise as much as possible for C.A.L.M</a>{/lt}{:else}help Neil raise money for C.A.L.M{/gt}.</p>
 				{:else}
 					<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=NeilPhillipsTCR">Help Neil raise money for C.A.L.M.</a></p>				{/donations}
 
@@ -46,7 +46,7 @@
 				 <p>Not only do we treat more conditions than any other UK charity in our hospices, neurological care centres and out in the community; we also campaign to improve the lives of people living with them. We see the person, not the condition, taking time to understand the small things that help that person live the fullest life they can.</p>
 			
 				{?donations}
-					<p>So far Tim has raised £{donations.tim.total} for Sue Ryder, <a href="{donations.neil.url}">{@gt key=donations.tim.target value=0}help Tim reach his £{donations.tim.target} target{:else}help Tim raise money for Sue Ryder{/gt}.</a></p>
+					<p>So far Tim has raised £{donations.tim.total} for Sue Ryder, <a href="{donations.tim.url}">{@gt key=donations.tim.target value=0}help Tim reach his £{donations.tim.target} target{:else}help Tim raise money for Sue Ryder{/gt}.</a></p>
 				{:else}
 					<p><a href="http://uk.virginmoneygiving.com/fundraiser-web/fundraiser/showFundraiserProfilePage.action?userUrl=TimothyFrance">Help Tim raise money for Sue Ryder.</a></p>
 				{/donations}

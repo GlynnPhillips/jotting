@@ -56,6 +56,7 @@ function configureAssets(app) {
 	});
 	
 	app.express.use('/resources', express.static(__dirname+'/resources'));
+	app.express.use('/sitemap.xml', express.static(__dirname+'/sitemap.xml'));
 	app.express.use(app.opts.store, express.static(app.opts.store));
 	app.express.use(multer({
         dest: app.opts.store,

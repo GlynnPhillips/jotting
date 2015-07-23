@@ -4,6 +4,7 @@ var posts = mongoose.model('posts');
 var marked = require('marked');
 var im = require('imagemagick');
 var async = require('async');
+var twitterAPI = require('node-twitter-api');
 
 exports.index = function (req, res){
 	
@@ -43,7 +44,8 @@ exports.add = function (app){
 			stravaId = req.body.strava || '',
 			uploadedImages = req.files.image,
 			featuredImage = req.body.featured || null,
-			autoSave = req.query.as || false
+			autoSave = req.query.as || false;
+
 		
 		
 		if(typeof uploadedImages !== 'undefined') {
@@ -95,9 +97,13 @@ exports.add = function (app){
 				strava_id: stravaId,
 				country: postCountry,
 				featured_image: featuredImage 
-			}
+			};
+
+			var tweet = "Update on my progress in the #TCR2015 - " + postTitle + " http://cobbles-to-kebabs.co.uk/post/";
+			
 			
 			if(!id) {
+				
 				postEntry.images = postImages;
 
 				if(autoSave) {
@@ -106,6 +112,28 @@ exports.add = function (app){
 					});
 				} else {
 					posts.addPost(postEntry, function (newPost) {
+						if(postEntry.published) {
+							
+							var twitter = new twitterAPI({
+								consumerKey: app.opts.twitter_key,
+								consumerSecret: app.opts.twitter_secret,
+								callback: 'http://cobbles-to-kebabs.co.uk'
+							});
+
+							twitter.statuses("update", {
+									status: tweet + newPost._id
+								},
+								app.opts.twitter_access,
+								app.opts.twitter_access_secret,
+								function(error, data, response) {
+									if (error) {
+										console.log(error);
+									}
+								}
+							);
+							
+						}
+						
 						res.redirect('/admin/posts');
 					});
 				}
@@ -121,6 +149,27 @@ exports.add = function (app){
 					});
 				} else {
 					posts.updatePost({_id: id}, postEntry, function () {
+						if(postEntry.published) {
+							
+							var twitter = new twitterAPI({
+								consumerKey: app.opts.twitter_key,
+								consumerSecret: app.opts.twitter_secret,
+								callback: 'http://cobbles-to-kebabs.co.uk'
+							});
+
+							twitter.statuses("update", {
+									status: tweet + id
+								},
+								app.opts.twitter_access,
+								app.opts.twitter_access_secret,
+								function(error, data, response) {
+									if (error) {
+										console.log(error);
+									}
+								}
+							);
+							
+						}
 						res.redirect('/admin/posts');
 					});
 

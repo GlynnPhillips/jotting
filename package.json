@@ -37,6 +37,7 @@
     "marked": "^0.3.3",
     "mongoose": "~3.8.24",
     "multer": "^0.1.8",
+    "node-twitter-api": "^1.6.0",
     "quickthumb": "0.0.11",
     "request": "^2.58.0",
     "strava-v3": "^1.7.0",

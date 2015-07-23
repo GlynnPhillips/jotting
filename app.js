@@ -13,7 +13,11 @@ var opts = {
 	s3_bucket: process.env.s3_bucket,
 	s3_secret: process.env.s3_secret,
 	neil_donate_api: process.env.neil_donate_api,
-	tim_donate_api: process.env.tim_donate_api
+	tim_donate_api: process.env.tim_donate_api,
+	twitter_key: process.env.twitter_key,
+	twitter_secret: process.env.twitter_secret,
+	twitter_access: process.env.twitter_access,
+	twitter_access_secret: process.env.twitter_access_secret
 };
 
 opts.thumb_store = opts.store + '/thumbs';

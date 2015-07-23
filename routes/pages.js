@@ -73,3 +73,8 @@ exports.kit = function (app) {
 	}
 };
 
+exports.live = function (app) {
+	return function (req, res) {
+		res.render('live');
+	}
+};

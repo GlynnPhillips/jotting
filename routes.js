@@ -30,6 +30,7 @@ function loadRoutes(app) {
 	app.express.get('/support', pages.support(app));
 	app.express.get('/donate', pages.donate(app));
 	app.express.get('/kit', pages.kit(app));
+	app.express.get('/live', pages.live(app));
 }
 
 

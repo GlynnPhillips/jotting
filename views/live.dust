@@ -1,0 +1,49 @@
+{>layout /}
+
+{<styles}
+	<title>Cobbles to Kebabs | The riders</title>
+	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+	<meta property="og:title" content="About us | The riders" />
+	<meta property="og:site_name" content="Cobbles to Kebabs" />
+	<meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/cobbles/large/support1434575385034.jpg" />
+	<meta property="og:url" content="http://cobbles-to-kebabs.co.uk/us" />
+	<meta property="og:type" content="website" />
+{/styles}
+
+{<content}
+	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/large/img_50251434572091156.JPG); background-size: cover; background-position: 50%;">
+		<div class="pa20">
+			
+			<h2 class="mb10">Watch it unfold</h2>
+			<h1 class="heading-text">Live Progress</h1>
+		</div>
+	</div>
+
+	<div class="content pa20 hide-overflow" id="content">
+		
+		<div class="main-body">
+			{>menu /}	
+			<div class="hide-overflow col-12">
+				<iframe src="http://trackleaders.com/transconrace15f" class="live-progress" frameborder="0" scrolling="no"></iframe>	
+			</div>
+		</div>
+	</div>
+{/content}
+
+
+{<scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<script type="text/javascript" src="/resources/js/main.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64360970-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+{/scripts}

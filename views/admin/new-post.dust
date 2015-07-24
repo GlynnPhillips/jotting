@@ -50,7 +50,7 @@
 				<li>
 					<input type="radio" name="featured" value="{cloudinary.id}.{cloudinary.format}" class="featured-image" id="{cloudinary.id}.{cloudinary.format}"/>
 					<label for="{cloudinary.id}.{cloudinary.format}">
-						<img src="http://res.cloudinary.com/dzhgr7vgx/image/upload/w_90,h_90,c_fill/{cloudinary.id}.{cloudinary.format}" />
+						<img src="http://res.cloudinary.com/dzhgr7vgx/image/upload/w_90,h_90,c_fill,q_30/{cloudinary.id}.{cloudinary.format}" />
 					</label></li>
 			{/post.images}
 		</ul>

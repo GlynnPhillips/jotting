@@ -1,9 +1,9 @@
 {>layout /}
 
 {<styles}
-	<title>Cobbles to Kebabs | The riders</title>
+	<title>Cobbles to Kebabs | Live Progress</title>
 	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
-	<meta property="og:title" content="About us | The riders" />
+	<meta property="og:title" content="Live Progress" />
 	<meta property="og:site_name" content="Cobbles to Kebabs" />
 	<meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/cobbles/large/support1434575385034.jpg" />
 	<meta property="og:url" content="http://cobbles-to-kebabs.co.uk/us" />
@@ -23,6 +23,11 @@
 		
 		<div class="main-body">
 			{>menu /}	
+			<div class="hide-overflow col-12">
+				<p>You can keep up-to-date with everyones progress throughout the race thanks to real time race tracking provided by <a href="http://www.transcontinental.cc/">Transcontinental Race</a>, <a href="http://international.findmespot.com/">SPOT</a> and <a href="http://trackleaders.com/">Track Leaders</a>.</p>
+
+				<p>Throughout the event our race number will be 172.</p>
+			</div>
 			<div class="hide-overflow col-12">
 				<iframe src="http://trackleaders.com/transconrace15f" class="live-progress" frameborder="0" scrolling="no"></iframe>	
 			</div>

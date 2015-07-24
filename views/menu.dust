@@ -7,6 +7,7 @@
 		</a>
 		<ul class="main-menu" id="main-menu">
 			<li><a href="/" class="no-dec">Home</a></li>
+			<li><a href="/live/" class="no-dec">Live Progress</a></li>
 			<li><a href="/us/" class="no-dec">About Us</a></li>
 			<li><a href="/support/" class="no-dec">Supported By</a></li>
 			<li><a href="/kit/" class="no-dec">The Kit</a></li>

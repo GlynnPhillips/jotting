@@ -14,7 +14,6 @@ exports.page = function (app) {
 				var html = marked(post.content);
 				post.html = html;
 				post.image_path = app.opts.image_path;
-								
 				if(post.strava_id) {
 					strava.activities.get({id:post.strava_id},function(err,payload) {
 						if(!err) {

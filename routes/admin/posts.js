@@ -5,6 +5,7 @@ var marked = require('marked');
 var im = require('imagemagick');
 var async = require('async');
 var twitterAPI = require('node-twitter-api');
+var cloudinary = require('cloudinary');
 
 exports.index = function (req, res){
 	
@@ -47,11 +48,6 @@ exports.add = function (app){
 			autoSave = req.query.as || false;
 
 		
-		
-		if(typeof uploadedImages !== 'undefined') {
-			uploadedImages = [].concat(req.files.image);
-		}
-
 		if(req.body.pub_status === 'on') {
 			pubStatus = true;
 
@@ -60,31 +56,40 @@ exports.add = function (app){
 			}
 		}
 		
-		function getExifData (images, callback) {
-			var postImages = [];
-			async.each(images, function(image, callback) {
-				im.readMetadata(app.opts.store + '/' + image.name, function(error, metadata) {
-				if(error) {
-					throw error;
-				}
-				if(metadata.exif) {
-						image.latitude = metadata.exif.gpsLatitude || '';
-						image.longitude = metadata.exif.gpsLongitude || '';
-					} else {
-						image.latitude = '';
-						image.longitude = '';
-					}
-					postImages.push(image);
+		if(typeof uploadedImages !== 'undefined') {
+			uploadedImages = [].concat(req.files.image);
+			cloudinary.config({ 
+				cloud_name: 'dzhgr7vgx', 
+				api_key: '651425911969212', 
+				api_secret: 'NQ7BN-01L7NkCTQi0xmW2Rw0zqI' 
+			});
+			
+
+			
+			async.each(uploadedImages, function(file, callback) {
+
+				cloudinary.uploader.upload(file.path, function(result) { 
+					uploadedImages[uploadedImages.indexOf(file)].cloudinary = {
+						id: result.public_id,
+						format: result.format
+					};
 					callback();
 				});
-			}, function(error) {
-				if(error) {
-					throw error;
+			}, function(err){
+				if( err ) {
+				  console.log('A file failed to process');
+				} else {
+				  console.log('All files have been processed successfully');
+					createRecord(uploadedImages);	
 				}
-				createRecord(postImages);
 			});
+		} else {
+			createRecord(uploadedImages);	
 		}
+
+	
 		
+
 		function createRecord (postImages) {
 			var postEntry = {
 				published: pubStatus,
@@ -98,7 +103,8 @@ exports.add = function (app){
 				country: postCountry,
 				featured_image: featuredImage 
 			};
-
+			
+			console.log(postImages)
 			var tweet = "Update on my progress in the #TCR2015 - " + postTitle + " http://cobbles-to-kebabs.co.uk/post/";
 			
 			
@@ -176,7 +182,6 @@ exports.add = function (app){
 				}
 			}
 		}
-		createRecord(uploadedImages);	
 	}
 };
 

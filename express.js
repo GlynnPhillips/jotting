@@ -59,47 +59,7 @@ function configureAssets(app) {
 	app.express.use('/sitemap.xml', express.static(__dirname+'/sitemap.xml'));
 	app.express.use(app.opts.store, express.static(app.opts.store));
 	app.express.use(multer({
-        dest: app.opts.store,
-        rename: function (fieldname, filename) {
-			return filename.replace(/\W+/g, '-').toLowerCase() + Date.now()
-		},
-		onFileUploadComplete: function (file, req, res) {
-			var upload = new MultiPartUpload({
-				client: client,
-				objectName: '/fullsize/'+file.name,
-				file: file.path,
-				headers: {'x-amz-acl': 'public-read'}
-			});
-			easyimg.rescrop({
-				src:file.path, dst:app.opts.thumb_store + '/' + file.name,
-				width:450, height:450,
-				quality: 80,
-				cropwidth:300, cropheight:300,
-				x:0, y:0
-			}).then(function(image) {
-				var upload = new MultiPartUpload({
-					client: client,
-					objectName: '/thumbs/'+file.name,
-					file: app.opts.thumb_store + '/' + file.name,
-					headers: {'x-amz-acl': 'public-read'}
-				});
-			}, function (err) {
-				console.log(err);
-			});
-			easyimg.resize({
-				src:file.path, dst:app.opts.large_store + '/' + file.name,
-				width:1200, height:1200,
-			}).then(function(image) {
-				var upload = new MultiPartUpload({
-					client: client,
-					objectName: '/large/'+file.name,
-					file: app.opts.large_store + '/' + file.name,
-					headers: {'x-amz-acl': 'public-read'}
-				});
-			}, function (err) {
-				console.log(err);
-			});
-		}
+        dest: app.opts.store
 	}));
 	return app;
 }

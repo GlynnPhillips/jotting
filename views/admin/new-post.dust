@@ -48,9 +48,9 @@
 		<ul> 	
 			{#post.images}
 				<li>
-					<input type="radio" name="featured" value="{name}" class="featured-image" id="{name}" {@select key=post.featured_image}{@eq value=name} checked {/eq}{/select}/>
-					<label for="{name}">
-						<img src="{post.image_path}/thumbs/{name}" />
+					<input type="radio" name="featured" value="{cloudinary.id}.{cloudinary.format}" class="featured-image" id="{cloudinary.id}.{cloudinary.format}"/>
+					<label for="{cloudinary.id}.{cloudinary.format}">
+						<img src="http://res.cloudinary.com/dzhgr7vgx/image/upload/w_90,h_90,c_fill/{cloudinary.id}.{cloudinary.format}" />
 					</label></li>
 			{/post.images}
 		</ul>

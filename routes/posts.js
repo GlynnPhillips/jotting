@@ -5,7 +5,7 @@ var strava = require('strava-v3');
 var knox = require('knox');
 var async = require('async');
 
-exports.page = function (app) {
+exports.index = function (app) {
 	return function (req, res) {
 		var id = req.params.id;
 		posts.byId({_id: id}, function(post) {

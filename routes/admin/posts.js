@@ -104,7 +104,6 @@ exports.add = function (app){
 				featured_image: featuredImage 
 			};
 			
-			console.log(postImages)
 			var tweet = "Update on my progress in the #TCR2015 - " + postTitle + " http://cobbles-to-kebabs.co.uk/post/";
 			
 			

@@ -23,7 +23,7 @@ function loadRoutes(app) {
 	app.express.get('/admin/login_failure', login.index);
 	app.express.post('/admin/login', login.authenticate(app));
 	
-	app.express.get('/post/:id', posts.page(app));
+	app.express.get('/post/:id', posts.index(app));
 	app.express.get('/', pages.index(app));
 	
 	app.express.get('/us', pages.us(app));

@@ -1,6 +1,6 @@
 {>layout /}
 
-{<styles}
+{<head}
 	<title>Cobbles to Kebabs | {post.title}</title>
 	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/resources/css/baguettebox.css" />
@@ -13,7 +13,7 @@
 	{/post.featured_image}
 	<meta property="og:url" content="http://cobbles-to-kebabs.co.uk/post/{post._id}" />
 	<meta property="og:type" content="article" />
-{/styles}
+{/head}
 
 {<content}
 	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(http://res.cloudinary.com/dzhgr7vgx/image/upload/w_1200,h_1200,c_fit,q_90/{?post.featured_image}{post.featured_image}{:else}{post.images[0].cloudinary.id}.{post.images[0].cloudinary.format}{/post.featured_image}); background-size: cover; background-position: 50%;">
@@ -50,10 +50,20 @@
 {/content}
 
 
-{<scripts}
+{<foot}
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="/resources/js/baguettebox.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-{/scripts}
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-64360970-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+{/foot}

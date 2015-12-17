@@ -1,6 +1,6 @@
 {>layout /}
 
-{<styles}
+{<head}
 	<title>Cobbles to Kebabs | Kit</title>
 	<link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
 	<meta property="og:title" content="Kit" />
@@ -8,7 +8,7 @@
 	<meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/cobbles/fullsize/trm59bpqdg4mfri-5spb_dwmquikln0lqjf_z0qzj0u-xju8pgzb_d5zi0clqs8rieq5jgahtw2ynzdnsd-4yya1435606520056.jpeg") />
 	<meta property="og:url" content="http://cobbles-to-kebabs.co.uk/kit/" />
 	<meta property="og:type" content="website" />
-{/styles}
+{/head}
 
 {<content}
 	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/fullsize/trm59bpqdg4mfri-5spb_dwmquikln0lqjf_z0qzj0u-xju8pgzb_d5zi0clqs8rieq5jgahtw2ynzdnsd-4yya1435606520056.jpeg); background-size: cover; background-position: 50%;">
@@ -68,19 +68,19 @@
 {/content}
 
 
-{<scripts}
+{<foot}
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
 	<script type="text/javascript" src="/resources/js/main.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
 	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-64360970-1', 'auto');
-  ga('send', 'pageview');
+		ga('create', 'UA-64360970-1', 'auto');
+		ga('send', 'pageview');
 
-</script>
-{/scripts}
+	</script>
+{/foot}

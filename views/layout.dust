@@ -2,13 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="author" content="Glynn Phillips">
+		<meta name="description" content="One Yorkshireman, one Cornish man escaping London for two weeks for mainland Europes roads, as they race others unsupported to the border of Asia. With 4 intermediate checkpoints ahead the aim is to ride the +4000km route through the unknown challenging us both physically and mentally.">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		{+styles /}
+		{+head /}
 	</head>
 	 
 	<body>
 		{+content /}
 		
-		{+scripts /}
+		{+foot /}
 	</body>
 </html>

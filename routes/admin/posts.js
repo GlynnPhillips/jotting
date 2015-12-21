@@ -8,7 +8,6 @@ var twitterAPI = require('node-twitter-api');
 var cloudinary = require('cloudinary');
 
 exports.index = function (req, res){
-	
 	posts.list({}, function(allPosts) {
 		res.render('admin/posts', {posts: allPosts});
 	});
@@ -31,7 +30,7 @@ exports.new = function (app){
 	}
 };
 
-exports.add = function (app){
+exports.add = function (app) {
 	return function(req, res) {
 		var id = req.params.id,
 			pubStatus = false,
@@ -59,15 +58,12 @@ exports.add = function (app){
 		if(typeof uploadedImages !== 'undefined') {
 			uploadedImages = [].concat(req.files.image);
 			cloudinary.config({ 
-				cloud_name: 'dzhgr7vgx', 
-				api_key: '651425911969212', 
-				api_secret: 'NQ7BN-01L7NkCTQi0xmW2Rw0zqI' 
+				cloud_name: app.opts.store_name, 
+				api_key: app.opts.store_key, 
+				api_secret: app.opts.store_secret
 			});
 			
-
-			
 			async.each(uploadedImages, function(file, callback) {
-
 				cloudinary.uploader.upload(file.path, function(result) { 
 					uploadedImages[uploadedImages.indexOf(file)].cloudinary = {
 						id: result.public_id,
@@ -86,9 +82,6 @@ exports.add = function (app){
 		} else {
 			createRecord(uploadedImages);	
 		}
-
-	
-		
 
 		function createRecord (postImages) {
 			var postEntry = {

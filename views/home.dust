@@ -18,7 +18,7 @@
 		<div class="content pa20 hide-overflow">
 			<div class="main-body">
 				{>menu /}	
-				<p> {@substr str="hello world" len="5" /}   One Yorkshireman, one Cornish man escaping London for two weeks for mainland Europes roads, as they race others unsupported to the border of Asia.  With 4 intermediate checkpoints ahead the aim is to ride the +4000km route through the unknown challenging us both physically and mentally.</p> 
+				<p>One Yorkshireman, one Cornish man escaping London for two weeks for mainland Europes roads, as they race others unsupported to the border of Asia.  With 4 intermediate checkpoints ahead the aim is to ride the +4000km route through the unknown challenging us both physically and mentally.</p> 
 
 				<p>With aims to well exceed 300km a day, whilst wild camping under the stars at night for some well earned rest, we hope to raise some well earned support for charities.</p>
 

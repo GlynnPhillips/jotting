@@ -7,9 +7,6 @@ var multer = require('multer');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
-var knox = require('knox');
-var MultiPartUpload = require('knox-mpu');
-var easyimg = require('easyimage');
 
 exports.configureExpress = configureExpress;
 
@@ -49,12 +46,6 @@ function configureExpress (app) {
 }
 
 function configureAssets(app) {
-	var client = knox.createClient({
-		key: app.opts.s3_key,
-		secret: app.opts.s3_secret,
-		bucket: app.opts.s3_bucket
-	});
-	
 	app.express.use('/resources', express.static(__dirname+'/resources'));
 	app.express.use('/sitemap.xml', express.static(__dirname+'/sitemap.xml'));
 	app.express.use(app.opts.store, express.static(app.opts.store));

@@ -1,4 +1,3 @@
-var which_country = require('which-country');
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 var marked = require('marked');
@@ -40,7 +39,6 @@ exports.add = function (app) {
 			postLat = req.body.lat || '',
 			postLong = req.body.long || '',
 			postDate = req.body.date || '',
-			postCountry = which_country([postLong, postLat]) || '',
 			stravaId = req.body.strava || '',
 			uploadedImages = req.files.image,
 			featuredImage = req.body.featured || null,
@@ -93,7 +91,6 @@ exports.add = function (app) {
 				latitude: postLat,
 				longitude: postLong,
 				strava_id: stravaId,
-				country: postCountry,
 				featured_image: featuredImage 
 			};
 			

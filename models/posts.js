@@ -15,7 +15,6 @@ function configureModels (app) {
 		content: String,
 		latitude: String,
 		longitude: String,
-		country: String,
 		strava_id: String,
 		images: [],
 		featured_image: String

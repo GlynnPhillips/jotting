@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 var marked = require('marked');
 var strava = require('strava-v3');
-var knox = require('knox');
 var async = require('async');
 
 exports.index = function (app) {

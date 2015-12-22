@@ -17,7 +17,10 @@ var opts = {
 	twitter_key: process.env.twitter_key,
 	twitter_secret: process.env.twitter_secret,
 	twitter_access: process.env.twitter_access,
-	twitter_access_secret: process.env.twitter_access_secret
+	twitter_access_secret: process.env.twitter_access_secret,
+	store_key: process.env.store_key,
+	store_secret: process.env.store_secret,
+	store_name: process.env.store_name
 };
 
 opts.thumb_store = opts.store + '/thumbs';

@@ -1,8 +1,8 @@
 {>layout /}
 
-{<styles}
+{<head}
 	<link rel="stylesheet" type="text/css" href="/resources/css/admin.css" />
-{/styles}
+{/head}
 
 {<content}
 	<div class="autosave-message" data-object="autosave-message"></div>
@@ -66,6 +66,6 @@
 		
 	</form>
 {/content}
-{<scripts}
+{<foot}
 	<script type="text/javascript" src="/resources/js/admin/main.js"></script>
-{/scripts}
+{/foot}

@@ -1,8 +1,8 @@
 {>layout /}
 
-{<styles}
+{<head}
 	<link rel="stylesheet" type="text/css" href="/resources/css/admin.css" />
-{/styles}
+{/head}
 
 {<content}
 	<form action="/admin/login?dest={dest}" method="post">

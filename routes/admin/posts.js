@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 var marked = require('marked');
-var im = require('imagemagick');
 var async = require('async');
 var twitterAPI = require('node-twitter-api');
 var cloudinary = require('cloudinary');

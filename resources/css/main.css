@@ -138,7 +138,6 @@ dd {
 
 	.fs-hero {
 		position: relative;
-		background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(../img/hero.jpg) no-repeat;
 		background-size: cover;
 		height: 50%;
 		color: #fff;

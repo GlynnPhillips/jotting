@@ -11,7 +11,7 @@
 {/head}
 
 {<content}
-	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://s3-eu-west-1.amazonaws.com/cobbles/fullsize/trm59bpqdg4mfri-5spb_dwmquikln0lqjf_z0qzj0u-xju8pgzb_d5zi0clqs8rieq5jgahtw2ynzdnsd-4yya1435606520056.jpeg); background-size: cover; background-position: 50%;">
+	<div class="fs-hero text-center" style="background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(http://res.cloudinary.com/dzhgr7vgx/image/upload/v1437754203/kctzz9gi0piyybmacmql.jpg); background-size: cover; background-position: 50%;">
 		<div class="pa20">
 			
 			<h2 class="mb10"></h2>

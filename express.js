@@ -45,7 +45,7 @@ function configureExpress (app) {
 }
 
 function configureAssets(app) {
-	var upload = multer({ dest: app.opts.store });
+	app.express.use(multer({ dest: app.opts.store }).array('image'));
 	app.express.use('/resources', express.static(__dirname+'/resources'));
 	app.express.use('/sitemap.xml', express.static(__dirname+'/sitemap.xml'));
 	app.express.use(app.opts.store, express.static(app.opts.store));

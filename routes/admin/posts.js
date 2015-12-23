@@ -39,10 +39,9 @@ exports.add = function (app) {
 			postLong = req.body.long || '',
 			postDate = req.body.date || '',
 			stravaId = req.body.strava || '',
-			uploadedImages = req.files.image,
+			uploadedImages = req.files,
 			featuredImage = req.body.featured || null,
 			autoSave = req.query.as || false;
-
 		
 		if(req.body.pub_status === 'on') {
 			pubStatus = true;
@@ -53,7 +52,6 @@ exports.add = function (app) {
 		}
 		
 		if(typeof uploadedImages !== 'undefined') {
-			uploadedImages = [].concat(req.files.image);
 			cloudinary.config({ 
 				cloud_name: app.opts.store_name, 
 				api_key: app.opts.store_key, 

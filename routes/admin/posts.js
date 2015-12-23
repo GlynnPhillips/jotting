@@ -43,15 +43,7 @@ exports.add = function (app) {
 			featuredImage = req.body.featured || null,
 			autoSave = req.query.as || false;
 		
-		if(req.body.pub_status === 'on') {
-			pubStatus = true;
-
-			if(postDate === '') {
-				postDate = new Date();
-			}
-		}
-		
-		if(typeof uploadedImages !== 'undefined') {
+		var uploadImages = new Promise( function (resolve, reject) {
 			cloudinary.config({ 
 				cloud_name: app.opts.store_name, 
 				api_key: app.opts.store_key, 
@@ -68,15 +60,34 @@ exports.add = function (app) {
 				});
 			}, function(err){
 				if( err ) {
-				  console.log('A file failed to process');
+					console.log('A file failed to process');
+					reject(err);
 				} else {
-				  console.log('All files have been processed successfully');
-					createRecord(uploadedImages);	
+					console.log('All files have been processed successfully');
+					resolve();
 				}
 			});
-		} else {
-			createRecord(uploadedImages);	
+			return uploadImages;
+		});
+		if(req.body.pub_status === 'on') {
+			pubStatus = true;
+
+			if(postDate === '') {
+				postDate = new Date();
+			}
 		}
+		
+		if(typeof uploadedImages !== 'undefined') {
+			uploadImages.then(function() {
+				createRecord(uploadedImages);	
+			}).catch(function(err) {
+				console.log(err);
+			});
+		} else {
+				createRecord(uploadedImages);
+		}
+
+
 
 		function createRecord (postImages) {
 			var postEntry = {

@@ -1,6 +1,5 @@
-'use strict'
+'use strict';
 
-var express = require('express');
 var startApplication = require('./start.js');
 var opts = {
 	credentials: process.env.CREDENTIALS,
@@ -24,7 +23,7 @@ opts.thumb_store = opts.store + '/thumbs';
 opts.large_store = opts.store + '/large';
 opts.admin_store = opts.store + '/admin';
 
-startApplication(opts, function (err, app) {
+startApplication(opts, function (err) {
 	if(err) {
 		throw (err);	
 	}

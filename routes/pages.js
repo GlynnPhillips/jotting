@@ -1,3 +1,5 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 var request = require('request');
@@ -6,25 +8,25 @@ var async = require('async');
 exports.index = function (app) {
 	return function (req, res) {
 		posts.list({published: true}, function(posts) {
-			stores = {
+			var stores = {
 				fullsize: app.opts.store,
 				thumbs: app.opts.thumb_store
-			}
+			};
 			res.render('home', {posts: posts, stores: stores});
 		});
-	}
+	};
 };
 
-exports.us = function (app) {
+exports.us = function () {
 	return function (req, res) {
 		res.render('us');
-	}
+	};
 };
 
-exports.support = function (app) {
+exports.support = function () {
 	return function (req, res) {
 		res.render('support');
-	}
+	};
 };
 
 exports.donate = function (app) {
@@ -45,13 +47,13 @@ exports.donate = function (app) {
 		async.each(riders, function(rider, callback) {
 
 			request(rider.url, function (error, response, body) {
-				if (!error && response.statusCode == 200) {
+				if (!error && response.statusCode === 200) {
 					var body = JSON.parse(body);
 					donations[rider.name] = {
 						total: body.pageDetails[0].donationTotalNet,
 						target: body.pageDetails[0].targetAmount,
 						url: body.personalUrl
-					}
+					};
 					callback();
 				 }
 
@@ -64,17 +66,17 @@ exports.donate = function (app) {
 			}
 		});	
 			
-	}
+	};
 };
 
-exports.kit = function (app) {
+exports.kit = function () {
 	return function (req, res) {
 		res.render('kit');
-	}
+	};
 };
 
-exports.live = function (app) {
+exports.live = function () {
 	return function (req, res) {
 		res.render('live');
-	}
+	};
 };

@@ -1,8 +1,9 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 var marked = require('marked');
 var strava = require('strava-v3');
-var async = require('async');
 
 exports.index = function (app) {
 	return function (req, res) {
@@ -18,7 +19,7 @@ exports.index = function (app) {
 						if(!err) {
 							var activity = {};
 							
-							activity['elevation'] = payload.total_elevation_gain.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+							activity['elevation'] = payload.total_elevation_gain.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 							
 							activity['distance'] = payload.distance / 1000;
 							activity['distance'] = Math.round( activity['distance'] * 10 ) / 10;
@@ -33,7 +34,7 @@ exports.index = function (app) {
 							res.render('post', {post: post});
 						}
 
-					})
+					});
 				} else {
 					res.render('post', {post: post});
 				}
@@ -43,5 +44,5 @@ exports.index = function (app) {
 				res.status(404).send('Not found');
 			}
 		});
-	}
+	};
 };

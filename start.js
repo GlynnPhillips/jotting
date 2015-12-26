@@ -29,7 +29,7 @@ function startApplication(opts, done) {
 			}
 		});
 
-		done(null, app)
+		done(null, app);
 
 	});
 }

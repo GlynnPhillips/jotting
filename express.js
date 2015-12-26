@@ -1,5 +1,4 @@
 'use strict';
-var dust = require('dustjs-linkedin');
 var cons = require('consolidate');
 var express = require('express');
 var session = require('express-session');
@@ -14,14 +13,14 @@ function configureExpress (app) {
 	
 	var MongoStore = require('connect-mongo')(session);
 	
-	var dateformat = require('./helpers/dateformat');
-	var isMultple = require('./helpers/ismultiple');
-	var substr = require('./helpers/substr');
+	require('./helpers/dateformat');
+	require('./helpers/ismultiple');
+	require('./helpers/substr');
 
 	app.express = express();
 	app.express.use(session({
 		cookie: {
-			maxAge: 604800000 // 1 week
+			maxAge: 604800000
 		},
 		name: 'sess',
 		resave: false,
@@ -40,8 +39,7 @@ function configureExpress (app) {
 	app.express.set('view engine', 'dust');
 	app.express.set('views', __dirname + '/views/');
 
-
-	configureAssets(app)
+	configureAssets(app);
 }
 
 function configureAssets(app) {

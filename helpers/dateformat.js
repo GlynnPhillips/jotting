@@ -1,3 +1,5 @@
+'use strict';
+
 var dateformat = require('dateformat');
 var dust = require('dustjs-linkedin');
 

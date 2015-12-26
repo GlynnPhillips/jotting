@@ -1,13 +1,15 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 
-exports.index = function (req, res){
+exports.index = function (req, res) {
 	posts.list({}, function(allPosts) {
 		res.render('admin/posts', {posts: allPosts});
 	});
 };
 
-exports.new = function (app){
+exports.new = function (app) {
 	return function(req, res) {
 		var id = req.params.id;
 
@@ -19,55 +21,36 @@ exports.new = function (app){
 		} else {
 			res.render('admin/new-post');
 		}
-	}
+	};
 };
 
 exports.add = function (app) {
 	return function(req, res) {
-		var postData = {
-			id: req.params.id || null,
-			published: false,
-			user: req.body.user || req.session.user,
-			publish_date: req.body.date || '',
-			title: req.body.title || '',
-			content: req.body.content || '',
-			latitude: req.body.lat || '',
-			longitude: req.body.long || '',
-			strava_id: req.body.strava || '',
-			featured_image: req.body.featured || null,
-		};
-		var images = req.files;
-		var autoSave = req.query.as || false;
-		var utils = require('./utils.js');
-		var uploadImages = utils.uploadImages(app, images);
 		
-		if(req.body.pub_status === 'on') {
-			postData.published = true;
-			if(postData.publish_date === '') {
-				postData.publish_date = new Date();
-			}
-		}
-		uploadImages.then(function() {
-			if(images.length) {
+		var utils = require('./utils.js');
+		var formatData = utils.formatData(req);
+		var uploadImages = utils.uploadImages(app, req.files);
+		
+		formatData.then(function(postData) {
+			uploadImages.then(function() {
 				console.log('Fininished uploading images');
-				postData.images = images;
-			}
-			posts.save(postData, function (newPost) {
-				if(postData.published) {
-					utils.sendTweet(app, postData).then(function() {
-						console.log('Tweet posted');
-					}).catch(function(error) {
-						console.log('Failure: Tweet not sent');
-						console.log(error);
-					});
-				}
-				res.redirect('/admin/posts');
+				posts.save(postData, function () {
+					if(postData.published) {
+						utils.sendTweet(app, postData).then(function() {
+							console.log('Tweet posted');
+						}).catch(function(error) {
+							console.log('Failure: Tweet not sent');
+							console.log(error);
+						});
+					}
+					res.redirect('/admin/posts');
+				});
+			}).catch(function(error) {
+				console.log('A file failed to process');
+				console.log(error);
 			});
-		}).catch(function(error) {
-			console.log('A file failed to process');
-			console.log(error);
 		});
-	}
+	};
 };
 
 

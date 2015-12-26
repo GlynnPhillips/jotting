@@ -33,5 +33,9 @@
     "node-twitter-api": "1.6.x",
     "request": "2.67.x",
     "strava-v3": "^1.8.x"
+  },
+  "devDependencies": {
+    "jshint": "^2",
+	"jscs": "^2"
   }
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 exports.index = function (req, res){
 	res.render('admin/login', {dest: req.query.dest});
 };
@@ -19,6 +21,6 @@ exports.authenticate = function (app) {
 			}
 
 		}
-	}
+	};
 };
 

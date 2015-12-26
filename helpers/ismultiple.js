@@ -1,4 +1,7 @@
+'use strict';
+
 var dust = require('dustjs-linkedin');
+
 dust.helpers.isMultiple = function(chunk, context, bodies, params) {
 	params = params || {};
 	var position = context.get('$idx') + 1,

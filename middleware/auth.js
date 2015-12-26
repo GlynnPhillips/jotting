@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 module.exports = function (req, res, next) {
 	if(!req.session.access) {
@@ -6,4 +6,4 @@ module.exports = function (req, res, next) {
 	}
 
 	next();
-}
+};

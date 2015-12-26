@@ -1,9 +1,5 @@
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
-var marked = require('marked');
-var async = require('async');
-var twitterAPI = require('node-twitter-api');
-var cloudinary = require('cloudinary');
 
 exports.index = function (req, res){
 	posts.list({}, function(allPosts) {
@@ -17,9 +13,7 @@ exports.new = function (app){
 
 		if(id) {
 			posts.byId({_id: id}, function(post) {
-				
 				post.image_path = app.opts.image_path;
-				
 				res.render('admin/new-post', {post: post});
 			});
 		} else {
@@ -30,159 +24,54 @@ exports.new = function (app){
 
 exports.add = function (app) {
 	return function(req, res) {
-		var id = req.params.id,
-			pubStatus = false,
-			postUser = req.body.user || req.session.user,
-			postTitle = req.body.title || '',
-			postContent = req.body.content || '',
-			postLat = req.body.lat || '',
-			postLong = req.body.long || '',
-			postDate = req.body.date || '',
-			stravaId = req.body.strava || '',
-			uploadedImages = req.files,
-			featuredImage = req.body.featured || null,
-			autoSave = req.query.as || false;
+		var postData = {
+			id: req.params.id || null,
+			published: false,
+			user: req.body.user || req.session.user,
+			publish_date: req.body.date || '',
+			title: req.body.title || '',
+			content: req.body.content || '',
+			latitude: req.body.lat || '',
+			longitude: req.body.long || '',
+			strava_id: req.body.strava || '',
+			featured_image: req.body.featured || null,
+		};
+		var images = req.files;
+		var autoSave = req.query.as || false;
+		var utils = require('./utils.js');
+		var uploadImages = utils.uploadImages(app, images);
 		
-		var uploadImages = new Promise( function (resolve, reject) {
-			cloudinary.config({ 
-				cloud_name: app.opts.store_name, 
-				api_key: app.opts.store_key, 
-				api_secret: app.opts.store_secret
-			});
-			
-			async.each(uploadedImages, function(file, callback) {
-				cloudinary.uploader.upload(file.path, function(result) { 
-					uploadedImages[uploadedImages.indexOf(file)].cloudinary = {
-						id: result.public_id,
-						format: result.format
-					};
-					callback();
-				});
-			}, function(err){
-				if( err ) {
-					console.log('A file failed to process');
-					reject(err);
-				} else {
-					console.log('All files have been processed successfully');
-					resolve();
-				}
-			});
-			return uploadImages;
-		});
 		if(req.body.pub_status === 'on') {
-			pubStatus = true;
-
-			if(postDate === '') {
-				postDate = new Date();
+			postData.published = true;
+			if(postData.publish_date === '') {
+				postData.publish_date = new Date();
 			}
 		}
-		
-		if(typeof uploadedImages !== 'undefined') {
-			uploadImages.then(function() {
-				createRecord(uploadedImages);	
-			}).catch(function(err) {
-				console.log(err);
+		uploadImages.then(function() {
+			if(images.length) {
+				console.log('Fininished uploading images');
+				postData.images = images;
+			}
+			posts.save(postData, function (newPost) {
+				if(postData.published) {
+					utils.sendTweet(app, postData).then(function() {
+						console.log('Tweet posted');
+					}).catch(function(error) {
+						console.log('Failure: Tweet not sent');
+						console.log(error);
+					});
+				}
+				res.redirect('/admin/posts');
 			});
-		} else {
-				createRecord(uploadedImages);
-		}
-
-
-
-		function createRecord (postImages) {
-			var postEntry = {
-				published: pubStatus,
-				user: postUser,
-				publish_date: postDate,
-				title: postTitle,
-				content: postContent,
-				latitude: postLat,
-				longitude: postLong,
-				strava_id: stravaId,
-				featured_image: featuredImage 
-			};
-			
-			var tweet = "Update on my progress in the #TCR2015 - " + postTitle + " http://cobbles-to-kebabs.co.uk/post/";
-			
-			
-			if(!id) {
-				
-				postEntry.images = postImages;
-
-				if(autoSave) {
-					posts.addPost(postEntry, function (newPost, err) {
-						res.send({id: newPost._id, type: 'save'});
-					});
-				} else {
-					posts.addPost(postEntry, function (newPost) {
-						if(postEntry.published) {
-							
-							var twitter = new twitterAPI({
-								consumerKey: app.opts.twitter_key,
-								consumerSecret: app.opts.twitter_secret,
-								callback: 'http://cobbles-to-kebabs.co.uk'
-							});
-
-							twitter.statuses("update", {
-									status: tweet + newPost._id
-								},
-								app.opts.twitter_access,
-								app.opts.twitter_access_secret,
-								function(error, data, response) {
-									if (error) {
-										console.log(error);
-									}
-								}
-							);
-							
-						}
-						
-						res.redirect('/admin/posts');
-					});
-				}
-			} else {
-		
-				if(typeof uploadedImages !== 'undefined' && postImages.length > 0) {
-					postEntry.images = postImages;
-				}
-				
-				if(autoSave) {
-					posts.updatePost({_id: id}, postEntry, function (updatedPost, err) {
-						res.status(200).send({id: updatedPost._id, type: 'update'});
-					});
-				} else {
-					posts.updatePost({_id: id}, postEntry, function () {
-						if(postEntry.published) {
-							
-							var twitter = new twitterAPI({
-								consumerKey: app.opts.twitter_key,
-								consumerSecret: app.opts.twitter_secret,
-								callback: 'http://cobbles-to-kebabs.co.uk'
-							});
-
-							twitter.statuses("update", {
-									status: tweet + id
-								},
-								app.opts.twitter_access,
-								app.opts.twitter_access_secret,
-								function(error, data, response) {
-									if (error) {
-										console.log(error);
-									}
-								}
-							);
-							
-						}
-						res.redirect('/admin/posts');
-					});
-
-				}
-			}
-		}
+		}).catch(function(error) {
+			console.log('A file failed to process');
+			console.log(error);
+		});
 	}
 };
 
-exports.remove = function (req, res){
+
+exports.remove = function (req, res) {
 	var id = req.params.id;
 	
 	posts.removePost({_id: id}, function () {

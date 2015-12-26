@@ -26,20 +26,20 @@ function configureModels (app) {
 				callback(posts)
 			});
 		},
-		addPost: function (postEntry, callback) {
-			var newPost = new this(postEntry);
+		save: function (postEntry, callback) {
+			if(!postEntry.id) {
+				var newPost = new this(postEntry);
 
-			newPost.save(function(err, newPost) {
-				if (err) return console.error(err);
-				callback(newPost);
-			});
-		},
-
-		updatePost: function (conditions, postEntry, callback) {
-			this.update(conditions, postEntry, function(err, updatedPost) {
-				if (err) return console.error(err);
-				callback(updatedPost);
-			});
+				newPost.save(function(err, newPost) {
+					if (err) return console.error(err);
+					callback(newPost);
+				});
+			} else {
+				this.update({_id: postEntry.id}, postEntry, function(err, updatedPost) {
+					if (err) return console.error(err);
+					callback(updatedPost);
+				});
+			}
 		},
 
 		byId: function (id, callback) {

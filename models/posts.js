@@ -6,6 +6,7 @@ exports.configureModels = configureModels;
 
 function configureModels() {
 
+	// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 	var Schema = mongoose.Schema;
 	var postSchema = new Schema({
 		published: Boolean,
@@ -19,15 +20,18 @@ function configureModels() {
 		images: [],
 		featured_image: String
 	});
+	// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
 	postSchema.statics = {
 		list: function(query, callback) {
+			// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 			this.find(query, null, {sort: {publish_date: -1}}, function(err, posts) {
 				if (err) {
 					return console.error(err);
 				}
 				callback(posts);
 			});
+			// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 		},
 		save: function(postEntry, callback) {
 			if (!postEntry.id) {

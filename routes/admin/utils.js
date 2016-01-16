@@ -2,10 +2,11 @@
 
 var async = require('async');
 var cloudinary = require('cloudinary');
-var twitterAPI = require('node-twitter-api');
+var TwitterAPI = require('node-twitter-api');
 
 exports.formatData = function(data) {
 	return new Promise(function(resolve) {
+		// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 		var formated = {
 			id: data.params.id,
 			published: false,
@@ -25,6 +26,7 @@ exports.formatData = function(data) {
 				formated.publish_date = new Date();
 			}
 		}
+		// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 		if (data.files.length) {
 			formated.images = data.files;
 		}
@@ -33,10 +35,11 @@ exports.formatData = function(data) {
 	});
 };
 exports.uploadImages = function(app, images) {
-	return new Promise( function(resolve, reject) {
+	return new Promise(function(resolve, reject) {
 		if (!images.length) {
 			resolve();
 		}
+		// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 		cloudinary.config({
 			cloud_name: app.opts.storeName,
 			api_key: app.opts.storeKey,
@@ -58,12 +61,13 @@ exports.uploadImages = function(app, images) {
 				resolve();
 			}
 		});
+		// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 	});
 };
 exports.sendTweet = function(app, data) {
 	return new Promise(function(resolve, reject) {
 		var tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
-		var twitter = new twitterAPI({
+		var twitter = new TwitterAPI({
 			consumerKey: app.opts.twitterKey,
 			consumerSecret: app.opts.twitterSecret,
 			callback: 'http://cobbles-to-kebabs.co.uk'

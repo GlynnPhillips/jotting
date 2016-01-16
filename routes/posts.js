@@ -19,7 +19,9 @@ exports.index = function(app) {
 						if (!err) {
 							var activity = {};
 
+							// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 							activity.elevation = payload.total_elevation_gain.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+							// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
 							activity.distance = payload.distance / 1000;
 							activity.distance = Math.round(activity.distance * 10) / 10;

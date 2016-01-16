@@ -14,22 +14,20 @@ exports.index = function(app) {
 				var html = marked(post.content);
 				post.html = html;
 				post.imagePath = app.opts.imagePath;
-				if (post.stravaId) {
-					strava.activities.get({id: post.stravaId}, function(err, payload) {
+				// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+				if (post.strava_id) {
+					strava.activities.get({id: post.strava_id}, function(err, payload) {
 						if (!err) {
 							var activity = {};
 
-							// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 							activity.elevation = payload.total_elevation_gain.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-							// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
 							activity.distance = payload.distance / 1000;
 							activity.distance = Math.round(activity.distance * 10) / 10;
 							activity.name = payload.name;
 							activity.id = payload.id;
 
-							post.stravaActivity = activity;
-
+							post.strava_activity = activity;
 							res.render('post', {post: post});
 						} else {
 
@@ -40,6 +38,7 @@ exports.index = function(app) {
 				} else {
 					res.render('post', {post: post});
 				}
+				// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
 
 			} else {

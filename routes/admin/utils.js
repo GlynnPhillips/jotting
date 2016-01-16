@@ -1,7 +1,5 @@
 'use strict';
 
-/* jshint esnext: true */
-
 var async = require('async');
 var cloudinary = require('cloudinary');
 var twitterAPI = require('node-twitter-api');
@@ -20,41 +18,41 @@ exports.formatData = function(data) {
 			strava_id: data.body.strava,
 			featured_image: data.body.featured
 		};
-		
-		if(data.body.pub_status === 'on') {
+
+		if (data.body.pub_status === 'on') {
 			formated.published = true;
-			if(!formated.publish_date) {
+			if (!formated.publish_date) {
 				formated.publish_date = new Date();
 			}
 		}
-		if(data.files.length) {
+		if (data.files.length) {
 			formated.images = data.files;
 		}
 
 		resolve(formated);
-	});			
+	});
 };
 exports.uploadImages = function(app, images) {
-	return new Promise( function (resolve, reject) {
+	return new Promise( function(resolve, reject) {
 		if (!images.length) {
 			resolve();
 		}
-		cloudinary.config({ 
-			cloud_name: app.opts.store_name, 
-			api_key: app.opts.store_key, 
-			api_secret: app.opts.store_secret
+		cloudinary.config({
+			cloud_name: app.opts.storeName,
+			api_key: app.opts.storeKey,
+			api_secret: app.opts.storeSecret
 		});
-		
+
 		async.each(images, function(file, callback) {
-			cloudinary.uploader.upload(file.path, function(result) { 
+			cloudinary.uploader.upload(file.path, function(result) {
 				images[images.indexOf(file)].cloudinary = {
 					id: result.public_id,
 					format: result.format
 				};
 				callback();
 			});
-		}, function(err){
-			if( err ) {
+		}, function(err) {
+			if (err) {
 				reject(err);
 			} else {
 				resolve();
@@ -66,16 +64,16 @@ exports.sendTweet = function(app, data) {
 	return new Promise(function(resolve, reject) {
 		var tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
 		var twitter = new twitterAPI({
-			consumerKey: app.opts.twitter_key,
-			consumerSecret: app.opts.twitter_secret,
+			consumerKey: app.opts.twitterKey,
+			consumerSecret: app.opts.twitterSecret,
 			callback: 'http://cobbles-to-kebabs.co.uk'
 		});
 
 		twitter.statuses('update', {
 				status: tweet + data._id
 			},
-			app.opts.twitter_access,
-			app.opts.twitter_access_secret,
+			app.opts.twitterAccess,
+			app.opts.twitterAccessSecret,
 			function(error) {
 				if (error) {
 					reject(error);

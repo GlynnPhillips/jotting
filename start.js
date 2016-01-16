@@ -9,11 +9,11 @@ var configureModels = require('./models/posts').configureModels;
 
 function startApplication(opts, done) {
 	var app = {};
-	
+
 	app.opts = opts;
 
 	databaseConnection(app, function(err) {
-		if(err) {
+		if (err) {
 			return done(err);
 		}
 
@@ -21,8 +21,8 @@ function startApplication(opts, done) {
 		configureModels(app);
 		loadRoutes(app);
 
-		app.express.listen(app.opts.port, function (err) {
-			if(err) {
+		app.express.listen(app.opts.port, function(err) {
+			if (err) {
 				console.error('App failed to start');
 				console.error(err.stack);
 				process.exit(1);

@@ -3,19 +3,19 @@
 var mongoose = require('mongoose');
 var posts = mongoose.model('posts');
 
-exports.index = function (req, res) {
+exports.index = function(req, res) {
 	posts.list({}, function(allPosts) {
 		res.render('admin/posts', {posts: allPosts});
 	});
 };
 
-exports.new = function (app) {
+exports.new = function(app) {
 	return function(req, res) {
 		var id = req.params.id;
 
-		if(id) {
+		if (id) {
 			posts.byId({_id: id}, function(post) {
-				post.image_path = app.opts.image_path;
+				post.imagePath = app.opts.imagePath;
 				res.render('admin/new-post', {post: post});
 			});
 		} else {
@@ -24,18 +24,18 @@ exports.new = function (app) {
 	};
 };
 
-exports.add = function (app) {
+exports.add = function(app) {
 	return function(req, res) {
-		
+
 		var utils = require('./utils.js');
 		var formatData = utils.formatData(req);
 		var uploadImages = utils.uploadImages(app, req.files);
-		
+
 		formatData.then(function(postData) {
 			uploadImages.then(function() {
 				console.log('Fininished uploading images');
-				posts.save(postData, function () {
-					if(postData.published) {
+				posts.save(postData, function() {
+					if (postData.published) {
 						utils.sendTweet(app, postData).then(function() {
 							console.log('Tweet posted');
 						}).catch(function(error) {
@@ -54,18 +54,18 @@ exports.add = function (app) {
 };
 
 
-exports.remove = function (req, res) {
+exports.remove = function(req, res) {
 	var id = req.params.id;
-	
-	posts.removePost({_id: id}, function () {
+
+	posts.removePost({_id: id}, function() {
 		res.redirect('/admin/posts');
 	});
 };
 
-exports.confirmRemoval = function (req, res) {
-	var id = req.params.id; 	
-	
-	if(id) {
+exports.confirmRemoval = function(req, res) {
+	var id = req.params.id;
+
+	if (id) {
 		posts.byId({_id: id}, function(post) {
 			res.render('admin/confirm-deletion', {post: post});
 		});

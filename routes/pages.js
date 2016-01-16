@@ -5,48 +5,44 @@ var posts = mongoose.model('posts');
 var request = require('request');
 var async = require('async');
 
-exports.index = function (app) {
-	return function (req, res) {
+exports.index = function() {
+	return function(req, res) {
 		posts.list({published: true}, function(posts) {
-			var stores = {
-				fullsize: app.opts.store,
-				thumbs: app.opts.thumb_store
-			};
-			res.render('home', {posts: posts, stores: stores});
+			res.render('home', {posts: posts});
 		});
 	};
 };
 
-exports.us = function () {
-	return function (req, res) {
+exports.us = function() {
+	return function(req, res) {
 		res.render('us');
 	};
 };
 
-exports.support = function () {
-	return function (req, res) {
+exports.support = function() {
+	return function(req, res) {
 		res.render('support');
 	};
 };
 
-exports.donate = function (app) {
-	return function (req, res) {
+exports.donate = function(app) {
+	return function(req, res) {
 		var riders = [
 			{
 				name: 'neil',
-				url: app.opts.neil_donate_api
+				url: app.opts.neilDonateApi
 			},
 			{
 				name: 'tim',
-				url: app.opts.tim_donate_api
+				url: app.opts.timDonateApi
 			}
 		];
 
 		var donations = {};
-			
+
 		async.each(riders, function(rider, callback) {
 
-			request(rider.url, function (error, response, body) {
+			request(rider.url, function(error, response, body) {
 				if (!error && response.statusCode === 200) {
 					var body = JSON.parse(body);
 					donations[rider.name] = {
@@ -55,28 +51,28 @@ exports.donate = function (app) {
 						url: body.personalUrl
 					};
 					callback();
-				 }
+				}
 
 			});
-		}, function(err){
-			if( err ) {
+		}, function(err) {
+			if (err) {
 				res.render('donate');
 			} else {
 				res.render('donate', {donations: donations});
 			}
-		});	
-			
+		});
+
 	};
 };
 
-exports.kit = function () {
-	return function (req, res) {
+exports.kit = function() {
+	return function(req, res) {
 		res.render('kit');
 	};
 };
 
-exports.live = function () {
-	return function (req, res) {
+exports.live = function() {
+	return function(req, res) {
 		res.render('live');
 	};
 };

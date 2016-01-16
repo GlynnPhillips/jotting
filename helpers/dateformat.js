@@ -4,8 +4,8 @@ var dateformat = require('dateformat');
 var dust = require('dustjs-linkedin');
 
 dust.helpers.dateFormat = function(chunk, context, bodies, params) {
-	var date = null,
-	value = null;
+	var date = null;
+	var value = null;
 
 	params = params || {};
 

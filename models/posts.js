@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 
 exports.configureModels = configureModels;
 
-function configureModels () {
-	
+function configureModels() {
+
 	var Schema = mongoose.Schema;
 	var postSchema = new Schema({
 		published: Boolean,
@@ -21,7 +21,7 @@ function configureModels () {
 	});
 
 	postSchema.statics = {
-		list: function (query, callback) {
+		list: function(query, callback) {
 			this.find(query, null, {sort: {publish_date: -1}}, function(err, posts) {
 				if (err) {
 					return console.error(err);
@@ -29,8 +29,8 @@ function configureModels () {
 				callback(posts);
 			});
 		},
-		save: function (postEntry, callback) {
-			if(!postEntry.id) {
+		save: function(postEntry, callback) {
+			if (!postEntry.id) {
 				var newPost = new this(postEntry);
 
 				newPost.save(function(err, newPost) {
@@ -49,8 +49,8 @@ function configureModels () {
 			}
 		},
 
-		byId: function (id, callback) {
-			this.findOne(id, function (err, post) {
+		byId: function(id, callback) {
+			this.findOne(id, function(err, post) {
 				if (err) {
 					return console.error(err);
 				}
@@ -58,8 +58,8 @@ function configureModels () {
 			});
 		},
 
-		removePost: function (id, callback) {
-			this.remove(id, function (err) {
+		removePost: function(id, callback) {
+			this.remove(id, function(err) {
 				if (err) {
 					return console.error(err);
 				}

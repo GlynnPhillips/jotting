@@ -14,9 +14,13 @@ exports.new = function(app) {
 		var id = req.params.id;
 
 		if (id) {
-			posts.byId({_id: id}, function(post) {
-				post.imagePath = app.opts.imagePath;
-				res.render('admin/new-post', {post: post});
+			posts.byId({_id: id}, function(error, post) {
+				if (!error) {
+					post.imagePath = app.opts.imagePath;
+					res.render('admin/new-post', {post: post});
+				} else {
+					res.status(404).send('Article not found');
+				}
 			});
 		} else {
 			res.render('admin/new-post');
@@ -66,8 +70,12 @@ exports.confirmRemoval = function(req, res) {
 	var id = req.params.id;
 
 	if (id) {
-		posts.byId({_id: id}, function(post) {
-			res.render('admin/confirm-deletion', {post: post});
+		posts.byId({_id: id}, function(error, post) {
+			if (!error) {
+				res.render('admin/confirm-deletion', {post: post});
+			} else {
+				res.status(404).send('Article not found');
+			}
 		});
 	} else {
 		res.render('admin/');

@@ -8,9 +8,8 @@ var strava = require('strava-v3');
 exports.index = function(app) {
 	return function(req, res) {
 		var id = req.params.id;
-		posts.byId({_id: id}, function(post) {
-
-			if (post.published || req.session.access) {
+		posts.byId({_id: id}, function(error, post) {
+			if (post && post.published || (post && req.session.access)) {
 				var html = marked(post.content);
 				post.html = html;
 				post.imagePath = app.opts.imagePath;
@@ -40,9 +39,8 @@ exports.index = function(app) {
 				}
 				// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
-
 			} else {
-				res.status(404).send('Not found');
+				res.sendStatus(404);
 			}
 		});
 	};

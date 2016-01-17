@@ -56,9 +56,11 @@ function configureModels() {
 		byId: function(id, callback) {
 			this.findOne(id, function(err, post) {
 				if (err) {
-					return console.error(err);
+					console.error(err);
+					callback(err);
+				} else {
+					callback(null, post);
 				}
-				callback(post);
 			});
 		},
 

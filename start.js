@@ -1,13 +1,11 @@
 'use strict';
 
-module.exports = startApplication;
-
 const configureExpress = require('./express').configureExpress;
 const databaseConnection = require('./database').databaseConnection;
 const loadRoutes = require('./routes').loadRoutes;
 const configureModels = require('./models/posts').configureModels;
 
-function startApplication(opts, done) {
+module.exports = (opts, done) => {
 	const app = {};
 
 	app.opts = opts;

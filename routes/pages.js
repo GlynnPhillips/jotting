@@ -5,7 +5,7 @@ const posts = mongoose.model('posts');
 const request = require('request');
 const async = require('async');
 
-exports.index = function() {
+exports.index = () => {
 	return function(req, res) {
 		posts.list({published: true}, function(posts) {
 			res.render('home', {posts: posts});
@@ -13,7 +13,7 @@ exports.index = function() {
 	};
 };
 
-exports.us = function() {
+exports.us = () => {
 	return function(req, res) {
 		res.render('us');
 	};
@@ -25,7 +25,7 @@ exports.support = function() {
 	};
 };
 
-exports.donate = function(app) {
+exports.donate = (app) => {
 	return function(req, res) {
 		const riders = [
 			{
@@ -66,13 +66,13 @@ exports.donate = function(app) {
 	};
 };
 
-exports.kit = function() {
+exports.kit = () => {
 	return function(req, res) {
 		res.render('kit');
 	};
 };
 
-exports.live = function() {
+exports.live = () => {
 	return function(req, res) {
 		res.render('live');
 	};

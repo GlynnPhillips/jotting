@@ -6,9 +6,7 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-exports.configureExpress = configureExpress;
-
-function configureExpress(app) {
+exports.configureExpress = (app) => {
 
 	const MongoStore = require('connect-mongo')(session);
 

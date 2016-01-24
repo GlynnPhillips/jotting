@@ -4,7 +4,7 @@ const async = require('async');
 const cloudinary = require('cloudinary');
 const TwitterAPI = require('node-twitter-api');
 
-exports.formatData = function(data) {
+exports.formatData = (data) => {
 	return new Promise(function(resolve) {
 		// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 		const formated = {
@@ -34,7 +34,7 @@ exports.formatData = function(data) {
 		resolve(formated);
 	});
 };
-exports.uploadImages = function(app, images) {
+exports.uploadImages = (app, images) => {
 	return new Promise(function(resolve, reject) {
 		if (!images.length) {
 			resolve();
@@ -64,7 +64,7 @@ exports.uploadImages = function(app, images) {
 		// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 	});
 };
-exports.sendTweet = function(app, data) {
+exports.sendTweet = (app, data) => {
 	return new Promise(function(resolve, reject) {
 		const tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
 		const twitter = new TwitterAPI({

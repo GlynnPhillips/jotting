@@ -2,9 +2,7 @@
 
 const mongoose = require('mongoose');
 
-exports.configureModels = configureModels;
-
-function configureModels() {
+exports.configureModels = () => {
 
 	// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 	const Schema = mongoose.Schema;

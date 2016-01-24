@@ -1,8 +1,6 @@
 'use strict';
 
-exports.loadRoutes = loadRoutes;
-
-function loadRoutes(app) {
+exports.loadRoutes = (app) => {
 
 	const adminPosts = require('./routes/admin/posts');
 	const login = require('./routes/admin/login');

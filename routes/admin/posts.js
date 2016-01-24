@@ -3,13 +3,13 @@
 const mongoose = require('mongoose');
 const posts = mongoose.model('posts');
 
-exports.index = function(req, res) {
+exports.index = (req, res) => {
 	posts.list({}, function(allPosts) {
 		res.render('admin/posts', {posts: allPosts});
 	});
 };
 
-exports.new = function(app) {
+exports.new = (app) => {
 	return function(req, res) {
 		const id = req.params.id;
 
@@ -28,7 +28,7 @@ exports.new = function(app) {
 	};
 };
 
-exports.add = function(app) {
+exports.add = (app) => {
 	return function(req, res) {
 
 		const utils = require('./utils.js');
@@ -58,7 +58,7 @@ exports.add = function(app) {
 };
 
 
-exports.remove = function(req, res) {
+exports.remove = (req, res) => {
 	const id = req.params.id;
 
 	posts.removePost({_id: id}, function() {
@@ -66,7 +66,7 @@ exports.remove = function(req, res) {
 	});
 };
 
-exports.confirmRemoval = function(req, res) {
+exports.confirmRemoval = (req, res) => {
 	const id = req.params.id;
 
 	if (id) {

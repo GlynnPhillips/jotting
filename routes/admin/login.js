@@ -1,10 +1,10 @@
 'use strict';
 
-exports.index = function(req, res) {
+exports.index = (req, res) => {
 	res.render('admin/login', {dest: req.query.dest});
 };
 
-exports.authenticate = function(app) {
+exports.authenticate = (app) => {
 	return function(req, res) {
 		const attemptedLogin = req.body.username + ':' + req.body.password;
 		const users = app.opts.credentials.split(';');

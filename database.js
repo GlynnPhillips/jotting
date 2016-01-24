@@ -1,9 +1,7 @@
 'use strict';
 
-module.exports.databaseConnection = databaseConnection;
-
 const mongoose = require('mongoose');
 
-function databaseConnection(app, done) {
+module.exports.databaseConnection = (app, done) => {
 	mongoose.connect(app.opts.db, done);
 }

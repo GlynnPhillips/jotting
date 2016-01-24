@@ -5,7 +5,7 @@ const posts = mongoose.model('posts');
 const marked = require('marked');
 const strava = require('strava-v3');
 
-exports.index = function(app) {
+exports.index = (app) => {
 	return function(req, res) {
 		const id = req.params.id;
 		posts.byId({_id: id}, function(error, post) {

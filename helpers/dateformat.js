@@ -1,11 +1,11 @@
 'use strict';
 
-var dateformat = require('dateformat');
-var dust = require('dustjs-linkedin');
+const dateformat = require('dateformat');
+const dust = require('dustjs-linkedin');
 
 dust.helpers.dateFormat = function(chunk, context, bodies, params) {
-	var date = null;
-	var value = null;
+	let date = null;
+	let value = null;
 
 	params = params || {};
 

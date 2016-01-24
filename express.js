@@ -1,17 +1,16 @@
 'use strict';
-var cons = require('consolidate');
-var express = require('express');
-var session = require('express-session');
-var multer = require('multer');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var mongoose = require('mongoose');
+const cons = require('consolidate');
+const express = require('express');
+const session = require('express-session');
+const multer = require('multer');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 exports.configureExpress = configureExpress;
 
 function configureExpress(app) {
 
-	var MongoStore = require('connect-mongo')(session);
+	const MongoStore = require('connect-mongo')(session);
 
 	require('./helpers/dateformat');
 	require('./helpers/ismultiple');
@@ -39,10 +38,6 @@ function configureExpress(app) {
 	app.express.set('view engine', 'dust');
 	app.express.set('views', __dirname + '/views/');
 
-	configureAssets(app);
-}
-
-function configureAssets(app) {
 	app.express.use(multer({dest: app.opts.store}).array('image'));
 	app.express.use('/resources', express.static(__dirname + '/resources'));
 	app.express.use('/sitemap.xml', express.static(__dirname + '/sitemap.xml'));

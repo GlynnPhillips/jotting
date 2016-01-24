@@ -1,9 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var posts = mongoose.model('posts');
-var request = require('request');
-var async = require('async');
+const mongoose = require('mongoose');
+const posts = mongoose.model('posts');
+const request = require('request');
+const async = require('async');
 
 exports.index = function() {
 	return function(req, res) {
@@ -27,7 +27,7 @@ exports.support = function() {
 
 exports.donate = function(app) {
 	return function(req, res) {
-		var riders = [
+		const riders = [
 			{
 				name: 'neil',
 				url: app.opts.neilDonateApi
@@ -38,17 +38,18 @@ exports.donate = function(app) {
 			}
 		];
 
-		var donations = {};
+		const donations = {};
 
 		async.each(riders, function(rider, callback) {
 
 			request(rider.url, function(error, response, body) {
 				if (!error && response.statusCode === 200) {
-					var body = JSON.parse(body);
+
+					const data = JSON.parse(body);
 					donations[rider.name] = {
-						total: body.pageDetails[0].donationTotalNet,
-						target: body.pageDetails[0].targetAmount,
-						url: body.personalUrl
+						total: data.pageDetails[0].donationTotalNet,
+						target: data.pageDetails[0].targetAmount,
+						url: data.personalUrl
 					};
 					callback();
 				}

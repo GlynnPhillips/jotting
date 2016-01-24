@@ -1,23 +1,22 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var posts = mongoose.model('posts');
-var marked = require('marked');
-var strava = require('strava-v3');
+const mongoose = require('mongoose');
+const posts = mongoose.model('posts');
+const marked = require('marked');
+const strava = require('strava-v3');
 
 exports.index = function(app) {
 	return function(req, res) {
-		var id = req.params.id;
+		const id = req.params.id;
 		posts.byId({_id: id}, function(error, post) {
 			if (post && post.published || (post && req.session.access)) {
-				var html = marked(post.content);
-				post.html = html;
+				post.html = marked(post.content);
 				post.imagePath = app.opts.imagePath;
 				// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 				if (post.strava_id) {
 					strava.activities.get({id: post.strava_id}, function(err, payload) {
 						if (!err) {
-							var activity = {};
+							const activity = {};
 
 							activity.elevation = payload.total_elevation_gain.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 

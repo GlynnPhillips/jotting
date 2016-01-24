@@ -1,7 +1,8 @@
 'use strict';
 
-var startApplication = require('./start.js');
-var opts = {
+const startApplication = require('./start.js');
+const opts = {
+	env: process.env.NODE_ENV || 'dev',
 	credentials: process.env.CREDENTIALS,
 	db: process.env.MONGO_URL,
 	secret: process.env.SECRET,

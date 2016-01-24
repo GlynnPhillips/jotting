@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var posts = mongoose.model('posts');
+const mongoose = require('mongoose');
+const posts = mongoose.model('posts');
 
 exports.index = function(req, res) {
 	posts.list({}, function(allPosts) {
@@ -11,7 +11,7 @@ exports.index = function(req, res) {
 
 exports.new = function(app) {
 	return function(req, res) {
-		var id = req.params.id;
+		const id = req.params.id;
 
 		if (id) {
 			posts.byId({_id: id}, function(error, post) {
@@ -31,15 +31,15 @@ exports.new = function(app) {
 exports.add = function(app) {
 	return function(req, res) {
 
-		var utils = require('./utils.js');
-		var formatData = utils.formatData(req);
-		var uploadImages = utils.uploadImages(app, req.files);
+		const utils = require('./utils.js');
+		const formatData = utils.formatData(req);
+		const uploadImages = utils.uploadImages(app, req.files);
 
 		formatData.then(function(postData) {
 			uploadImages.then(function() {
 				console.log('Fininished uploading images');
 				posts.save(postData, function() {
-					if (postData.published) {
+					if (postData.published && app.opts.env === 'production') {
 						utils.sendTweet(app, postData).then(function() {
 							console.log('Tweet posted');
 						}).catch(function(error) {
@@ -59,7 +59,7 @@ exports.add = function(app) {
 
 
 exports.remove = function(req, res) {
-	var id = req.params.id;
+	const id = req.params.id;
 
 	posts.removePost({_id: id}, function() {
 		res.redirect('/admin/posts');
@@ -67,7 +67,7 @@ exports.remove = function(req, res) {
 };
 
 exports.confirmRemoval = function(req, res) {
-	var id = req.params.id;
+	const id = req.params.id;
 
 	if (id) {
 		posts.byId({_id: id}, function(error, post) {

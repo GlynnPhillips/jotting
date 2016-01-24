@@ -2,13 +2,13 @@
 
 module.exports = startApplication;
 
-var configureExpress = require('./express').configureExpress;
-var databaseConnection = require('./database').databaseConnection;
-var loadRoutes = require('./routes').loadRoutes;
-var configureModels = require('./models/posts').configureModels;
+const configureExpress = require('./express').configureExpress;
+const databaseConnection = require('./database').databaseConnection;
+const loadRoutes = require('./routes').loadRoutes;
+const configureModels = require('./models/posts').configureModels;
 
 function startApplication(opts, done) {
-	var app = {};
+	const app = {};
 
 	app.opts = opts;
 

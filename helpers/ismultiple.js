@@ -1,13 +1,13 @@
 'use strict';
 
-var dust = require('dustjs-linkedin');
+const dust = require('dustjs-linkedin');
 
 dust.helpers.isMultiple = function(chunk, context, bodies, params) {
 	params = params || {};
-	var position = context.get('$idx') + 1;
-	var multiple = parseInt(dust.helpers.tap(params.of, chunk, context), 10);
-	var offset = parseInt(dust.helpers.tap(params.offset, chunk, context) || 0, 10);
-	var alternate = bodies['else'];
+	const position = context.get('$idx') + 1;
+	const multiple = parseInt(dust.helpers.tap(params.of, chunk, context), 10);
+	const offset = parseInt(dust.helpers.tap(params.offset, chunk, context) || 0, 10);
+	const alternate = bodies['else'];
 
 	if (position % multiple === offset) {
 		return chunk.render(bodies.block, context);

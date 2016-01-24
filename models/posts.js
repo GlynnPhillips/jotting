@@ -1,14 +1,14 @@
 'use strict';
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 exports.configureModels = configureModels;
 
 function configureModels() {
 
 	// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-	var Schema = mongoose.Schema;
-	var postSchema = new Schema({
+	const Schema = mongoose.Schema;
+	const postSchema = new Schema({
 		published: Boolean,
 		user: String,
 		publish_date: Date,
@@ -35,7 +35,7 @@ function configureModels() {
 		},
 		save: function(postEntry, callback) {
 			if (!postEntry.id) {
-				var newPost = new this(postEntry);
+				const newPost = new this(postEntry);
 
 				newPost.save(function(err, newPost) {
 					if (err) {

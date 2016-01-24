@@ -1,13 +1,13 @@
 'use strict';
 
-var async = require('async');
-var cloudinary = require('cloudinary');
-var TwitterAPI = require('node-twitter-api');
+const async = require('async');
+const cloudinary = require('cloudinary');
+const TwitterAPI = require('node-twitter-api');
 
 exports.formatData = function(data) {
 	return new Promise(function(resolve) {
 		// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-		var formated = {
+		const formated = {
 			id: data.params.id,
 			published: false,
 			user: data.body.user || data.session.user,
@@ -66,8 +66,8 @@ exports.uploadImages = function(app, images) {
 };
 exports.sendTweet = function(app, data) {
 	return new Promise(function(resolve, reject) {
-		var tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
-		var twitter = new TwitterAPI({
+		const tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
+		const twitter = new TwitterAPI({
 			consumerKey: app.opts.twitterKey,
 			consumerSecret: app.opts.twitterSecret,
 			callback: 'http://cobbles-to-kebabs.co.uk'

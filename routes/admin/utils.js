@@ -1,6 +1,5 @@
 'use strict';
 
-const async = require('async');
 const cloudinary = require('cloudinary');
 const TwitterAPI = require('node-twitter-api');
 
@@ -36,6 +35,8 @@ exports.formatData = (data) => {
 };
 exports.uploadImages = (app, images) => {
 	return new Promise(function(resolve, reject) {
+		let filesUploaded = 0;
+
 		if (!images.length) {
 			resolve();
 		}
@@ -46,20 +47,22 @@ exports.uploadImages = (app, images) => {
 			api_secret: app.opts.storeSecret
 		});
 
-		async.each(images, function(file, callback) {
-			cloudinary.uploader.upload(file.path, function(result) {
-				images[images.indexOf(file)].cloudinary = {
+		images.forEach(function(image) {
+			cloudinary.uploader.upload(image.path, function(result) {
+				images[images.indexOf(image)].cloudinary = {
 					id: result.public_id,
 					format: result.format
 				};
-				callback();
+
+				if (result.error) {
+					reject(result.error);
+				}
+
+				filesUploaded++;
+				if (filesUploaded === images.length) {
+					resolve();
+				}
 			});
-		}, function(err) {
-			if (err) {
-				reject(err);
-			} else {
-				resolve();
-			}
 		});
 		// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 	});

@@ -3,7 +3,6 @@
 const mongoose = require('mongoose');
 const posts = mongoose.model('posts');
 const request = require('request');
-const async = require('async');
 
 exports.index = () => {
 	return function(req, res) {
@@ -39,9 +38,8 @@ exports.donate = (app) => {
 		];
 
 		const donations = {};
-
-		async.each(riders, function(rider, callback) {
-
+		let itemsProcessed = 0;
+		riders.forEach(function(rider) {
 			request(rider.url, function(error, response, body) {
 				if (!error && response.statusCode === 200) {
 
@@ -51,16 +49,16 @@ exports.donate = (app) => {
 						target: data.pageDetails[0].targetAmount,
 						url: data.personalUrl
 					};
-					callback();
+
+				}
+				itemsProcessed++;
+				if (itemsProcessed === riders.length) {
+					res.render('donate', {donations: donations});
 				}
 
 			});
-		}, function(err) {
-			if (err) {
-				res.render('donate');
-			} else {
-				res.render('donate', {donations: donations});
-			}
+
+
 		});
 
 	};

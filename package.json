@@ -16,8 +16,6 @@
     "node": "4.0.x"
   },
   "dependencies": {
-    "adaro": "1.0.x",
-    "async": "1.5.x",
     "body-parser": "1.14.x",
     "cloudinary": "1.2.x",
     "connect-mongo": "0.8.x",

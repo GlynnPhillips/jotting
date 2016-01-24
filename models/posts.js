@@ -74,4 +74,4 @@ exports.configureModels = () => {
 	};
 
 	mongoose.model('posts', postSchema);
-}
+};

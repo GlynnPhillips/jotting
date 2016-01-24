@@ -30,6 +30,4 @@ module.exports = (opts, done) => {
 		done(null, app);
 
 	});
-}
-
-
+};

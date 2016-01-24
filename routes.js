@@ -27,6 +27,4 @@ exports.loadRoutes = (app) => {
 	express.get('/donate', pages.donate(app));
 	express.get('/kit', pages.kit(app));
 	express.get('/live', pages.live(app));
-}
-
-
+};

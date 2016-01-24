@@ -1,5 +1,6 @@
 'use strict';
 const cons = require('consolidate');
+const dustHelpers = require('dustjs-helpers');
 const express = require('express');
 const session = require('express-session');
 const multer = require('multer');
@@ -32,7 +33,7 @@ exports.configureExpress = (app) => {
 	}));
 
 	app.express.engine('dust', cons.dust);
-	cons.dust.helpers = require('dustjs-helpers');
+	cons.dust.helpers = dustHelpers;
 	app.express.set('view engine', 'dust');
 	app.express.set('views', __dirname + '/views/');
 
@@ -41,4 +42,4 @@ exports.configureExpress = (app) => {
 	app.express.use('/sitemap.xml', express.static(__dirname + '/sitemap.xml'));
 	app.express.use(app.opts.store, express.static(app.opts.store));
 	return app;
-}
+};

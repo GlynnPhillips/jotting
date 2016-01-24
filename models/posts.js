@@ -23,7 +23,7 @@ exports.configureModels = () => {
 	postSchema.statics = {
 		list: function(query, callback) {
 			// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-			this.find(query, null, {sort: {publish_date: -1}}, function(err, posts) {
+			this.find(query, null, {sort: {publish_date: -1}}, (err, posts) => {
 				if (err) {
 					return console.error(err);
 				}
@@ -35,14 +35,14 @@ exports.configureModels = () => {
 			if (!postEntry.id) {
 				const newPost = new this(postEntry);
 
-				newPost.save(function(err, newPost) {
+				newPost.save((err, newPost) => {
 					if (err) {
 						return console.error(err);
 					}
 					callback(newPost);
 				});
 			} else {
-				this.update({_id: postEntry.id}, postEntry, function(err, updatedPost) {
+				this.update({_id: postEntry.id}, postEntry, (err, updatedPost) => {
 					if (err) {
 						return console.error(err);
 					}
@@ -52,7 +52,7 @@ exports.configureModels = () => {
 		},
 
 		byId: function(id, callback) {
-			this.findOne(id, function(err, post) {
+			this.findOne(id, (err, post) => {
 				if (err) {
 					console.error(err);
 					callback(err);
@@ -63,7 +63,7 @@ exports.configureModels = () => {
 		},
 
 		removePost: function(id, callback) {
-			this.remove(id, function(err) {
+			this.remove(id, (err) => {
 				if (err) {
 					return console.error(err);
 				}

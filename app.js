@@ -20,7 +20,7 @@ const opts = {
 	storeName: process.env.STORE_NAME
 };
 
-startApplication(opts, function(err) {
+startApplication(opts, (err) => {
 	if (err) {
 		throw (err);
 	}

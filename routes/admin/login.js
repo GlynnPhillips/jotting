@@ -5,7 +5,7 @@ exports.index = (req, res) => {
 };
 
 exports.authenticate = (app) => {
-	return function(req, res) {
+	return (req, res) => {
 		const attemptedLogin = req.body.username + ':' + req.body.password;
 		const users = app.opts.credentials.split(';');
 

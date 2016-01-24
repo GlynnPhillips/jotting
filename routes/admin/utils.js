@@ -4,7 +4,7 @@ const cloudinary = require('cloudinary');
 const TwitterAPI = require('node-twitter-api');
 
 exports.formatData = (data) => {
-	return new Promise(function(resolve) {
+	return new Promise((resolve) => {
 		// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 		const formated = {
 			id: data.params.id,
@@ -34,7 +34,7 @@ exports.formatData = (data) => {
 	});
 };
 exports.uploadImages = (app, images) => {
-	return new Promise(function(resolve, reject) {
+	return new Promise((resolve, reject) => {
 		let filesUploaded = 0;
 
 		if (!images.length) {
@@ -47,8 +47,8 @@ exports.uploadImages = (app, images) => {
 			api_secret: app.opts.storeSecret
 		});
 
-		images.forEach(function(image) {
-			cloudinary.uploader.upload(image.path, function(result) {
+		images.forEach((image) => {
+			cloudinary.uploader.upload(image.path, (result) => {
 				images[images.indexOf(image)].cloudinary = {
 					id: result.public_id,
 					format: result.format
@@ -68,7 +68,7 @@ exports.uploadImages = (app, images) => {
 	});
 };
 exports.sendTweet = (app, data) => {
-	return new Promise(function(resolve, reject) {
+	return new Promise((resolve, reject) => {
 		const tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
 		const twitter = new TwitterAPI({
 			consumerKey: app.opts.twitterKey,
@@ -81,7 +81,7 @@ exports.sendTweet = (app, data) => {
 			},
 			app.opts.twitterAccess,
 			app.opts.twitterAccessSecret,
-			function(error) {
+			(error) => {
 				if (error) {
 					reject(error);
 				} else {

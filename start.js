@@ -10,7 +10,7 @@ module.exports = (opts, done) => {
 
 	app.opts = opts;
 
-	databaseConnection(app, function(err) {
+	databaseConnection(app, (err) => {
 		if (err) {
 			return done(err);
 		}
@@ -19,7 +19,7 @@ module.exports = (opts, done) => {
 		configureModels(app);
 		loadRoutes(app);
 
-		app.express.listen(app.opts.port, function(err) {
+		app.express.listen(app.opts.port, (err) => {
 			if (err) {
 				console.error('App failed to start');
 				console.error(err.stack);

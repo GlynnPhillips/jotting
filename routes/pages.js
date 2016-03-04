@@ -3,75 +3,63 @@
 const mongoose = require('mongoose');
 const posts = mongoose.model('posts');
 const request = require('request');
+const opts = require('../config');
 
-exports.index = () => {
-	return (req, res) => {
-		posts.list({published: true}, function(posts) {
-			res.render('home', {posts: posts});
-		});
-	};
+exports.index = (req, res) => {
+	posts.find({published: true}, null, {sort: {publish_date: -1}}, (err, allPosts) => { 
+		res.render('home', {posts: allPosts});
+	});
 };
 
-exports.us = () => {
-	return (req, res) => {
-		res.render('us');
-	};
+exports.us = (req, res) => {
+	res.render('us');
 };
 
-exports.support = () => {
-	return (req, res) => {
-		res.render('support');
-	};
+exports.support = (req, res) => {
+	res.render('support');
 };
 
-exports.donate = (app) => {
-	return (req, res) => {
-		const riders = [
-			{
-				name: 'neil',
-				url: app.opts.neilDonateApi
-			},
-			{
-				name: 'tim',
-				url: app.opts.timDonateApi
+exports.donate = (req, res) => {
+	const riders = [
+		{
+			name: 'neil',
+			url: opts.neilDonateApi
+		},
+		{
+			name: 'tim',
+			url: opts.timDonateApi
+		}
+	];
+
+	const donations = {};
+	let itemsProcessed = 0;
+	riders.forEach((rider) => {
+		request.get(rider.url, (error, response, body) => {
+			if (!error && response.statusCode === 200) {
+
+				const data = JSON.parse(body);
+				donations[rider.name] = {
+					total: data.pageDetails[0].donationTotalNet,
+					target: data.pageDetails[0].targetAmount,
+					url: data.personalUrl
+				};
+
 			}
-		];
-
-		const donations = {};
-		let itemsProcessed = 0;
-		riders.forEach((rider) => {
-			request(rider.url, (error, response, body) => {
-				if (!error && response.statusCode === 200) {
-
-					const data = JSON.parse(body);
-					donations[rider.name] = {
-						total: data.pageDetails[0].donationTotalNet,
-						target: data.pageDetails[0].targetAmount,
-						url: data.personalUrl
-					};
-
-				}
-				itemsProcessed++;
-				if (itemsProcessed === riders.length) {
-					res.render('donate', {donations: donations});
-				}
-
-			});
-
+			itemsProcessed++;
+			if (itemsProcessed === riders.length) {
+				res.render('donate', {donations: donations});
+			}
 
 		});
 
-	};
+
+	});
 };
 
-exports.kit = () => {
-	return (req, res) => {
-		res.render('kit');
-	};
+exports.kit = (req, res) => {
+	res.render('kit');
 };
 
-exports.live = () => {
-	return (req, res) => {
-		res.render('live');
-	};
+exports.live = (req, res) => {
+	res.render('live');
 };

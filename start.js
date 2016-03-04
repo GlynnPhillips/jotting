@@ -3,7 +3,6 @@
 const configureExpress = require('./express').configureExpress;
 const databaseConnection = require('./database').databaseConnection;
 const loadRoutes = require('./routes').loadRoutes;
-const configureModels = require('./models/posts').configureModels;
 
 module.exports = (opts, done) => {
 	const app = {};
@@ -16,7 +15,6 @@ module.exports = (opts, done) => {
 		}
 
 		configureExpress(app);
-		configureModels(app);
 		loadRoutes(app);
 
 		app.express.listen(app.opts.port, (err) => {

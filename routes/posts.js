@@ -8,7 +8,7 @@ const strava = require('strava-v3');
 exports.index = (app) => {
 	return (req, res) => {
 		const id = req.params.id;
-		posts.byId({_id: id}, (error, post) => {
+		posts.findOne({_id: id}, (error, post) => {
 			if (post && post.published || (post && req.session.access)) {
 				post.html = marked(post.content);
 				post.imagePath = app.opts.imagePath;

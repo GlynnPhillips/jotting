@@ -2,6 +2,7 @@
 
 const cloudinary = require('cloudinary');
 const TwitterAPI = require('node-twitter-api');
+const opts = require('../../config');
 
 exports.formatData = (data) => {
 	return new Promise((resolve) => {
@@ -33,7 +34,7 @@ exports.formatData = (data) => {
 		resolve(formated);
 	});
 };
-exports.uploadImages = (app, images) => {
+exports.uploadImages = (images) => {
 	return new Promise((resolve, reject) => {
 		let filesUploaded = 0;
 
@@ -42,9 +43,9 @@ exports.uploadImages = (app, images) => {
 		}
 		// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 		cloudinary.config({
-			cloud_name: app.opts.storeName,
-			api_key: app.opts.storeKey,
-			api_secret: app.opts.storeSecret
+			cloud_name: opts.storeName,
+			api_key: opts.storeKey,
+			api_secret: opts.storeSecret
 		});
 
 		images.forEach((image) => {
@@ -67,27 +68,32 @@ exports.uploadImages = (app, images) => {
 		// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 	});
 };
-exports.sendTweet = (app, data) => {
+exports.sendTweet = (data) => {
 	return new Promise((resolve, reject) => {
-		const tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
-		const twitter = new TwitterAPI({
-			consumerKey: app.opts.twitterKey,
-			consumerSecret: app.opts.twitterSecret,
-			callback: 'http://cobbles-to-kebabs.co.uk'
-		});
+		
+		if (data.published && opts.env === 'production') {
+			const tweet = 'Update on my progress in the #TCR2015 - ' + data.title + ' http://cobbles-to-kebabs.co.uk/post/';
+			const twitter = new TwitterAPI({
+				consumerKey: opts.twitterKey,
+				consumerSecret: opts.twitterSecret,
+				callback: 'http://cobbles-to-kebabs.co.uk'
+			});
 
-		twitter.statuses('update', {
-				status: tweet + data._id
-			},
-			app.opts.twitterAccess,
-			app.opts.twitterAccessSecret,
-			(error) => {
-				if (error) {
-					reject(error);
-				} else {
-					resolve();
+			twitter.statuses('update', {
+					status: tweet + data._id
+				},
+				opts.twitterAccess,
+				opts.twitterAccessSecret,
+				(error) => {
+					if (error) {
+						reject(error);
+					} else {
+						resolve();
+					}
 				}
-			}
-		);
+			);
+		} else {
+			resolve();
+		}
 	});
 };
